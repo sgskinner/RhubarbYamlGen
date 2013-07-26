@@ -4,6 +4,6 @@ import org.sgs.rhubarb.yaml.YamlFormatConstants;
 
 public class CcRecipientsEntry extends ToRecipientsEntry {
 	public CcRecipientsEntry(String...args){
-		super(YamlFormatConstants.CC_RECIPIENT_ENTRY_TEMPLATE, args);
+		super(7, YamlFormatConstants.CC_RECIPIENT_ENTRY_TEMPLATE, args);
 	}
 }
