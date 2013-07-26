@@ -11,7 +11,7 @@ public class SubjectEntry extends YamlEntry {
 
 	@Override
 	protected String getFormattedEntry() {
-		String format = super.getFormatsTemplate().getPrimaryLine();
+		String format = super.getFormatsTemplate().getRootFormat();
 		return String.format(format, (Object[])super.getArgs());
 	}
 

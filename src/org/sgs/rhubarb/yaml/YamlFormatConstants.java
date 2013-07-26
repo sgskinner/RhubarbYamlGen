@@ -101,7 +101,7 @@ public class YamlFormatConstants {
 	 * Args: <email1, email2, ..., lastEmail>
 	 * Example: 
 	 */
-	public final static YamlFormatsTemplate TO_RECIPIENTS_LINE = new YamlFormatsTemplate("  to:%n", "  - %s%n");
+	public final static YamlFormatsTemplate TO_RECIPIENTS_ENTRY_TEMPLATE = new YamlFormatsTemplate("  to:%n", "  - %s%n");
 	
 	
 	/**

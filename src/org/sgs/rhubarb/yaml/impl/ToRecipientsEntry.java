@@ -4,13 +4,12 @@ import org.sgs.rhubarb.yaml.YamlEntry;
 import org.sgs.rhubarb.yaml.YamlFormatConstants;
 import org.sgs.rhubarb.yaml.YamlFormatsTemplate;
 
-public class MessageEntry extends YamlEntry {
+public class ToRecipientsEntry extends YamlEntry {
 
-	// Each arg should be one line of the message, no newline needed
-	public MessageEntry(String...args) {
-		super(5, YamlFormatConstants.MESSAGE_ENTRY_TEMPLATE, args);
+	public ToRecipientsEntry(String...args) {
+		super(6, YamlFormatConstants.TO_RECIPIENTS_ENTRY_TEMPLATE, args);
 		if(args == null || args.length < 1){
-			throw new RuntimeException("Must supply at least one line for message!");
+			throw new RuntimeException("This entry can only be instantiated with at least one email address, none provided.");
 		}
 	}
 
@@ -18,21 +17,21 @@ public class MessageEntry extends YamlEntry {
 	protected String getFormattedEntry() {
 		
 		YamlFormatsTemplate formatsTemplate = super.getFormatsTemplate();
-		String msgLabelFormat = formatsTemplate.getRootFormat();
-		String msgLineFormat = formatsTemplate.getChildFormat();
+		String toLabelFormat = formatsTemplate.getRootFormat();
+		String recipientEntryFormat = formatsTemplate.getChildFormat();
 		
 		// Build our result
 		StringBuffer sb = new StringBuffer();
 		
 		// Use formatting to add system newline, no other args though, this is just a label
-		sb.append(String.format(msgLabelFormat));
+		sb.append(String.format(toLabelFormat));
 		
-		// Loop through all lines of message, and format them for new
-		// lines and for proper indentation
+		// Loop through all "to" recipients, and format each address for new
+		// lines and for proper indentation/line-start
 		for(String line : super.getArgs()){
 			line = line.replace("[\r\n]+$", ""); // we want our own newlines, not yours!
 			line = line.trim(); // allow enforcement of our own indentation in next step
-			sb.append(String.format(msgLineFormat, line));
+			sb.append(String.format(recipientEntryFormat, line));
 		}
 		
 		return sb.toString();

@@ -1,7 +1,8 @@
 package org.sgs.rhubarb.yaml.impl;
 
-import org.junit.Test;
 import static org.junit.Assert.assertTrue;
+
+import org.junit.Test;
 
 public class EntriesTest {
 	
@@ -61,4 +62,18 @@ public class EntriesTest {
 		
 		assertTrue(actualResult.equals(expectedResult));
 	}
+	
+	@Test
+	public void testToRecipientsEntry(){ 
+		ToRecipientsEntry toRecipientsEntry = new ToRecipientsEntry("foo@bar.com", "bar@baz.net", "baz@foo.org");
+		
+		String expectedResult = "  to:" + NEWLINE +
+				                "  - foo@bar.com" + NEWLINE +
+				                "  - bar@baz.net" + NEWLINE +
+				                "  - baz@foo.org" + NEWLINE;
+		String actualResult = toRecipientsEntry.getFormattedEntry();
+		
+		assertTrue(actualResult.equals(expectedResult));
+	}
+
 }

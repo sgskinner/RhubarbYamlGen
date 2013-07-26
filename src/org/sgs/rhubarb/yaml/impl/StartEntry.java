@@ -9,12 +9,12 @@ public class StartEntry extends YamlEntry {
 	
 	
 	public StartEntry() {
-		super(0, new YamlFormatsTemplate(YamlFormatConstants.FIRST_ENTRY_TEMPLATE.getPrimaryLine()), new String[]{});
+		super(0, new YamlFormatsTemplate(YamlFormatConstants.FIRST_ENTRY_TEMPLATE.getRootFormat()), new String[]{});
 	}
 
 	@Override
 	protected String getFormattedEntry() {
-		String format = super.getFormatsTemplate().getPrimaryLine();
+		String format = super.getFormatsTemplate().getRootFormat();
 		return String.format(format);
 	}
 
