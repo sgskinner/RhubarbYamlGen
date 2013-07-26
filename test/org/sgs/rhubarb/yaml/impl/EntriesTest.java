@@ -89,4 +89,15 @@ public class EntriesTest {
 		
 		assertTrue(actualResult.equals(expectedResult));
 	}
+	
+	
+	@Test
+	public void testAttachmentsDirEntry(){
+		AttachmentsDirEntry attachmentsDirEntry = new AttachmentsDirEntry("/opt/kuali/rhubarb/config");
+		
+		String expectedResult = "  attachments_dir: /opt/kuali/rhubarb/config" + NEWLINE;
+		String actualResult = attachmentsDirEntry.getFormattedEntry();
+		
+		assertTrue(actualResult.equals(expectedResult));
+	}
 }

@@ -128,7 +128,7 @@ public class YamlFormatConstants {
 	 * Args: <dirPath>
 	 * Example: String.format(ATTACHMENTS_DIR_LINE, "$CONFIG_HOME/some/config/dir"); 
 	 */
-	public static final YamlFormatsTemplate ATTACHMENTS_DIR_LINE = new YamlFormatsTemplate("  attachments_dir: %s%n");
+	public static final YamlFormatsTemplate ATTACHMENTS_DIR_ENTRY_TEMPLATE = new YamlFormatsTemplate("  attachments_dir: %s%n");
 	
 	
 	/**
