@@ -7,12 +7,17 @@ import org.sgs.rhubarb.yaml.YamlFormatsTemplate;
 public class ToRecipientsEntry extends YamlEntry {
 
 	public ToRecipientsEntry(String...args) {
-		super(6, YamlFormatConstants.TO_RECIPIENTS_ENTRY_TEMPLATE, args);
+		this(YamlFormatConstants.TO_RECIPIENTS_ENTRY_TEMPLATE, args);
+	}
+
+	// Allow subclasses to define different formats
+	protected ToRecipientsEntry (YamlFormatsTemplate formatsTemplate, String...args){
+		super(6, formatsTemplate, args);
 		if(args == null || args.length < 1){
 			throw new RuntimeException("This entry can only be instantiated with at least one email address, none provided.");
 		}
 	}
-
+	
 	@Override
 	protected String getFormattedEntry() {
 		

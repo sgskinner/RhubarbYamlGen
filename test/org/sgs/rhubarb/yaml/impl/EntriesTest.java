@@ -76,4 +76,17 @@ public class EntriesTest {
 		assertTrue(actualResult.equals(expectedResult));
 	}
 
+	
+	@Test
+	public void testCcRecipientsEntry(){ 
+		CcRecipientsEntry ccRecipientsEntry = new CcRecipientsEntry("foo@bar.com", "bar@baz.net", "baz@foo.org");
+		
+		String expectedResult = "  cc:" + NEWLINE +
+				                "  - foo@bar.com" + NEWLINE +
+				                "  - bar@baz.net" + NEWLINE +
+				                "  - baz@foo.org" + NEWLINE;
+		String actualResult = ccRecipientsEntry.getFormattedEntry();
+		
+		assertTrue(actualResult.equals(expectedResult));
+	}
 }

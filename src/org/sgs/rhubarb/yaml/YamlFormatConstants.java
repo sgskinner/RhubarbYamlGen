@@ -114,7 +114,7 @@ public class YamlFormatConstants {
 	 * Args: <email_1, email_2, ..., email_n>
 	 * Example: 
 	 */
-	public final static YamlFormatsTemplate CC_RECIPIENT_LINE = new YamlFormatsTemplate("  cc:%n", "  - %s%n");
+	public final static YamlFormatsTemplate CC_RECIPIENT_ENTRY_TEMPLATE = new YamlFormatsTemplate("  cc:%n", "  - %s%n");
 	
 	
 	/**
