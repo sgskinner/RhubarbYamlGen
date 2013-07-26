@@ -142,6 +142,6 @@ public class YamlFormatConstants {
 	 * Args: <pattern_1, pattern_2, ..., pattern_n>
 	 * Example: 
 	 */
-	public static final YamlFormatsTemplate ATTACHMENTS_GLOBS = new YamlFormatsTemplate("  attachments_globs:%n", "  - %s%n");
+	public static final YamlFormatsTemplate ATTACHMENTS_GLOBS_ENTRY_TEMPLATE = new YamlFormatsTemplate("  attachments_globs:%n", "  - %s%n");
 	
 }

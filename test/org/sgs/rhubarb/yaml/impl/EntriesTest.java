@@ -100,4 +100,22 @@ public class EntriesTest {
 		
 		assertTrue(actualResult.equals(expectedResult));
 	}
+	
+	@Test
+	public void testAttachmentsGlobsEntry(){ 
+		AttachmentsGlobsEntry attachmentsGlobsEntry = new AttachmentsGlobsEntry("buildingImportErrorReport_*.txt",
+																				"buildingImportSuccessReport_*.txt",
+																				"roomImportErrorReport_*.txt",
+																				"roomImportSuccessReport_*.txt");
+		
+		String expectedResult = "  attachments_globs:" + NEWLINE +
+				                "  - buildingImportErrorReport_*.txt" + NEWLINE +
+				                "  - buildingImportSuccessReport_*.txt" + NEWLINE +
+				                "  - roomImportErrorReport_*.txt" + NEWLINE +
+				                "  - roomImportSuccessReport_*.txt" + NEWLINE;
+		String actualResult = attachmentsGlobsEntry.getFormattedEntry();
+		
+		assertTrue(actualResult.equals(expectedResult));
+	}
+
 }
