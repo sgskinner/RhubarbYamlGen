@@ -14,7 +14,7 @@ public class StartEntry extends YamlEntry {
 
 	@Override
 	protected String getFormattedEntry() {
-		String format = super.yamlFormatTemplate.getPrimaryLine();
+		String format = super.getFormatsTemplate().getPrimaryLine();
 		return String.format(format);
 	}
 

@@ -29,7 +29,7 @@ public class YamlFormatConstants {
 	/**
 	 * Purpose: Short name for job stream.
 	 * 
-	 * Ordinal: 2
+	 * Ordinal: 1
 	 * Required: true
 	 * Leading Spaces: 2
 	 * Num args: 1
@@ -42,7 +42,7 @@ public class YamlFormatConstants {
 	/**
 	 * Purpose: Required as second line in file.
 	 * 
-	 * Ordinal: 1
+	 * Ordinal: 2
 	 * Required: true
 	 * Leading Spaces: 0
 	 * Num args: 0
@@ -53,35 +53,48 @@ public class YamlFormatConstants {
 	
 
 	/**
-	 * Purpose: This is the subject line of the email to be sent on behalf of the job.
+	 * Purpose: Required as second line in file.
 	 * 
 	 * Ordinal: 3
+	 * Required: true
+	 * Leading Spaces: 2
+	 * Num args: 1
+	 * Args: <name>
+	 * Example: String.format(OUTPUT_NAME_ENTRY_TEMPLATE.getPrimaryLine(), "report");
+	 */
+	public final static YamlFormatsTemplate OUTPUT_NAME_ENTRY_TEMPLATE = new YamlFormatsTemplate("  name: %s%n");
+	
+	
+	/**
+	 * Purpose: This is the subject line of the email to be sent on behalf of the job.
+	 * 
+	 * Ordinal: 4
 	 * Required: true
 	 * Leading Spaces: 2
 	 * Num args: 3
 	 * Args: <ENV> <JOB_NAME> <DESCRIPTION>
 	 * Example: String.format(SUBJECT_LINE, "PRD", "EINVEXTR", "eInvoice Processing has completed.");
 	 */
-	public final static YamlFormatsTemplate SUBJECT_LINE = new YamlFormatsTemplate("  subject: %s - %s - %s%n");
+	public final static YamlFormatsTemplate SUBJECT_ENTRY_TEMPLATE = new YamlFormatsTemplate("  subject: %s - %s - %s%n");
 	
 	
 	/**
 	 * Purpose: This is the message of the email to be sent on behalf of the job.
 	 * 
-	 * Ordinal: 4
+	 * Ordinal: 5
 	 * Required: true
 	 * Leading Spaces: 2 leading
 	 * Num args: 1
 	 * Args: <MESSAGE>
 	 * Example: String.format(MESSAGE_LINE, "    This is a%n    multi-line message%n    spanning three lines.");
 	 */
-	public final static YamlFormatsTemplate MESSAGE_LINE = new YamlFormatsTemplate("  message: >%n", "    %s%n");
+	public final static YamlFormatsTemplate MESSAGE_ENTRY_TEMPLATE = new YamlFormatsTemplate("  message: >%n", "    %s%n");
 	
 	/**
 	 * Purpose: Line starter for list of "To:" recipients of email. The
 	 *          formating of the list is provided by YamlFormatter.java
 	 * 
-	 * Ordinal: 5
+	 * Ordinal: 6
 	 * Required: true
 	 * Leading Spaces: 2 leading
 	 * Num args: 1 to many

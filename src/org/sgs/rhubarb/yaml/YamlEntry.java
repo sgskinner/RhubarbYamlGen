@@ -3,12 +3,12 @@ package org.sgs.rhubarb.yaml;
 public abstract class YamlEntry implements Comparable<YamlEntry>{
 	
 	private final int ordinal;
-	protected final YamlFormatsTemplate yamlFormatTemplate;
-	protected String[] args;
+	private final YamlFormatsTemplate yamlFormatsTemplate;
+	private String[] args;
 	
-	public YamlEntry(int ordinal, YamlFormatsTemplate yamlFormatTemplate, String...args){
+	public YamlEntry(int ordinal, YamlFormatsTemplate yamlFormatsTemplate, String...args){
 		this.ordinal = ordinal;
-		this.yamlFormatTemplate = yamlFormatTemplate;
+		this.yamlFormatsTemplate = yamlFormatsTemplate;
 		this.args = args;
 	}
 	
@@ -19,13 +19,20 @@ public abstract class YamlEntry implements Comparable<YamlEntry>{
 	protected abstract String getFormattedEntry();
 	
 	
+	protected YamlFormatsTemplate getFormatsTemplate(){
+		return yamlFormatsTemplate;
+	}
+	
+	
 	protected String[] getArgs(){
 		return args;
 	}
 	
+	
 	public int getOrdinal() {
 		return ordinal;
 	}
+	
 	
 	@Override
 	public int compareTo(YamlEntry otherYamlLine) {

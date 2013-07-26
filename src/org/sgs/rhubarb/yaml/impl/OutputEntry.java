@@ -14,7 +14,7 @@ public class OutputEntry extends YamlEntry {
 	@Override
 	protected String getFormattedEntry() {
 		// Pass through formatter to replace '%n'
-		String format = super.yamlFormatTemplate.getPrimaryLine(); 
+		String format = super.getFormatsTemplate().getPrimaryLine(); 
 		return String.format(format);
 	}
 	
