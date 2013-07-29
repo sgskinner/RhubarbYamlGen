@@ -8,7 +8,7 @@ public class OutputEntry extends YamlEntry {
 	
 	
 	public OutputEntry() {
-		super(1, YamlFormatConstants.OUTPUT_ENTRY_TEMPLATE, new String[]{});
+		super(2, YamlFormatConstants.OUTPUT_ENTRY_TEMPLATE, new String[]{});
 	}
 
 	@Override

@@ -6,7 +6,7 @@ import org.sgs.rhubarb.yaml.YamlFormatConstants;
 public class JobNameEntry extends YamlEntry {
 
 	public JobNameEntry(String name) {
-		super(2, YamlFormatConstants.JOB_NAME_ENTRY_TEMPLATE, name);
+		super(1, YamlFormatConstants.JOB_NAME_ENTRY_TEMPLATE, name);
 	}
 
 	@Override

@@ -1,5 +1,6 @@
 package org.sgs.rhubarb.yaml;
 
+
 /*
  *    A file to hold format string for the various types of lines found in YAML
  * configuration files. The intent is to for the YamlDriver to use String.format
@@ -143,5 +144,6 @@ public class YamlFormatConstants {
 	 * Example: 
 	 */
 	public static final YamlFormatsTemplate ATTACHMENTS_GLOBS_ENTRY_TEMPLATE = new YamlFormatsTemplate("  attachments_globs:%n", "  - %s%n");
+
 	
 }

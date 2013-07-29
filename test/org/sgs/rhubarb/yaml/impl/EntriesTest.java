@@ -2,7 +2,12 @@ package org.sgs.rhubarb.yaml.impl;
 
 import static org.junit.Assert.assertTrue;
 
+import java.util.Set;
+import java.util.TreeSet;
+
 import org.junit.Test;
+import org.sgs.rhubarb.yaml.YamlEntry;
+import org.sgs.rhubarb.yaml.utils.FileUtils;
 
 public class EntriesTest {
 	
@@ -116,6 +121,73 @@ public class EntriesTest {
 		String actualResult = attachmentsGlobsEntry.getFormattedEntry();
 		
 		assertTrue(actualResult.equals(expectedResult));
+	}
+	
+	
+	@Test
+	public void testOrdinal() {
+		
+		// Instantiate an ordered data structure 
+		Set<YamlEntry> entrySet = new TreeSet<YamlEntry>();
+		
+		// Populate each entry into ordered data set, we'll go
+		// alphabetical just to see each entry's ordinal affecting
+		// its place in an ordered data structure -- Note: the
+		// alphabetical order is not the correct order in a set
+		// of entries, so this will show us the ordinal is being
+		// set and used correctly in determining entry position.
+		
+		String value = FileUtils.getLinesAsArray("data/test/AttachmentsDirEntry.txt")[0];
+		YamlEntry entry = new AttachmentsDirEntry(value);
+		entrySet.add(entry);
+		
+		String[] valueArray = FileUtils.getLinesAsArray("data/test/AttachmentsGlobsEntry.txt");
+		entry = new AttachmentsGlobsEntry(valueArray);
+		entrySet.add(entry);
+		
+		valueArray = FileUtils.getLinesAsArray("data/test/CcRecipientsEntry.txt");
+		entry = new CcRecipientsEntry(valueArray);
+		entrySet.add(entry);
+		
+		value = FileUtils.getLinesAsArray("data/test/JobNameEntry.txt")[0];
+		entry = new JobNameEntry(value);
+		entrySet.add(entry);
+		
+		valueArray = FileUtils.getLinesAsArray("data/test/MessageEntry.txt");
+		entry = new MessageEntry(valueArray);
+		entrySet.add(entry);
+		
+		entry = new OutputEntry();
+		entrySet.add(entry);
+		
+		value = FileUtils.getLinesAsArray("data/test/OutputNameEntry.txt")[0];
+		entry = new OutputNameEntry(value);
+		entrySet.add(entry);
+		
+		entry = new StartEntry();
+		entrySet.add(entry);
+		
+		valueArray = FileUtils.getLinesAsArray("data/test/SubjectEntry.txt");
+		entry = new SubjectEntry(valueArray[0], valueArray[1], valueArray[2]);
+		entrySet.add(entry);
+		
+		valueArray = FileUtils.getLinesAsArray("data/test/ToRecipientsEntry.txt");
+		entry = new ToRecipientsEntry(valueArray);
+		entrySet.add(entry);
+		
+		// Test for size of all entries
+		assertTrue(entrySet.size() == 10);
+		
+		// Test each entry's ordinal, we should be ordered now. Note,
+		// the ordinal is explictly set by each class that overrides
+		// YamlEntry.java.
+		int index = 0;
+		for(YamlEntry testEntry : entrySet) {
+			int testOrdinal = testEntry.getOrdinal();
+			assertTrue(index == testOrdinal);
+			index++;
+		}
+		
 	}
 
 }
