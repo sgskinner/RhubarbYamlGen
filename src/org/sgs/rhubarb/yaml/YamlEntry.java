@@ -44,5 +44,10 @@ public abstract class YamlEntry implements Comparable<YamlEntry>{
 			return 0;
 		}
 	}
+	
+	@Override
+	public String toString() {
+		return getFormattedEntry();
+	}
 
 }

@@ -1,0 +1,23 @@
+---
+name: ARCHIBUS
+output:
+  name: report
+  subject: STG - UAF-ARCHB-DLV-LOADRPT - Archibus Processing Information, Capital Assets Team Review
+  message: >
+    This is the first line, of an email message,
+    and a second line that completes the first.
+    Finally, on last line.
+  to:
+  - foo@bar.com
+  - bar@baz.net
+  - baz@foo.org
+  cc:
+  - zab@oof.org
+  - rab@zab.net
+  - oof@rab.com
+  attachments_dir: /var/opt/kuali/rhubarb/current/work/some/dir
+  attachments_globs:
+  - buildingImportErrorReport_*.txt
+  - buildingImportSuccessReport_*.txt
+  - roomImportErrorReport_*.txt
+  - roomImportSuccessReport_*.txt
