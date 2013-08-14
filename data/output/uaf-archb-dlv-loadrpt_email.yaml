@@ -1,0 +1,16 @@
+---
+name: UAF-ARCHB-DLV-LOADRPT
+output:
+  name: report
+  subject: DEV - UAF-ARCHB-DLV-LOADRPT - Automated Test Email
+  message: >
+    This is a generic message for the UAF-ARCHB-DLV-LOADRPT job.
+  to:
+  - katt-automation@list.arizona.edu
+  - jwingate@email.arizona.edu
+  - hlo@email.arizona.edu
+  - shaloo@email.arizona.edu
+  - sskinner@email.arizona.edu
+  cc:
+  attachments_dir: 
+  attachments_globs:

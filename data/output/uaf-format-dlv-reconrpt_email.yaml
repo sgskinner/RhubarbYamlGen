@@ -1,0 +1,16 @@
+---
+name: UAF-FORMAT-DLV-RECONRPT
+output:
+  name: report
+  subject: DEV - UAF-FORMAT-DLV-RECONRPT - Automated Test Email
+  message: >
+    This is a generic message for the UAF-FORMAT-DLV-RECONRPT job.
+  to:
+  - katt-automation@list.arizona.edu
+  - jwingate@email.arizona.edu
+  - hlo@email.arizona.edu
+  - shaloo@email.arizona.edu
+  - sskinner@email.arizona.edu
+  cc:
+  attachments_dir: 
+  attachments_globs:

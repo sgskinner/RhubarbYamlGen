@@ -1,0 +1,16 @@
+---
+name: UAF-BEGIN-DLV-LOG
+output:
+  name: report
+  subject: DEV - UAF-BEGIN-DLV-LOG - Automated Test Email
+  message: >
+    This is a generic message for the UAF-BEGIN-DLV-LOG job.
+  to:
+  - katt-automation@list.arizona.edu
+  - jwingate@email.arizona.edu
+  - hlo@email.arizona.edu
+  - shaloo@email.arizona.edu
+  - sskinner@email.arizona.edu
+  cc:
+  attachments_dir: 
+  attachments_globs:

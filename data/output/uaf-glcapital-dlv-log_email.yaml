@@ -1,10 +1,10 @@
 ---
-name: EINVOICE
+name: UAF-GLCAPITAL-DLV-LOG
 output:
   name: report
-  subject: DEV - EINVOICE - Automated Test Email
+  subject: DEV - UAF-GLCAPITAL-DLV-LOG - Automated Test Email
   message: >
-    This is a generic message for the EINVOICE job.
+    This is a generic message for the UAF-GLCAPITAL-DLV-LOG job.
   to:
   - katt-automation@list.arizona.edu
   - jwingate@email.arizona.edu

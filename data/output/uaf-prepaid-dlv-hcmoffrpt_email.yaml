@@ -1,0 +1,16 @@
+---
+name: UAF-PREPAID-DLV-HCMOFFRPT
+output:
+  name: report
+  subject: DEV - UAF-PREPAID-DLV-HCMOFFRPT - Automated Test Email
+  message: >
+    This is a generic message for the UAF-PREPAID-DLV-HCMOFFRPT job.
+  to:
+  - katt-automation@list.arizona.edu
+  - jwingate@email.arizona.edu
+  - hlo@email.arizona.edu
+  - shaloo@email.arizona.edu
+  - sskinner@email.arizona.edu
+  cc:
+  attachments_dir: 
+  attachments_globs:

@@ -1,10 +1,10 @@
 ---
-name: SHIPPING
+name: PCARDH
 output:
   name: report
-  subject: DEV - SHIPPING - Automated Test Email
+  subject: DEV - PCARDH - Automated Test Email
   message: >
-    This is a generic message for the SHIPPING job.
+    This is a generic message for the PCARDH job.
   to:
   - katt-automation@list.arizona.edu
   - jwingate@email.arizona.edu
