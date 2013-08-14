@@ -26,7 +26,7 @@ import org.sgs.rhubarb.yaml.utils.FileUtils;
 
 public class YamlGenerator {
 	
-	public static String generateJobYaml(String filePrefix, JOBType job){
+	private static String generateJobYaml(String filePrefix, JOBType job){
 		// Instantiate an ordered data structure
 		Set<YamlEntry> entrySet = new TreeSet<YamlEntry>();
 
@@ -66,10 +66,10 @@ public class YamlGenerator {
 		entrySet.add(entry);
 
 		valueArray = new String[]{"katt-automation@list.arizona.edu",
-	                               "jwingate@email.arizona.edu",
-	                               "hlo@email.arizona.edu",
-	                               "shaloo@email.arizona.edu",
-	               					"sskinner@email.arizona.edu"};
+	                              "jwingate@email.arizona.edu",
+	                              "hlo@email.arizona.edu",
+	                              "shaloo@email.arizona.edu",
+	               			      "sskinner@email.arizona.edu"};
 		entry = new ToRecipientsEntry(valueArray);
 		entrySet.add(entry);
 		
@@ -83,9 +83,96 @@ public class YamlGenerator {
 	}
 	
 	
-	
-	public static void main(String[] sgs) {
+	/*
+	 * A filePrefix is a job name, job-stream name, group name, table-name, etc.
+	 * The idea being, we generate a config file for any Control-M construct, even if
+	 * the Control-M isn't currently wired to use the YAML config.
+	 */
+	public static void generateStubYaml(){
 		
+		// Build unique set of job-stream names
+		Set<String> names = new TreeSet<String>();
+		List<String> lines = FileUtils.getLines("data/input/oldToNewJobNames.csv");
+		for(String line : lines){
+			
+			
+			// line[0] == old name
+			// line[1] == new name, fully qualified
+			String[] tokens = line.split(",");
+			String wholeName = tokens[1];
+			
+			if(!wholeName.contains("-DLV-")){
+				// Not a "batch_deliver" job, skip to check next
+				continue;
+			}
+			
+			// Capture the full job name
+			names.add(wholeName);
+			
+			// The form of the new name is "ENV-JOB_STREAM-EXECUTABLE-JOB_NAME",
+			// e.g.: "UAF-ARCHB-DLV-LOADRPT". This snippet will capture the
+			// job-stream name.
+			tokens = wholeName.split("-");
+			String jobStreamName = tokens[1];
+			names.add(jobStreamName);
+		}
+		
+		
+		for (String name : names) {
+		
+			// Instantiate an ordered data structure
+			Set<YamlEntry> entrySet = new TreeSet<YamlEntry>();
+			String value = "";//TODO: Find easy way to get this, its not clear in xml how to
+			YamlEntry entry = new AttachmentsDirEntry(value);
+			entrySet.add(entry);
+			String[] valueArray = new String[] {};
+			entry = new AttachmentsGlobsEntry(valueArray);
+			entrySet.add(entry);
+			valueArray = new String[] {};
+			entry = new CcRecipientsEntry(valueArray);
+			entrySet.add(entry);
+			value = name;
+			entry = new JobNameEntry(value);
+			entrySet.add(entry);
+			String message = "This is a generic message for the " + name + " job.";
+			entry = new MessageEntry(message);
+			entrySet.add(entry);
+			entry = new OutputEntry();
+			entrySet.add(entry);
+			value = "report";
+			entry = new OutputNameEntry(value);
+			entrySet.add(entry);
+			entry = new StartEntry();
+			entrySet.add(entry);
+			valueArray = new String[] { "DEV", name, "Automated Test Email" };
+			entry = new SubjectEntry(valueArray[0], valueArray[1], valueArray[2]);
+			entrySet.add(entry);
+			valueArray = new String[] { "katt-automation@list.arizona.edu", "jwingate@email.arizona.edu", "hlo@email.arizona.edu", "shaloo@email.arizona.edu", "sskinner@email.arizona.edu" };
+			entry = new ToRecipientsEntry(valueArray);
+			entrySet.add(entry);
+			
+			StringBuffer sb = new StringBuffer();
+			for (YamlEntry newEntry : entrySet) {
+				sb.append(newEntry);
+			}
+			
+			String configAsString= sb.toString();
+			String filename = "data/output/" + name.toLowerCase() + "_email.yaml";
+			FileUtils.writeStringToFile(filename, configAsString);
+			
+			
+		}
+		
+	}
+	
+	
+	/*
+	 * This was an attempt at creating files for the 50 files Julie
+	 * had identified for UAF testing in ctmtest. The method only produced
+	 * 33 files, as the "new name" did not map one-to-one with the
+	 * "old names". 
+	 */
+	public static void generateJuliesUafConfigs(){
 		Map<String, String> oldToNewJobNames = new HashMap<String,String>();
 		for(String line : FileUtils.getLines("data/input/oldToNewJobNames.csv")){
 			String[] tokens = line.split(",");
@@ -132,9 +219,11 @@ public class YamlGenerator {
 			String filename = entry.getKey().toLowerCase() + "_email.yaml";
 			FileUtils.writeStringToFile("data/output/" + filename, entry.getValue());
 		}
-		
-		
-		
+	}
+	
+	
+	public static void main(String[] sgs) {
+		YamlGenerator.generateStubYaml();
 	}
 
 }
