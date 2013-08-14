@@ -8,9 +8,6 @@ public class MultiLineEntry extends YamlEntry {
 	// Allow subclasses to define different formats
 	protected MultiLineEntry (int ordinal, YamlFormatsTemplate formatsTemplate, String...args){
 		super(ordinal, formatsTemplate, args);
-		if(args == null || args.length < 1){
-			throw new RuntimeException("This entry can only be instantiated with at least one email address, none provided.");
-		}
 	}
 	
 	@Override

@@ -57,4 +57,23 @@ public class FileUtils{
             IOUtils.closeQuietly(writer);
         }
     }
+    
+    
+    public static void writeStringToFile(final String filename, final String value){
+        Writer writer;
+        try{
+            writer = new FileWriter(new File(filename));
+        }catch(IOException e){
+            throw new RuntimeException(e);
+        }
+
+        try{
+            IOUtils.write(value, writer);
+            writer.flush();
+        }catch(IOException e){
+            throw new RuntimeException(e);
+        }finally{
+            IOUtils.closeQuietly(writer);
+        }
+    }
 }
