@@ -221,9 +221,23 @@ public class YamlGenerator {
 		}
 	}
 	
+	public static void findMuttJobs(){
+		XmlDriver xmlDriver = new XmlDriver("data/input/controlm_prd_2013-07-22.xml");
+		List<JOBType> jobs =  xmlDriver.getAllJobs();
+		int count = 0;
+		for(JOBType job : jobs){
+			String cmd = job.getCMDLINE();
+			if(cmd != null && cmd.length() > 0){
+				count++;
+				System.out.printf("%s%n", cmd);
+			}
+		}
+		System.out.printf("count: %d%n", count);
+	}
+	
 	
 	public static void main(String[] sgs) {
-		YamlGenerator.generateStubYaml();
+		YamlGenerator.findMuttJobs();
 	}
 
 }
