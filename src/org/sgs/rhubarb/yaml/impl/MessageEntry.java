@@ -15,7 +15,7 @@ public class MessageEntry extends YamlEntry {
 	}
 
 	@Override
-	protected String getFormattedEntry() {
+	public String getFormattedEntry() {
 		
 		YamlFormatsTemplate formatsTemplate = super.getFormatsTemplate();
 		String msgLabelFormat = formatsTemplate.getRootFormat();

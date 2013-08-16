@@ -11,7 +11,7 @@ public class MultiLineEntry extends YamlEntry {
 	}
 	
 	@Override
-	protected String getFormattedEntry() {
+	public String getFormattedEntry() {
 		
 		YamlFormatsTemplate formatsTemplate = super.getFormatsTemplate();
 		String toLabelFormat = formatsTemplate.getRootFormat();

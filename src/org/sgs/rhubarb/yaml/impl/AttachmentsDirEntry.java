@@ -1,18 +1,11 @@
 package org.sgs.rhubarb.yaml.impl;
 
-import org.sgs.rhubarb.yaml.YamlEntry;
 import org.sgs.rhubarb.yaml.YamlFormatConstants;
 
-public class AttachmentsDirEntry extends YamlEntry {
+public class AttachmentsDirEntry extends MultiLineEntry {
 
-	public AttachmentsDirEntry(String dirPath) {
-		super(8, YamlFormatConstants.ATTACHMENTS_DIR_ENTRY_TEMPLATE, new String[]{dirPath});
-	}
-
-	@Override
-	protected String getFormattedEntry() {
-		String format = super.getFormatsTemplate().getRootFormat(); 
-		return String.format(format, getArgs()[0]);
+	public AttachmentsDirEntry(String...dirPaths) {
+		super(8, YamlFormatConstants.ATTACHMENTS_DIR_ENTRY_TEMPLATE, dirPaths);
 	}
 	
 }

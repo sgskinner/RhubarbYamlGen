@@ -16,7 +16,7 @@ public abstract class YamlEntry implements Comparable<YamlEntry>{
 	 * Override this with logic to populate yamlFormatTemplate with args and
 	 * generate populated string to return (could be multi-line).
 	 */
-	protected abstract String getFormattedEntry();
+	public abstract String getFormattedEntry();
 	
 	
 	protected YamlFormatsTemplate getFormatsTemplate(){

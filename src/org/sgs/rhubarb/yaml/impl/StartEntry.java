@@ -13,7 +13,7 @@ public class StartEntry extends YamlEntry {
 	}
 
 	@Override
-	protected String getFormattedEntry() {
+	public String getFormattedEntry() {
 		String format = super.getFormatsTemplate().getRootFormat();
 		return String.format(format);
 	}

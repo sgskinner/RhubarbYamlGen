@@ -12,7 +12,7 @@ public class OutputEntry extends YamlEntry {
 	}
 
 	@Override
-	protected String getFormattedEntry() {
+	public String getFormattedEntry() {
 		// Pass through formatter to replace '%n'
 		String format = super.getFormatsTemplate().getRootFormat(); 
 		return String.format(format);

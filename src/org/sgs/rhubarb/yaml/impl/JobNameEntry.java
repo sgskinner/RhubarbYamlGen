@@ -10,7 +10,7 @@ public class JobNameEntry extends YamlEntry {
 	}
 
 	@Override
-	protected String getFormattedEntry() {
+	public String getFormattedEntry() {
 		String format = super.getFormatsTemplate().getRootFormat();
 		String[] args = super.getArgs();
 		return String.format(format, args[0]);
