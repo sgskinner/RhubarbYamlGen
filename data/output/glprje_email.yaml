@@ -1,16 +1,42 @@
 ---
 name: GLPRJE
-output:
-  name: report
-  subject: DEV - GLPRJE - Automated Test Email
-  message: >
-    This is a generic message for the GLPRJE job.
-  to:
-  - KATT_AUTOMATION_ADDRESS
-  - JULIE_WINGATE_ADDRESS
-  - HEATHER_LO_ADDRESS
-  - JOSH_SHALOO_ADDRESS
-  - SCOTT_SKINNER_ADDRESS
-  cc:
-  attachments_dir: 
-  attachments_globs:
+outputs:
+  start:
+    subject: DEV - GLPRJE - Start Notice
+    message: >
+      The 'GLPRJE' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    - JULIE_WINGATE_ADDRESS
+    - HEATHER_LO_ADDRESS
+    - JOSH_SHALOO_ADDRESS
+    - SCOTT_SKINNER_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  log:
+    subject: DEV - GLPRJE - Log Email
+    message: >
+      Please find the attached log(s) for the  'GLPRJE' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    - JULIE_WINGATE_ADDRESS
+    - HEATHER_LO_ADDRESS
+    - JOSH_SHALOO_ADDRESS
+    - SCOTT_SKINNER_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  report:
+    subject: DEV - GLPRJE - Report Email
+    message: >
+      Please find the attached report(s) for the  'GLPRJE' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    - JULIE_WINGATE_ADDRESS
+    - HEATHER_LO_ADDRESS
+    - JOSH_SHALOO_ADDRESS
+    - SCOTT_SKINNER_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:

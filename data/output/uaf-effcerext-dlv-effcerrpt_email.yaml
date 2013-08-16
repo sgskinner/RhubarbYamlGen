@@ -1,16 +1,42 @@
 ---
 name: UAF-EFFCEREXT-DLV-EFFCERRPT
-output:
-  name: report
-  subject: DEV - UAF-EFFCEREXT-DLV-EFFCERRPT - Automated Test Email
-  message: >
-    This is a generic message for the UAF-EFFCEREXT-DLV-EFFCERRPT job.
-  to:
-  - KATT_AUTOMATION_ADDRESS
-  - JULIE_WINGATE_ADDRESS
-  - HEATHER_LO_ADDRESS
-  - JOSH_SHALOO_ADDRESS
-  - SCOTT_SKINNER_ADDRESS
-  cc:
-  attachments_dir: 
-  attachments_globs:
+outputs:
+  start:
+    subject: DEV - UAF-EFFCEREXT-DLV-EFFCERRPT - Start Notice
+    message: >
+      The 'UAF-EFFCEREXT-DLV-EFFCERRPT' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    - JULIE_WINGATE_ADDRESS
+    - HEATHER_LO_ADDRESS
+    - JOSH_SHALOO_ADDRESS
+    - SCOTT_SKINNER_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  log:
+    subject: DEV - UAF-EFFCEREXT-DLV-EFFCERRPT - Log Email
+    message: >
+      Please find the attached log(s) for the  'UAF-EFFCEREXT-DLV-EFFCERRPT' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    - JULIE_WINGATE_ADDRESS
+    - HEATHER_LO_ADDRESS
+    - JOSH_SHALOO_ADDRESS
+    - SCOTT_SKINNER_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  report:
+    subject: DEV - UAF-EFFCEREXT-DLV-EFFCERRPT - Report Email
+    message: >
+      Please find the attached report(s) for the  'UAF-EFFCEREXT-DLV-EFFCERRPT' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    - JULIE_WINGATE_ADDRESS
+    - HEATHER_LO_ADDRESS
+    - JOSH_SHALOO_ADDRESS
+    - SCOTT_SKINNER_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:

@@ -1,16 +1,42 @@
 ---
 name: PCARDH
-output:
-  name: report
-  subject: DEV - PCARDH - Automated Test Email
-  message: >
-    This is a generic message for the PCARDH job.
-  to:
-  - KATT_AUTOMATION_ADDRESS
-  - JULIE_WINGATE_ADDRESS
-  - HEATHER_LO_ADDRESS
-  - JOSH_SHALOO_ADDRESS
-  - SCOTT_SKINNER_ADDRESS
-  cc:
-  attachments_dir: 
-  attachments_globs:
+outputs:
+  start:
+    subject: DEV - PCARDH - Start Notice
+    message: >
+      The 'PCARDH' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    - JULIE_WINGATE_ADDRESS
+    - HEATHER_LO_ADDRESS
+    - JOSH_SHALOO_ADDRESS
+    - SCOTT_SKINNER_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  log:
+    subject: DEV - PCARDH - Log Email
+    message: >
+      Please find the attached log(s) for the  'PCARDH' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    - JULIE_WINGATE_ADDRESS
+    - HEATHER_LO_ADDRESS
+    - JOSH_SHALOO_ADDRESS
+    - SCOTT_SKINNER_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  report:
+    subject: DEV - PCARDH - Report Email
+    message: >
+      Please find the attached report(s) for the  'PCARDH' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    - JULIE_WINGATE_ADDRESS
+    - HEATHER_LO_ADDRESS
+    - JOSH_SHALOO_ADDRESS
+    - SCOTT_SKINNER_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:

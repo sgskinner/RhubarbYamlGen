@@ -1,16 +1,42 @@
 ---
 name: PDP
-output:
-  name: report
-  subject: DEV - PDP - Automated Test Email
-  message: >
-    This is a generic message for the PDP job.
-  to:
-  - KATT_AUTOMATION_ADDRESS
-  - JULIE_WINGATE_ADDRESS
-  - HEATHER_LO_ADDRESS
-  - JOSH_SHALOO_ADDRESS
-  - SCOTT_SKINNER_ADDRESS
-  cc:
-  attachments_dir: 
-  attachments_globs:
+outputs:
+  start:
+    subject: DEV - PDP - Start Notice
+    message: >
+      The 'PDP' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    - JULIE_WINGATE_ADDRESS
+    - HEATHER_LO_ADDRESS
+    - JOSH_SHALOO_ADDRESS
+    - SCOTT_SKINNER_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  log:
+    subject: DEV - PDP - Log Email
+    message: >
+      Please find the attached log(s) for the  'PDP' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    - JULIE_WINGATE_ADDRESS
+    - HEATHER_LO_ADDRESS
+    - JOSH_SHALOO_ADDRESS
+    - SCOTT_SKINNER_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  report:
+    subject: DEV - PDP - Report Email
+    message: >
+      Please find the attached report(s) for the  'PDP' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    - JULIE_WINGATE_ADDRESS
+    - HEATHER_LO_ADDRESS
+    - JOSH_SHALOO_ADDRESS
+    - SCOTT_SKINNER_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:

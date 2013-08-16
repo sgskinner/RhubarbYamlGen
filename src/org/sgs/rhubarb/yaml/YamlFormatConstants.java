@@ -50,7 +50,7 @@ public class YamlFormatConstants {
 	 * Args: N/A
 	 * Example: N/A
 	 */
-	public final static YamlFormatsTemplate OUTPUT_ENTRY_TEMPLATE = new YamlFormatsTemplate("output:%n");
+	public final static YamlFormatsTemplate OUTPUT_ENTRY_TEMPLATE = new YamlFormatsTemplate("outputs:%n");
 	
 
 	/**
@@ -136,7 +136,7 @@ public class YamlFormatConstants {
 	 * Args: <dirPath>
 	 * Example: String.format(ATTACHMENTS_DIR_LINE, "$CONFIG_HOME/some/config/dir"); 
 	 */
-	public static final YamlFormatsTemplate ATTACHMENTS_DIR_ENTRY_TEMPLATE = new YamlFormatsTemplate("    attachments_dir: %s%n", "    - %s%n");
+	public static final YamlFormatsTemplate ATTACHMENTS_DIR_ENTRY_TEMPLATE = new YamlFormatsTemplate("    attachments_dir:%n", "    - %s%n");
 	
 	
 	/**

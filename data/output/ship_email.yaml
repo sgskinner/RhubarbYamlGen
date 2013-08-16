@@ -1,16 +1,42 @@
 ---
 name: SHIP
-output:
-  name: report
-  subject: DEV - SHIP - Automated Test Email
-  message: >
-    This is a generic message for the SHIP job.
-  to:
-  - KATT_AUTOMATION_ADDRESS
-  - JULIE_WINGATE_ADDRESS
-  - HEATHER_LO_ADDRESS
-  - JOSH_SHALOO_ADDRESS
-  - SCOTT_SKINNER_ADDRESS
-  cc:
-  attachments_dir: 
-  attachments_globs:
+outputs:
+  start:
+    subject: DEV - SHIP - Start Notice
+    message: >
+      The 'SHIP' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    - JULIE_WINGATE_ADDRESS
+    - HEATHER_LO_ADDRESS
+    - JOSH_SHALOO_ADDRESS
+    - SCOTT_SKINNER_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  log:
+    subject: DEV - SHIP - Log Email
+    message: >
+      Please find the attached log(s) for the  'SHIP' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    - JULIE_WINGATE_ADDRESS
+    - HEATHER_LO_ADDRESS
+    - JOSH_SHALOO_ADDRESS
+    - SCOTT_SKINNER_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  report:
+    subject: DEV - SHIP - Report Email
+    message: >
+      Please find the attached report(s) for the  'SHIP' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    - JULIE_WINGATE_ADDRESS
+    - HEATHER_LO_ADDRESS
+    - JOSH_SHALOO_ADDRESS
+    - SCOTT_SKINNER_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:

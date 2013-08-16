@@ -1,16 +1,42 @@
 ---
 name: UAF-EMCHECKS-DLV-DAILYRPT
-output:
-  name: report
-  subject: DEV - UAF-EMCHECKS-DLV-DAILYRPT - Automated Test Email
-  message: >
-    This is a generic message for the UAF-EMCHECKS-DLV-DAILYRPT job.
-  to:
-  - KATT_AUTOMATION_ADDRESS
-  - JULIE_WINGATE_ADDRESS
-  - HEATHER_LO_ADDRESS
-  - JOSH_SHALOO_ADDRESS
-  - SCOTT_SKINNER_ADDRESS
-  cc:
-  attachments_dir: 
-  attachments_globs:
+outputs:
+  start:
+    subject: DEV - UAF-EMCHECKS-DLV-DAILYRPT - Start Notice
+    message: >
+      The 'UAF-EMCHECKS-DLV-DAILYRPT' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    - JULIE_WINGATE_ADDRESS
+    - HEATHER_LO_ADDRESS
+    - JOSH_SHALOO_ADDRESS
+    - SCOTT_SKINNER_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  log:
+    subject: DEV - UAF-EMCHECKS-DLV-DAILYRPT - Log Email
+    message: >
+      Please find the attached log(s) for the  'UAF-EMCHECKS-DLV-DAILYRPT' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    - JULIE_WINGATE_ADDRESS
+    - HEATHER_LO_ADDRESS
+    - JOSH_SHALOO_ADDRESS
+    - SCOTT_SKINNER_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  report:
+    subject: DEV - UAF-EMCHECKS-DLV-DAILYRPT - Report Email
+    message: >
+      Please find the attached report(s) for the  'UAF-EMCHECKS-DLV-DAILYRPT' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    - JULIE_WINGATE_ADDRESS
+    - HEATHER_LO_ADDRESS
+    - JOSH_SHALOO_ADDRESS
+    - SCOTT_SKINNER_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:

@@ -1,16 +1,42 @@
 ---
 name: UAF-BANK-DLV-DOCRPT
-output:
-  name: report
-  subject: DEV - UAF-BANK-DLV-DOCRPT - Automated Test Email
-  message: >
-    This is a generic message for the UAF-BANK-DLV-DOCRPT job.
-  to:
-  - KATT_AUTOMATION_ADDRESS
-  - JULIE_WINGATE_ADDRESS
-  - HEATHER_LO_ADDRESS
-  - JOSH_SHALOO_ADDRESS
-  - SCOTT_SKINNER_ADDRESS
-  cc:
-  attachments_dir: 
-  attachments_globs:
+outputs:
+  start:
+    subject: DEV - UAF-BANK-DLV-DOCRPT - Start Notice
+    message: >
+      The 'UAF-BANK-DLV-DOCRPT' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    - JULIE_WINGATE_ADDRESS
+    - HEATHER_LO_ADDRESS
+    - JOSH_SHALOO_ADDRESS
+    - SCOTT_SKINNER_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  log:
+    subject: DEV - UAF-BANK-DLV-DOCRPT - Log Email
+    message: >
+      Please find the attached log(s) for the  'UAF-BANK-DLV-DOCRPT' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    - JULIE_WINGATE_ADDRESS
+    - HEATHER_LO_ADDRESS
+    - JOSH_SHALOO_ADDRESS
+    - SCOTT_SKINNER_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  report:
+    subject: DEV - UAF-BANK-DLV-DOCRPT - Report Email
+    message: >
+      Please find the attached report(s) for the  'UAF-BANK-DLV-DOCRPT' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    - JULIE_WINGATE_ADDRESS
+    - HEATHER_LO_ADDRESS
+    - JOSH_SHALOO_ADDRESS
+    - SCOTT_SKINNER_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:

@@ -1,16 +1,42 @@
 ---
 name: UAF-INDCOST-DLV-GLRPTS
-output:
-  name: report
-  subject: DEV - UAF-INDCOST-DLV-GLRPTS - Automated Test Email
-  message: >
-    This is a generic message for the UAF-INDCOST-DLV-GLRPTS job.
-  to:
-  - KATT_AUTOMATION_ADDRESS
-  - JULIE_WINGATE_ADDRESS
-  - HEATHER_LO_ADDRESS
-  - JOSH_SHALOO_ADDRESS
-  - SCOTT_SKINNER_ADDRESS
-  cc:
-  attachments_dir: 
-  attachments_globs:
+outputs:
+  start:
+    subject: DEV - UAF-INDCOST-DLV-GLRPTS - Start Notice
+    message: >
+      The 'UAF-INDCOST-DLV-GLRPTS' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    - JULIE_WINGATE_ADDRESS
+    - HEATHER_LO_ADDRESS
+    - JOSH_SHALOO_ADDRESS
+    - SCOTT_SKINNER_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  log:
+    subject: DEV - UAF-INDCOST-DLV-GLRPTS - Log Email
+    message: >
+      Please find the attached log(s) for the  'UAF-INDCOST-DLV-GLRPTS' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    - JULIE_WINGATE_ADDRESS
+    - HEATHER_LO_ADDRESS
+    - JOSH_SHALOO_ADDRESS
+    - SCOTT_SKINNER_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  report:
+    subject: DEV - UAF-INDCOST-DLV-GLRPTS - Report Email
+    message: >
+      Please find the attached report(s) for the  'UAF-INDCOST-DLV-GLRPTS' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    - JULIE_WINGATE_ADDRESS
+    - HEATHER_LO_ADDRESS
+    - JOSH_SHALOO_ADDRESS
+    - SCOTT_SKINNER_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:

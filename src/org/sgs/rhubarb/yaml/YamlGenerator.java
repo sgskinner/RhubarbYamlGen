@@ -130,7 +130,7 @@ public class YamlGenerator {
 			entrySet.add(entry);
 
 			// TargetEntry: "job_start" ****************************************************************
-			TargetEntry targetEntry = new TargetEntry(0, "start");
+			TargetEntry targetEntry = new TargetEntry(3, "start");
 			
 			entry = new SubjectEntry("DEV", name, "Start Notice");
 			targetEntry.addSubEntry(entry);
@@ -157,7 +157,7 @@ public class YamlGenerator {
 			
 			
 			// TargetEntry: "log" ****************************************************************
-			targetEntry = new TargetEntry(1, "log");
+			targetEntry = new TargetEntry(4, "log");
 
 			entry = new SubjectEntry("DEV", name, "Log Email");
 			targetEntry.addSubEntry(entry);
@@ -184,7 +184,7 @@ public class YamlGenerator {
 			
 			
 			// TargetEntry: "report" ****************************************************************
-			targetEntry = new TargetEntry(2, "report");
+			targetEntry = new TargetEntry(5, "report");
 
 			entry = new SubjectEntry("DEV", name, "Report Email");
 			targetEntry.addSubEntry(entry);
@@ -213,7 +213,11 @@ public class YamlGenerator {
 			
 			StringBuffer sb = new StringBuffer();
 			for (YamlEntry newEntry : entrySet) {
-				sb.append(newEntry);
+				try {
+					sb.append(newEntry);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
 			
 			String configAsString= sb.toString();
