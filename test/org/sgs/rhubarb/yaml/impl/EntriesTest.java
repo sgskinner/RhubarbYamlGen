@@ -34,14 +34,6 @@ public class EntriesTest {
 	
 	
 	@Test
-	public void testOutputNameEntry(){
-		OutputNameEntry outputNameEntry = new OutputNameEntry("report");
-		String line = outputNameEntry.getFormattedEntry();
-		assertTrue(line.equals("  name: report" + NEWLINE));
-	}
-	
-	
-	@Test
 	public void testSubjectEntry(){
 		String env = "STG";
 		String jobName = "UAF-ARCHB-DLV-LOADRPT";
@@ -227,10 +219,6 @@ public class EntriesTest {
 		entrySet.add(entry);
 
 		entry = new OutputEntry();
-		entrySet.add(entry);
-
-		value = FileUtils.getLinesAsArray("data/test/OutputNameEntry.txt")[0];
-		entry = new OutputNameEntry(value);
 		entrySet.add(entry);
 
 		entry = new StartEntry();
