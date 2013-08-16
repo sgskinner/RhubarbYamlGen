@@ -65,11 +65,12 @@ public class YamlGenerator {
 		entry = new SubjectEntry(valueArray[0], valueArray[1], valueArray[2]);
 		entrySet.add(entry);
 
-		valueArray = new String[]{"katt-automation@list.arizona.edu",
-	                              "jwingate@email.arizona.edu",
-	                              "hlo@email.arizona.edu",
-	                              "shaloo@email.arizona.edu",
-	               			      "sskinner@email.arizona.edu"};
+		valueArray = new String[]{"KATT_AUTOMATION_ADDRESS",
+								  "JULIE_WINGATE_ADDRESS",
+								  "HEATHER_LO_ADDRESS",
+								  "JOSH_SHALOO_ADDRESS",
+ 			      	              "SCOTT_SKINNER_ADDRESS"};
+		
 		entry = new ToRecipientsEntry(valueArray);
 		entrySet.add(entry);
 		
@@ -147,7 +148,11 @@ public class YamlGenerator {
 			valueArray = new String[] { "DEV", name, "Automated Test Email" };
 			entry = new SubjectEntry(valueArray[0], valueArray[1], valueArray[2]);
 			entrySet.add(entry);
-			valueArray = new String[] { "katt-automation@list.arizona.edu", "jwingate@email.arizona.edu", "hlo@email.arizona.edu", "shaloo@email.arizona.edu", "sskinner@email.arizona.edu" };
+			valueArray = new String[]{"KATT_AUTOMATION_ADDRESS",
+					  				   "JULIE_WINGATE_ADDRESS",
+					  				   "HEATHER_LO_ADDRESS",
+					  				   "JOSH_SHALOO_ADDRESS",
+     	              	               "SCOTT_SKINNER_ADDRESS"};
 			entry = new ToRecipientsEntry(valueArray);
 			entrySet.add(entry);
 			
@@ -237,7 +242,7 @@ public class YamlGenerator {
 	
 	
 	public static void main(String[] sgs) {
-		YamlGenerator.findMuttJobs();
+		YamlGenerator.generateStubYaml();
 	}
 
 }
