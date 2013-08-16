@@ -4,7 +4,7 @@ import java.util.Set;
 import java.util.TreeSet;
 
 import org.sgs.rhubarb.yaml.YamlEntry;
-import org.sgs.rhubarb.yaml.YamlFormatsTemplate;
+import org.sgs.rhubarb.yaml.YamlFormatConstants;
 
 public class TargetEntry extends YamlEntry {
 
@@ -12,7 +12,7 @@ public class TargetEntry extends YamlEntry {
 	private Set<YamlEntry> subEntries;
 	
 	public TargetEntry(int position, String targetName) {
-		super(position, new YamlFormatsTemplate("  %s:%n"));
+		super(position, YamlFormatConstants.TARGET_NAME_ENTRY_TEMPLATE);
 		this.targetName = targetName;
 		this.subEntries = new TreeSet<YamlEntry>();
 	}

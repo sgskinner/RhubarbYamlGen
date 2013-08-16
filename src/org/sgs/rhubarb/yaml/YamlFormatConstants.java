@@ -41,7 +41,7 @@ public class YamlFormatConstants {
 	
 	
 	/**
-	 * Purpose: Required as second line in file.
+	 * Purpose: Signifies beginning of "target" entries
 	 * 
 	 * Ordinal: 2
 	 * Required: true
@@ -54,22 +54,29 @@ public class YamlFormatConstants {
 	
 
 	/**
-	 * Purpose: Required as second line in file.
+	 * Purpose: Hash of targets
 	 * 
 	 * Ordinal: 3
 	 * Required: true
 	 * Leading Spaces: 2
 	 * Num args: 1
 	 * Args: <name>
-	 * Example: String.format(OUTPUT_NAME_ENTRY_TEMPLATE.getPrimaryLine(), "report");
+	 * Example: String.format(TARGET_NAME_ENTRY_TEMPLATE.getRootFormat(), "job_ok");
 	 */
-	public final static YamlFormatsTemplate OUTPUT_NAME_ENTRY_TEMPLATE = new YamlFormatsTemplate("  name: %s%n");
+	public final static YamlFormatsTemplate TARGET_NAME_ENTRY_TEMPLATE = new YamlFormatsTemplate("  %s:%n");
+	
+	
+	/* ************************************************************************
+	 * Reset ordinal here; the only remaining entry types are
+	 * children of TargetEntry, and the oridnal is relative
+	 * to the siblings underneath the parent TargetEntry 
+	 *************************************************************************/
 	
 	
 	/**
 	 * Purpose: This is the subject line of the email to be sent on behalf of the job.
 	 * 
-	 * Ordinal: 4
+	 * Ordinal: 0
 	 * Required: true
 	 * Leading Spaces: 2
 	 * Num args: 3
@@ -82,7 +89,7 @@ public class YamlFormatConstants {
 	/**
 	 * Purpose: This is the message of the email to be sent on behalf of the job.
 	 * 
-	 * Ordinal: 5
+	 * Ordinal: 1
 	 * Required: true
 	 * Leading Spaces: 2 leading
 	 * Num args: 1
@@ -95,7 +102,7 @@ public class YamlFormatConstants {
 	 * Purpose: Line starter for list of "To:" recipients of email. The
 	 *          formating of the list is provided by YamlFormatter.java
 	 * 
-	 * Ordinal: 6
+	 * Ordinal: 2
 	 * Required: true
 	 * Leading Spaces: 2 leading
 	 * Num args: 1 to many
@@ -108,7 +115,7 @@ public class YamlFormatConstants {
 	/**
 	 * Purpose: The "cc" recipient line starter.
 	 * 
-	 * Ordinal: 7
+	 * Ordinal: 3
 	 * Required: false
 	 * Leading Spaces: 2 leading
 	 * Num args: 1 to many
@@ -122,7 +129,7 @@ public class YamlFormatConstants {
 	 * Purpose: The directory in which to pattern match files for attachment to
 	 *          the email.
 	 * 
-	 * Ordinal: 8
+	 * Ordinal: 4
 	 * Required: false
 	 * Leading Spaces: 2 leading
 	 * Num args: 1
@@ -136,7 +143,7 @@ public class YamlFormatConstants {
 	 * Purpose: The directory in which to pattern match files for attachment to
 	 *          the email.
 	 * 
-	 * Ordinal: 9
+	 * Ordinal: 5
 	 * Required: false
 	 * Leading Spaces: 2 leading
 	 * Num args: 1 to Many

@@ -8,7 +8,7 @@ public class MessageEntry extends YamlEntry {
 
 	// Each arg should be one line of the message, no newline needed
 	public MessageEntry(String...args) {
-		super(5, YamlFormatConstants.MESSAGE_ENTRY_TEMPLATE, args);
+		super(1, YamlFormatConstants.MESSAGE_ENTRY_TEMPLATE, args);
 		if(args == null || args.length < 1){
 			throw new RuntimeException("Must supply at least one line for message!");
 		}
