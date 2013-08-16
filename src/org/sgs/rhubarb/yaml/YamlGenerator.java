@@ -18,12 +18,19 @@ import org.sgs.rhubarb.yaml.impl.MessageEntry;
 import org.sgs.rhubarb.yaml.impl.OutputEntry;
 import org.sgs.rhubarb.yaml.impl.StartEntry;
 import org.sgs.rhubarb.yaml.impl.SubjectEntry;
+import org.sgs.rhubarb.yaml.impl.TargetEntry;
 import org.sgs.rhubarb.yaml.impl.ToRecipientsEntry;
 import org.sgs.rhubarb.yaml.utils.FileUtils;
 
 
 
 public class YamlGenerator {
+	
+	private static String[] TEST_EMAILS = new String[]{"KATT_AUTOMATION_ADDRESS",
+		   											   "JULIE_WINGATE_ADDRESS",
+                                                       "HEATHER_LO_ADDRESS",
+                                                       "JOSH_SHALOO_ADDRESS",
+           											   "SCOTT_SKINNER_ADDRESS"};
 	
 	private static String generateJobYaml(String filePrefix, JOBType job){
 		// Instantiate an ordered data structure
@@ -59,14 +66,8 @@ public class YamlGenerator {
 		valueArray = new String[]{"DEV", filePrefix, "Automated Test Email"};
 		entry = new SubjectEntry(valueArray[0], valueArray[1], valueArray[2]);
 		entrySet.add(entry);
-
-		valueArray = new String[]{"KATT_AUTOMATION_ADDRESS",
-								  "JULIE_WINGATE_ADDRESS",
-								  "HEATHER_LO_ADDRESS",
-								  "JOSH_SHALOO_ADDRESS",
- 			      	              "SCOTT_SKINNER_ADDRESS"};
 		
-		entry = new ToRecipientsEntry(valueArray);
+		entry = new ToRecipientsEntry(TEST_EMAILS);
 		entrySet.add(entry);
 		
 		StringBuffer sb = new StringBuffer();
@@ -90,7 +91,6 @@ public class YamlGenerator {
 		Set<String> names = new TreeSet<String>();
 		List<String> lines = FileUtils.getLines("data/input/oldToNewJobNames.csv");
 		for(String line : lines){
-			
 			
 			// line[0] == old name
 			// line[1] == new name, fully qualified
@@ -116,39 +116,100 @@ public class YamlGenerator {
 		
 		for (String name : names) {
 		
-			// Instantiate an ordered data structure
 			Set<YamlEntry> entrySet = new TreeSet<YamlEntry>();
-			String value = "";//TODO: Find easy way to get this, its not clear in xml how to
-			YamlEntry entry = new AttachmentsDirEntry(value);
-			entrySet.add(entry);
-			String[] valueArray = new String[] {};
-			entry = new AttachmentsGlobsEntry(valueArray);
-			entrySet.add(entry);
-			valueArray = new String[] {};
-			entry = new CcRecipientsEntry(valueArray);
-			entrySet.add(entry);
-			value = name;
-			entry = new JobNameEntry(value);
-			entrySet.add(entry);
-			String message = "This is a generic message for the " + name + " job.";
-			entry = new MessageEntry(message);
-			entrySet.add(entry);
-			entry = new OutputEntry();
-			entrySet.add(entry);
-			value = "report";
+			
+			YamlEntry entry = new StartEntry();
 			entrySet.add(entry);
 			entry = new StartEntry();
 			entrySet.add(entry);
-			valueArray = new String[] { "DEV", name, "Automated Test Email" };
-			entry = new SubjectEntry(valueArray[0], valueArray[1], valueArray[2]);
+			
+			entry = new JobNameEntry(name);
 			entrySet.add(entry);
-			valueArray = new String[]{"KATT_AUTOMATION_ADDRESS",
-					  				   "JULIE_WINGATE_ADDRESS",
-					  				   "HEATHER_LO_ADDRESS",
-					  				   "JOSH_SHALOO_ADDRESS",
-     	              	               "SCOTT_SKINNER_ADDRESS"};
-			entry = new ToRecipientsEntry(valueArray);
+			
+			entry = new OutputEntry();
 			entrySet.add(entry);
+
+			// TargetEntry: "job_start" ****************************************************************
+			TargetEntry targetEntry = new TargetEntry(0, "start");
+			
+			entry = new SubjectEntry("DEV", name, "Start Notice");
+			targetEntry.addSubEntry(entry);
+			
+			entry = new MessageEntry("The '" + name + "' process has started.");
+			targetEntry.addSubEntry(entry);
+			
+			entry = new ToRecipientsEntry(TEST_EMAILS);
+			targetEntry.addSubEntry(entry);
+			
+			entry = new CcRecipientsEntry(new String[] {});
+			targetEntry.addSubEntry(entry);
+			
+			entry = new AttachmentsDirEntry(new String[]{});
+			targetEntry.addSubEntry(entry);
+			
+			entry = new AttachmentsDirEntry(new String[]{});
+			targetEntry.addSubEntry(entry);
+			
+			entry = new AttachmentsGlobsEntry(new String[]{});
+			targetEntry.addSubEntry(entry);
+			
+			entrySet.add(targetEntry);
+			
+			
+			// TargetEntry: "log" ****************************************************************
+			targetEntry = new TargetEntry(1, "log");
+
+			entry = new SubjectEntry("DEV", name, "Log Email");
+			targetEntry.addSubEntry(entry);
+
+			entry = new MessageEntry("Please find the attached log(s) for the  '" + name + "' process.");
+			targetEntry.addSubEntry(entry);
+
+			entry = new ToRecipientsEntry(TEST_EMAILS);
+			targetEntry.addSubEntry(entry);
+
+			entry = new CcRecipientsEntry(new String[] {});
+			targetEntry.addSubEntry(entry);
+
+			entry = new AttachmentsDirEntry(new String[] {});
+			targetEntry.addSubEntry(entry);
+
+			entry = new AttachmentsDirEntry(new String[] {});
+			targetEntry.addSubEntry(entry);
+
+			entry = new AttachmentsGlobsEntry(new String[] {});
+			targetEntry.addSubEntry(entry);
+
+			entrySet.add(targetEntry);
+			
+			
+			// TargetEntry: "report" ****************************************************************
+			targetEntry = new TargetEntry(2, "report");
+
+			entry = new SubjectEntry("DEV", name, "Report Email");
+			targetEntry.addSubEntry(entry);
+
+			entry = new MessageEntry("Please find the attached report(s) for the  '" + name + "' process.");
+			targetEntry.addSubEntry(entry);
+
+			entry = new ToRecipientsEntry(TEST_EMAILS);
+			targetEntry.addSubEntry(entry);
+
+			entry = new CcRecipientsEntry(new String[] {});
+			targetEntry.addSubEntry(entry);
+
+			entry = new AttachmentsDirEntry(new String[] {});
+			targetEntry.addSubEntry(entry);
+
+			entry = new AttachmentsDirEntry(new String[] {});
+			targetEntry.addSubEntry(entry);
+
+			entry = new AttachmentsGlobsEntry(new String[] {});
+			targetEntry.addSubEntry(entry);
+
+			entrySet.add(targetEntry);
+			
+
 			
 			StringBuffer sb = new StringBuffer();
 			for (YamlEntry newEntry : entrySet) {

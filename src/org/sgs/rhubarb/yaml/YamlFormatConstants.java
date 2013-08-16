@@ -83,7 +83,7 @@ public class YamlFormatConstants {
 	 * Args: <ENV> <JOB_NAME> <DESCRIPTION>
 	 * Example: String.format(SUBJECT_LINE, "PRD", "EINVEXTR", "eInvoice Processing has completed.");
 	 */
-	public final static YamlFormatsTemplate SUBJECT_ENTRY_TEMPLATE = new YamlFormatsTemplate("  subject: %s - %s - %s%n");
+	public final static YamlFormatsTemplate SUBJECT_ENTRY_TEMPLATE = new YamlFormatsTemplate("    subject: %s - %s - %s%n");
 	
 	
 	/**
@@ -96,7 +96,7 @@ public class YamlFormatConstants {
 	 * Args: <MESSAGE>
 	 * Example: String.format(MESSAGE_LINE, "    This is a%n    multi-line message%n    spanning three lines.");
 	 */
-	public final static YamlFormatsTemplate MESSAGE_ENTRY_TEMPLATE = new YamlFormatsTemplate("  message: >%n", "    %s%n");
+	public final static YamlFormatsTemplate MESSAGE_ENTRY_TEMPLATE = new YamlFormatsTemplate("    message: >%n", "      %s%n");
 	
 	/**
 	 * Purpose: Line starter for list of "To:" recipients of email. The
@@ -109,7 +109,7 @@ public class YamlFormatConstants {
 	 * Args: <email1, email2, ..., lastEmail>
 	 * Example: 
 	 */
-	public final static YamlFormatsTemplate TO_RECIPIENTS_ENTRY_TEMPLATE = new YamlFormatsTemplate("  to:%n", "  - %s%n");
+	public final static YamlFormatsTemplate TO_RECIPIENTS_ENTRY_TEMPLATE = new YamlFormatsTemplate("    to:%n", "    - %s%n");
 	
 	
 	/**
@@ -122,7 +122,7 @@ public class YamlFormatConstants {
 	 * Args: <email_1, email_2, ..., email_n>
 	 * Example: 
 	 */
-	public final static YamlFormatsTemplate CC_RECIPIENT_ENTRY_TEMPLATE = new YamlFormatsTemplate("  cc:%n", "  - %s%n");
+	public final static YamlFormatsTemplate CC_RECIPIENT_ENTRY_TEMPLATE = new YamlFormatsTemplate("    cc:%n", "    - %s%n");
 	
 	
 	/**
@@ -136,7 +136,7 @@ public class YamlFormatConstants {
 	 * Args: <dirPath>
 	 * Example: String.format(ATTACHMENTS_DIR_LINE, "$CONFIG_HOME/some/config/dir"); 
 	 */
-	public static final YamlFormatsTemplate ATTACHMENTS_DIR_ENTRY_TEMPLATE = new YamlFormatsTemplate("  attachments_dir: %s%n", "  - %s%n");
+	public static final YamlFormatsTemplate ATTACHMENTS_DIR_ENTRY_TEMPLATE = new YamlFormatsTemplate("    attachments_dir: %s%n", "    - %s%n");
 	
 	
 	/**
@@ -150,7 +150,7 @@ public class YamlFormatConstants {
 	 * Args: <pattern_1, pattern_2, ..., pattern_n>
 	 * Example: 
 	 */
-	public static final YamlFormatsTemplate ATTACHMENTS_GLOBS_ENTRY_TEMPLATE = new YamlFormatsTemplate("  attachments_globs:%n", "  - %s%n");
+	public static final YamlFormatsTemplate ATTACHMENTS_GLOBS_ENTRY_TEMPLATE = new YamlFormatsTemplate("    attachments_globs:%n", "    - %s%n");
 
 	
 }
