@@ -16,7 +16,6 @@ import org.sgs.rhubarb.yaml.impl.CcRecipientsEntry;
 import org.sgs.rhubarb.yaml.impl.JobNameEntry;
 import org.sgs.rhubarb.yaml.impl.MessageEntry;
 import org.sgs.rhubarb.yaml.impl.OutputEntry;
-import org.sgs.rhubarb.yaml.impl.OutputNameEntry;
 import org.sgs.rhubarb.yaml.impl.StartEntry;
 import org.sgs.rhubarb.yaml.impl.SubjectEntry;
 import org.sgs.rhubarb.yaml.impl.ToRecipientsEntry;
@@ -52,10 +51,6 @@ public class YamlGenerator {
 		entrySet.add(entry);
 
 		entry = new OutputEntry();
-		entrySet.add(entry);
-
-		value = "report";
-		entry = new OutputNameEntry(value);
 		entrySet.add(entry);
 
 		entry = new StartEntry();
@@ -141,7 +136,6 @@ public class YamlGenerator {
 			entry = new OutputEntry();
 			entrySet.add(entry);
 			value = "report";
-			entry = new OutputNameEntry(value);
 			entrySet.add(entry);
 			entry = new StartEntry();
 			entrySet.add(entry);
