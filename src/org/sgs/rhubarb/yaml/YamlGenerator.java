@@ -8,6 +8,8 @@ import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
+import org.apache.commons.lang.StringUtils;
+import org.sgs.controlm.AUTOEDIT2Type;
 import org.sgs.controlm.JOBType;
 import org.sgs.controlm.XmlDriver;
 import org.sgs.rhubarb.yaml.impl.AttachmentsDirEntry;
@@ -285,23 +287,57 @@ public class YamlGenerator {
 		}
 	}
 	
+	
 	public static void findMuttJobs(){
+		
 		XmlDriver xmlDriver = new XmlDriver("data/input/controlm_prd_2013-07-22.xml");
 		List<JOBType> jobs =  xmlDriver.getAllJobs();
-		int count = 0;
+		
 		for(JOBType job : jobs){
+			
 			String cmd = job.getCMDLINE();
-			if(cmd != null && cmd.length() > 0){
-				count++;
-				System.out.printf("%s%n", cmd);
+			if(StringUtils.isNotBlank(cmd)){
+				cmd = replaceTokens(job, cmd);
+				String name = job.getJOBNAME();
+				System.out.printf("%-15s: %s%n", name, cmd);
+			}
+			
+		}//for
+		
+	}
+	
+	
+	// Helper method to replace tokens in a Control-M CMDLINE string
+	private static String replaceTokens(JOBType job,  String commandString){
+		
+		String result = new String(commandString);
+		
+		// Hydrate map of key-value pairs built from "AUTOEDIT2" elements 
+		Map<String, String> tokenMap = new HashMap<String, String>();
+		tokenMap.put("%%JOBNAME", job.getJOBNAME());
+		List<AUTOEDIT2Type> entries = job.getAUTOEDIT2();
+		for(AUTOEDIT2Type entry : entries){
+			String key = entry.getNAME();
+			String value = entry.getValueAttribute();
+			tokenMap.put(key, value);
+		}
+		
+		// Replace each entry of tokenMap in commandString
+		for(Entry<String, String> entry : tokenMap.entrySet()){
+			String key = entry.getKey();
+			String value = entry.getValue();
+			if(result.contains(key)){
+				result = result.replace(key, value);
 			}
 		}
-		System.out.printf("count: %d%n", count);
+		
+		return result;
 	}
 	
 	
 	public static void main(String[] sgs) {
-		YamlGenerator.generateStubYaml();
+		//YamlGenerator.generateStubYaml();
+		findMuttJobs();
 	}
 
 }
