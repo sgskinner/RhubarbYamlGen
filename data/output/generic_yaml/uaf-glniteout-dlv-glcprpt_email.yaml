@@ -1,0 +1,42 @@
+---
+name: UAF-GLNITEOUT-DLV-GLCPRPT
+outputs:
+  start:
+    subject: DEV - UAF-GLNITEOUT-DLV-GLCPRPT - Start Notice
+    message: >
+      The 'UAF-GLNITEOUT-DLV-GLCPRPT' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    - JULIE_WINGATE_ADDRESS
+    - HEATHER_LO_ADDRESS
+    - JOSH_SHALOO_ADDRESS
+    - SCOTT_SKINNER_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  log:
+    subject: DEV - UAF-GLNITEOUT-DLV-GLCPRPT - Log Email
+    message: >
+      Please find the attached log(s) for the  'UAF-GLNITEOUT-DLV-GLCPRPT' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    - JULIE_WINGATE_ADDRESS
+    - HEATHER_LO_ADDRESS
+    - JOSH_SHALOO_ADDRESS
+    - SCOTT_SKINNER_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  report:
+    subject: DEV - UAF-GLNITEOUT-DLV-GLCPRPT - Report Email
+    message: >
+      Please find the attached report(s) for the  'UAF-GLNITEOUT-DLV-GLCPRPT' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    - JULIE_WINGATE_ADDRESS
+    - HEATHER_LO_ADDRESS
+    - JOSH_SHALOO_ADDRESS
+    - SCOTT_SKINNER_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:

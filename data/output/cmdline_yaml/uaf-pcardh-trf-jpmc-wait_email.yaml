@@ -1,0 +1,42 @@
+---
+name: UAF-PCARDH-TRF-JPMC-WAIT
+outputs:
+  start:
+    subject: DEV - UAF-PCARDH-TRF-JPMC-WAIT - Start Notice
+    message: >
+      The 'UAF-PCARDH-TRF-JPMC-WAIT' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    - JULIE_WINGATE_ADDRESS
+    - HEATHER_LO_ADDRESS
+    - JOSH_SHALOO_ADDRESS
+    - SCOTT_SKINNER_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  log:
+    subject: DEV - UAF-PCARDH-TRF-JPMC-WAIT - Log Email
+    message: >
+      Please find the attached log(s) for the  'UAF-PCARDH-TRF-JPMC-WAIT' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    - JULIE_WINGATE_ADDRESS
+    - HEATHER_LO_ADDRESS
+    - JOSH_SHALOO_ADDRESS
+    - SCOTT_SKINNER_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  report:
+    subject: DEV - UAF-PCARDH-TRF-JPMC-WAIT - Report Email
+    message: >
+      Please find the attached report(s) for the  'UAF-PCARDH-TRF-JPMC-WAIT' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    - JULIE_WINGATE_ADDRESS
+    - HEATHER_LO_ADDRESS
+    - JOSH_SHALOO_ADDRESS
+    - SCOTT_SKINNER_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:

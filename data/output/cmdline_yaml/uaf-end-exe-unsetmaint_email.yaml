@@ -1,0 +1,42 @@
+---
+name: UAF-END-EXE-UNSETMAINT
+outputs:
+  start:
+    subject: DEV - UAF-END-EXE-UNSETMAINT - Start Notice
+    message: >
+      The 'UAF-END-EXE-UNSETMAINT' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    - JULIE_WINGATE_ADDRESS
+    - HEATHER_LO_ADDRESS
+    - JOSH_SHALOO_ADDRESS
+    - SCOTT_SKINNER_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  log:
+    subject: DEV - UAF-END-EXE-UNSETMAINT - Log Email
+    message: >
+      Please find the attached log(s) for the  'UAF-END-EXE-UNSETMAINT' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    - JULIE_WINGATE_ADDRESS
+    - HEATHER_LO_ADDRESS
+    - JOSH_SHALOO_ADDRESS
+    - SCOTT_SKINNER_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  report:
+    subject: DEV - UAF-END-EXE-UNSETMAINT - Report Email
+    message: >
+      Please find the attached report(s) for the  'UAF-END-EXE-UNSETMAINT' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    - JULIE_WINGATE_ADDRESS
+    - HEATHER_LO_ADDRESS
+    - JOSH_SHALOO_ADDRESS
+    - SCOTT_SKINNER_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:

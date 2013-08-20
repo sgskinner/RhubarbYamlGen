@@ -1,0 +1,42 @@
+---
+name: UAF-BEGIN-LATESTART
+outputs:
+  start:
+    subject: DEV - UAF-BEGIN-LATESTART - Start Notice
+    message: >
+      The 'UAF-BEGIN-LATESTART' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    - JULIE_WINGATE_ADDRESS
+    - HEATHER_LO_ADDRESS
+    - JOSH_SHALOO_ADDRESS
+    - SCOTT_SKINNER_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  log:
+    subject: DEV - UAF-BEGIN-LATESTART - Log Email
+    message: >
+      Please find the attached log(s) for the  'UAF-BEGIN-LATESTART' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    - JULIE_WINGATE_ADDRESS
+    - HEATHER_LO_ADDRESS
+    - JOSH_SHALOO_ADDRESS
+    - SCOTT_SKINNER_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  report:
+    subject: DEV - UAF-BEGIN-LATESTART - Report Email
+    message: >
+      Please find the attached report(s) for the  'UAF-BEGIN-LATESTART' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    - JULIE_WINGATE_ADDRESS
+    - HEATHER_LO_ADDRESS
+    - JOSH_SHALOO_ADDRESS
+    - SCOTT_SKINNER_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:

@@ -1,0 +1,42 @@
+---
+name: UAF-LABORINT-ASM-LLCPFILES
+outputs:
+  start:
+    subject: DEV - UAF-LABORINT-ASM-LLCPFILES - Start Notice
+    message: >
+      The 'UAF-LABORINT-ASM-LLCPFILES' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    - JULIE_WINGATE_ADDRESS
+    - HEATHER_LO_ADDRESS
+    - JOSH_SHALOO_ADDRESS
+    - SCOTT_SKINNER_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  log:
+    subject: DEV - UAF-LABORINT-ASM-LLCPFILES - Log Email
+    message: >
+      Please find the attached log(s) for the  'UAF-LABORINT-ASM-LLCPFILES' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    - JULIE_WINGATE_ADDRESS
+    - HEATHER_LO_ADDRESS
+    - JOSH_SHALOO_ADDRESS
+    - SCOTT_SKINNER_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  report:
+    subject: DEV - UAF-LABORINT-ASM-LLCPFILES - Report Email
+    message: >
+      Please find the attached report(s) for the  'UAF-LABORINT-ASM-LLCPFILES' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    - JULIE_WINGATE_ADDRESS
+    - HEATHER_LO_ADDRESS
+    - JOSH_SHALOO_ADDRESS
+    - SCOTT_SKINNER_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:

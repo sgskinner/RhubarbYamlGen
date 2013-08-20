@@ -1,0 +1,42 @@
+---
+name: UAF-PURGE-EXE-PRGEINVOICE
+outputs:
+  start:
+    subject: DEV - UAF-PURGE-EXE-PRGEINVOICE - Start Notice
+    message: >
+      The 'UAF-PURGE-EXE-PRGEINVOICE' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    - JULIE_WINGATE_ADDRESS
+    - HEATHER_LO_ADDRESS
+    - JOSH_SHALOO_ADDRESS
+    - SCOTT_SKINNER_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  log:
+    subject: DEV - UAF-PURGE-EXE-PRGEINVOICE - Log Email
+    message: >
+      Please find the attached log(s) for the  'UAF-PURGE-EXE-PRGEINVOICE' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    - JULIE_WINGATE_ADDRESS
+    - HEATHER_LO_ADDRESS
+    - JOSH_SHALOO_ADDRESS
+    - SCOTT_SKINNER_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  report:
+    subject: DEV - UAF-PURGE-EXE-PRGEINVOICE - Report Email
+    message: >
+      Please find the attached report(s) for the  'UAF-PURGE-EXE-PRGEINVOICE' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    - JULIE_WINGATE_ADDRESS
+    - HEATHER_LO_ADDRESS
+    - JOSH_SHALOO_ADDRESS
+    - SCOTT_SKINNER_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:

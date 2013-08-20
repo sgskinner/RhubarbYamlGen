@@ -1,0 +1,42 @@
+---
+name: UAF-DOCUWR-EXE-ARCHIVE
+outputs:
+  start:
+    subject: DEV - UAF-DOCUWR-EXE-ARCHIVE - Start Notice
+    message: >
+      The 'UAF-DOCUWR-EXE-ARCHIVE' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    - JULIE_WINGATE_ADDRESS
+    - HEATHER_LO_ADDRESS
+    - JOSH_SHALOO_ADDRESS
+    - SCOTT_SKINNER_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  log:
+    subject: DEV - UAF-DOCUWR-EXE-ARCHIVE - Log Email
+    message: >
+      Please find the attached log(s) for the  'UAF-DOCUWR-EXE-ARCHIVE' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    - JULIE_WINGATE_ADDRESS
+    - HEATHER_LO_ADDRESS
+    - JOSH_SHALOO_ADDRESS
+    - SCOTT_SKINNER_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  report:
+    subject: DEV - UAF-DOCUWR-EXE-ARCHIVE - Report Email
+    message: >
+      Please find the attached report(s) for the  'UAF-DOCUWR-EXE-ARCHIVE' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    - JULIE_WINGATE_ADDRESS
+    - HEATHER_LO_ADDRESS
+    - JOSH_SHALOO_ADDRESS
+    - SCOTT_SKINNER_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:

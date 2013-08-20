@@ -1,0 +1,42 @@
+---
+name: UAF-PCARDT-DLV-AUTORPT
+outputs:
+  start:
+    subject: DEV - UAF-PCARDT-DLV-AUTORPT - Start Notice
+    message: >
+      The 'UAF-PCARDT-DLV-AUTORPT' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    - JULIE_WINGATE_ADDRESS
+    - HEATHER_LO_ADDRESS
+    - JOSH_SHALOO_ADDRESS
+    - SCOTT_SKINNER_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  log:
+    subject: DEV - UAF-PCARDT-DLV-AUTORPT - Log Email
+    message: >
+      Please find the attached log(s) for the  'UAF-PCARDT-DLV-AUTORPT' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    - JULIE_WINGATE_ADDRESS
+    - HEATHER_LO_ADDRESS
+    - JOSH_SHALOO_ADDRESS
+    - SCOTT_SKINNER_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  report:
+    subject: DEV - UAF-PCARDT-DLV-AUTORPT - Report Email
+    message: >
+      Please find the attached report(s) for the  'UAF-PCARDT-DLV-AUTORPT' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    - JULIE_WINGATE_ADDRESS
+    - HEATHER_LO_ADDRESS
+    - JOSH_SHALOO_ADDRESS
+    - SCOTT_SKINNER_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
