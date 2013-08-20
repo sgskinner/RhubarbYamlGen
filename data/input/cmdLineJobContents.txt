@@ -1,0 +1,417 @@
+[KFS-AAD-DEPRRPE => NONE]:
+ cd /home/tomcat/app/work/kfs/reports/cam; echo "Please see the attached reports." | mutt -s "PRD - KFS-AAD-DEPRRPE - Depreciation reports" `att.sh *.PDF` propertymanagement@fso.arizona.edu; exit 0;
+
+[KFS-AAD-EMAIL => NONE]:
+ echo -e "%%$DATE %%TIME - The request to execute the Asset Depreciation Batch Job has been received, but has been placed on hold. Please review the KFS parameter DEPRECIATION_RUN_DATE found within the KFS-CAM namespace to ensure it is set appropriately for the job to run as desired.\n\nAfter the parameter has been reviewed and the adjustment has been completely approved, as necessary, please contact the KFS technical support team for the Asset Depreciation Batch Job to be released for execution. If the tech team does not receive notification today to release the job for processing, the nightly batch processing will be held up until that event occurs.\n\nParameter Location:\nAdministration Tab --> Configuration Section --> Functional Heading --> Parameter Hyperlink\nSelect KFS-CAM in the Namespace Code field before performing the 'Search'" | mutt -s "PRD - KFS-AAD-EMAIL - Check prior to close of fiscal year" propertymanagement@fso.arizona.edu; exit 0;
+
+[KFS-AAD-EMLREPE => NONE]:
+ cd /home/tomcat/app/work/kfs/reports/gl; echo "%%$DATE %%TIME -  Regarding the completion of GL Reports" | mutt -s "PRD - KFS-AAD-EMLREPE - General Ledger Processing Report(s) - FP Team Review" `att.sh glpe_ledger_*.txt glpe_list_*.txt scrubberJob_*.txt posterJob_*.txt balancing_*.txt` FSO_KFS_Reports_Financial_Management@fso.arizona.edu; exit 0;
+
+[KFS-ACH-BNKDTAE => UAF-ACHLOAD-DLV-ACHRPTS]:
+ cd /home/tomcat/app/work/kfs/reports/pdp; ls -la; echo "%%$DATE %%TIME - Attached are the reports that provides the results of processing the ACH bank setup information from both the UAccess Employee and UAccess Student interface files. These reports should be reviewed for any issues that resulted from processing these files. This interface process could have resulted in some default bank information having been established that will need updated appropriately." | mutt -s "PRD - KFS-ACH-BNKDTAE - ACH Interface Reporting 1 - AP Team Review" `att.sh pdpLoadBankDataJob-ach_bank_audit_report_*.txt` checkcontrol@fso.arizona.edu; exit 0;
+
+[KFS-ACH-BANKA => UAF-ARCHV-EXE-ACHLOADPAY]:
+ touch /home/tomcat/app/work/kfs/staging/pdp/achPayeeBankAccounts/*.data /home/tomcat/app/work/kfs/staging/pdp/achBanks/*.data; mv /home/tomcat/app/work/kfs/staging/pdp/achBanks/*.data /home/tomcat/app/work/kfs/staging/pdp/achPayeeBankAccounts/*.data    /home/tomcat/app/work/kfs/archive/pdp/; exit 0;
+
+[KFS-ACH-BNKDT2E => NONE]:
+ cd /home/tomcat/app/work/kfs/reports/pdp; ls -la; echo "%%$DATE %%TIME - Attached are the reports that show the results of processing the ACH/Direct Deposit setup information from both the UAccess Employee and UAccess Student interface files. These reports should be reviewed for any issues that resulted from processing these files as this will effect what type and to which account a payment would occur for anyone scheduled to receive a payment from the Kuali Financial System." | mutt -s "PRD - KFS-ACH-BNKDT2E - ACH Interface Reporting 2 - AP Team Review" `att.sh pdpLoadPayeeACHDataJob-payee_ach_audit_report_*.txt` checkcontrol@fso.arizona.edu; exit 0;
+
+[KFS-ACH-HRBYPS => NONE]:
+ echo "placeholder"; exit 0;
+
+[KFS-ACL-PARME => NONE]:
+ echo -e "The first execution of the PO Close process is ready to be ran, but has been placed on hold. Please review the KFS parameters found within the KFS-PACS namespace to ensure they are set appropriately for the job to run as desired. \nParameters:\n AUTO_CLOSE_RECURRING_PO_DATE / AUTO_CLOSE_RECURRING_PO_TO_EMAIL_ADDRESSES\n\n----\n %%DATE %%TIME" | mutt -s "PRD - KFS-ACL-PARME - Review and Confirm autoCloseRecurringOrdersJob Parameters - PACS Team Review" -c kfs_pacs_errors@list.arizona.edu kfsbsa@list.arizona.edu; exit 0;
+
+[KFS-ACL-EMAILE => UAF-AUTOCLS-DLV-CLSPORPT]:
+ cd /home/tomcat/app/work/kfs/reports/purap; echo -e "%%$DATE %%TIME - Attached is/are the report(s) that show the results and/or provide information on any error conditions found, if any, as a result of any PO Close files that were processed for the day." | mutt -s "PRD - KFS-ACL-EMAILE - PO Close Processing Information - PACS/AP Team Review" `att.sh autoClose*.log` -c kfs_pacs_errors@list.arizona.edu kfsbsa@list.arizona.edu; exit 0;
+
+[KFS-ARC-REPSE => UAF-ARCHB-DLV-LOADRPT]:
+ cd /home/tomcat/app/work/kfs/reports/sys; echo -e "%%$DATE %%TIME - Attached are the reports that show the results and provide information on building/room records successfully updated and any error conditions found, if any, as a result of any Archibus files that were processed for the day." | mutt -s "PRD - KFS-ARC-REPSE - Archibus Processing Information - Capital Assets Team Review" `att.sh buildingImportErrorReport_*.txt buildingImportSuccessReport_*.txt roomImportErrorReport_*.txt roomImportSuccessReport_*.txt` -c pacs-centralreceiving@list.arizona.edu kfsbsa@list.arizona.edu propertymanagement@fso.arizona.edu; exit 0;
+
+[KFS-ARP-INVWOE => UAF-CUSTINV-DLV-CUSTINVRPT]:
+ cd /home/tomcat/app/work/kfs/reports/ar; echo -e "%%$DATE %%TIME - Attached is the report that provides the results and/or provides information on any error conditions found, if any, as a result of the customer invoice writeoff processing that occurred during the nightly batch schedule." | mutt -s "PRD - KFS-ARP-INVWOE - Customer Invoice WriteOff Report - SPS Team Review" `att.sh customer_invoice_writeoff_*.pdf` -c sponsor@email.arizona.edu kfsbsa@list.arizona.edu FSO_KFS_Reports_Financial_Management@fso.arizona.edu; exit 0;
+
+[KFS-ARP-INVWOA => UAF-ARCHV-EXE-CUSTINV]:
+ touch /home/tomcat/app/work/kfs/staging/ar/invoiceWriteoff/*.xml; mv /home/tomcat/app/work/kfs/staging/ar/invoiceWriteoff/*.xml /home/tomcat/app/work/kfs/archive/ar; ls -la /home/tomcat/app/work/kfs/archive/ar; exit 0;
+
+[KFS-ARP-PREQE => UAF-CUSTINV-DLV-PREQRPT]:
+ cd /home/tomcat/app/work/kfs/reports/purap; echo -e "%%$DATE %%TIME - Attached is/are the report(s) that show the results and/or provide information on any error conditions found, if any, as a result of any preq auto approves that were processed for the day." | mutt -s "PRD - KFS-ARP-PREQE - preq auto approves errors - PACS/AP Team Review" `att.sh preq_autoapprove_errors_*.txt` -c checkcontrol@fso.arizona.edu kfsbsa@list.arizona.edu pdp@fso.arizona.edu; exit 0;
+
+[KFS-ARR-BICTFFS => UAF-INVREC-INI-WAITFORBI]:
+ echo "I am waiting for the BI snapshot to complete"
+
+[KFS-BNK-CKRECNE => UAF-BANK-DLV-RECONRPT]:
+ cd /home/tomcat/app/work/kfs/reports/recon; echo "%%$DATE %%TIME - Attached is the report that provides the results and/or provides information on any error conditions found, if any, as a result of the check reconciliation processing that followed the processing of the bank transaction file." | mutt -s "PRD - KFS-BNK-CKRECNE - Check Reconciliation Error Report - PDP Team Review" `att.sh cr_*.txt` FMNonOperatingFunds@fso.arizona.edu; exit 0;
+
+[KFS-BNK-BAIA => UAF-ARCHV-EXE-BANK]:
+ cd /home/tomcat/app/work/kfs/staging/fp/bankTransactions/validated; touch *.data; mv -v *.data ../../../../archive/fp/; ls -la ../../../../archive/fp/; exit 0;
+
+[KFS-BNK-CKRECNA => UAF-ARCHV-EXE-CHKRECON]:
+ cd /home/tomcat/app/work/kfs/staging/recon/upload; touch *.data; mv -v *.data ../../../archive/recon/; ls -la ../../../archive/recon/; exit 0;
+
+[KFS-BNK-EMAILE => UAF-BANK-DLV-DOCRPT]:
+ cd /home/tomcat/app/work/kfs/reports/fp; echo -e "%%$DATE %%TIME - Attached is/are the report(s) that show the results and/or provide information on any error conditions found, if any, as a result of any eInvoice files that were processed for the day." | mutt -s "PRD - KFS-BNK-EMAILE - Bank Load Error report - ???? Team Review" `att.sh *Tfile_error.report` FMNonOperatingFunds@fso.arizona.edu; exit 0;
+
+[KFS-BNK-BAICF => UAF-BANK-TRF-WF-WAIT]:
+ r=`echo PRD | tr '[:upper:]' '[:lower:]'`;s=`echo /integration/kfs/wellsfargo/ENV/incoming/ETC* | sed "s/ENV/$r/"`;t=`ls $s |wc -l`;if [ "$t" -eq "0" ]; then echo finished;else echo working;fi
+
+[KFS-BNK-WFBYPSS => NONE]:
+ echo "bypass"
+
+[KFS-CFD-CFDAE => UAF-CFDAUPD-DLV-CFDANOT]:
+ echo -e "%%$DATE %%TIME - The CFDA update process has been completed.\n\nAny existing CFDA values that were in the system prior to the execution of the process would not have been automatically updated due to the manual setting that is in place. Although, as a reminder, there may have been new CFDA values added to the system as a result of the process. These new values must have the maintenance type flag set to MANUAL in the system or the next time the process is ran, the process will automatically update these values.\n\nReminder:\n\nCFDA values can be found in the following location in KFS:\n\nMaintenance Tab --> Contracts & Grants --> CFDA" | mutt -s "PRD - KFS-CFD-CFDAE - CFDA reminder" -c sponsor@email.arizona.edu kfsbsa@list.arizona.edu; exit 0;
+
+[KFS-EFC-EFFCRTE => UAF-EFFCEREXT-DLV-EFFCERRPT]:
+ cd /home/tomcat/app/work/kfs/reports/ec; echo "Please see the attached reports. When ready, place notify operations that KFS-EFC-CLRCA2K can ber confirmed, so that the Effort Cert Create job can be run." | mutt -s "Effort Cert reports" `att.sh effort_extract_summary_*.pdf` -c sponsor@email.arizona.edu kfsbsa@list.arizona.edu; exit 0;
+
+[KFS-EFC-EMAILE => UAF-EFFCEREXT-DLV-PARME]:
+ echo -e "The first execution of the effort certification process is ready to be ran, but has been placed on hold. Please review the KFS parameters found within the ???? namespace to ensure they are set appropriately for the job to run as desired. \n\n----\n %%DATE %%TIME" | mutt -s "PRD - KFS-EFC-EMAILE - Review and Confirm ??? Parameters - ??? Team Review" -c sponsor@email.arizona.edu kfsbsa@list.arizona.edu; exit 0;
+
+[KFS-EIN-EINVA => UAF-ARCHV-EXE-EINVOICE]:
+ touch /home/tomcat/app/work/kfs/staging/purap/electronicInvoice/accept/*.xml; mv /home/tomcat/app/work/kfs/staging/purap/electronicInvoice/accept/*.xml /home/tomcat/app/work/kfs/archive/eInvoice/active/; exit 0;
+
+[KFS-EIN-INACTA => NONE]:
+ find /home/tomcat/app/work/kfs/archive/eInvoice/active/ -type f -mtime +730 -exec mv -v {} /home/tomcat/app/work/kfs/archive/eInvoice/inactive +; exit 0;
+
+[KFS-EIN-EINVE => UAF-EINV-DLV-EINVEXTR]:
+ cd /home/tomcat/app/work/kfs/reports/purap; echo -e "%%$DATE %%TIME - Attached is/are the report(s) that show the results and/or provide information on any error conditions found, if any, as a result of any eInvoice files that were processed for the day." | mutt -s "PRD - KFS-EIN-EINVE - eInvoice Processing Information - PACS/AP Team Review" `att.sh purapElectronicInvoiceExtractJob_*.txt` -c EIRT@fso.arizona.edu kfsbsa@list.arizona.edu; exit 0;
+
+[KFS-EMC-DLYREPE => UAF-EMCHECKS-DLV-DAILYRPT]:
+ cd /home/tomcat/app/work/kfs/reports/pdp; echo -e "%%$DATE %%TIME - Attached is/are the report(s) that show the results and/or provide information on any error conditions found, if any, as a result of any eInvoice files that were processed for the day." | mutt -s "PRD - KFS-EMC-DLYREPE - PDP Daily Report as result of Emergency Checks processing - PDP/AP Team Review" `att.sh pdp_daily_*.pdf` checkcontrol@fso.arizona.edu; exit 0;
+
+[KFS-EMC-BNKDTAE => UAF-EMCHECKS-DLV-ACHRPTS]:
+ cd /home/tomcat/app/work/kfs/reports/pdp; ls -la; echo "%%$DATE %%TIME - Attached are the reports that provides the results of processing the ACH bank setup information from both the UAccess Employee and UAccess Student interface files. These reports should be reviewed for any issues that resulted from processing these files. This interface process could have resulted in some default bank information having been established that will need updated appropriately." | mutt -s "PRD - KFS-EMC-BNKDTAE - ACH Interface Reporting 1 - AP Team Review" `att.sh pdpLoadBankDataJob-ach_bank_audit_report_*.txt` checkcontrol@fso.arizona.edu; exit 0;
+
+[KFS-EMC-BNKDT2E => NONE]:
+ cd /home/tomcat/app/work/kfs/reports/pdp; ls -la; echo "%%$DATE %%TIME - Attached are the reports that show the results of processing the ACH/Direct Deposit setup information from both the UAccess Employee and UAccess Student interface files. These reports should be reviewed for any issues that resulted from processing these files as this will effect what type and to which account a payment would occur for anyone scheduled to receive a payment from the Kuali Financial System." | mutt -s "PRD - KFS-EMC-BNKDT2E - ACH Interface Reporting 2 - AP Team Review" `att.sh pdpLoadPayeeACHDataJob-payee_ach_audit_report_*.txt` checkcontrol@fso.arizona.edu; exit 0;
+
+[KFS-EMC-BANKA => NONE]:
+ touch /home/tomcat/app/work/kfs/staging/pdp/achPayeeBankAccounts/*.data /home/tomcat/app/work/kfs/staging/pdp/achBanks/*.data; mv /home/tomcat/app/work/kfs/staging/pdp/achBanks/*.data /home/tomcat/app/work/kfs/staging/pdp/achPayeeBankAccounts/*.data    /home/tomcat/app/work/kfs/archive/pdp/; exit 0;
+
+[KFS-FMT-ASUFE => NONE]:
+ echo "Attached is the data file that was produced from the 'Format Checks/ACH process.  This file was sent to ASU and is attached for your review." | mutt -s "PRD -  KFS-FMT-ASUFE - eCustoms File sent to ASU - AP Team Review" -a /home/tomcat/app/work/kfs/staging/pdp/ecustoms/UA_ECUSTOMS.data UAecustoms@fso.arizona.edu; sleep 5; exit 0;
+
+[KFS-FMT-CKRECNE => UAF-FORMAT-DLV-RECONRPT]:
+ cd /home/tomcat/app/work/kfs/reports/recon; echo "Attached is the report that provides the results and/or provides information on any error conditions found, if any, as a result of the check reconciliation processing that followed the check creation process." | mutt -s "PRD - KFS-FMT-CKRECNE - Check Reconciliation Error Report - PDP Team Review" `att.sh cr_*.txt` FMNonOperatingFunds@fso.arizona.edu; exit 0;
+
+[KFS-FMT-BLINEFF => UAF-FORMAT-DLV-CHKBL]:
+ $HOME/bin/kfsbl.sh "kfsbottomline" "fru9Re3E" "https://legacy.fso.arizona.edu/isw/webservices/kfsbottomline.asp" "/home/tomcat/app/work/kfs/staging/pdp/paymentExtract/pdp_check*.xml" "/home/tomcat/app/work/kfs/archive/pdp" "PRD" "KFS-FMT-BLINEFF" "-c checkcontrol@fso.arizona.edu kfsbsa@list.arizona.edu" "Sending a PDP checks file to Bottomline failed" "Check files send to BottomLine failed" "Checks file sent to BottomLine" "Sent a PDP checks file to BottomLine"
+
+[KFS-FMT-STUINTE => UAF-FORMAT-DLV-CHKSARPT]:
+ cd /home/tomcat/app/work/kfs/reports/pdp; echo -e "%%$DATE %%TIME - Attached is/are the report(s) that show the results and/or provide information on any error conditions found, if any, as a result of any Student Interface files that were processed for the day." | mutt -s "PRD - KFS-FMT-STUINTE - KFS-FMT-STUINTE - Student Interface Check File" `att.sh pdp_sa_check_report*.txt` -c checkcontrol@fso.arizona.edu kfsbsa@list.arizona.edu -c BursarKFS@fso.arizona.edu FMNonOperatingFunds@fso.arizona.edu; exit 0;
+
+[KFS-FMT-BLBYPSS => NONE]:
+ echo "bypass"
+
+[KFS-FMT-ACHCF => UAF-FORMAT-TRF-ACH-WAIT]:
+ r=`echo PRD | tr '[:upper:]' '[:lower:]'`;s=`echo /integration/kfs/wellsfargo/ENV/outgoing/pdp_ach_%%$ODATE*.xml | sed "s/ENV/$r/"`;t=`ls $s |wc -l`;if [ "$t" -eq "0" ]; then echo finished;else echo working;fi
+
+[KFS-FMT-EMPTYA => UAF-FORMAT-ASM-CHKEMPTY]:
+ cd /home/tomcat/app/work/kfs/staging/pdp/paymentExtract/; shopt -s nullglob; for f in pdp_check_*.xml; do if [ `stat --printf="%s" "$f"` -lt 100  ]; then mv -v $f ../../../archive/pdp/;fi; done; exit 0;
+
+[KFS-FY1-PARME => NONE]:
+ echo -e "The autodisapprove process is being prepared to run soon, but has been placed on hold. Please review the following KFS parameters found within the KFS-SYS namespace to ensure they are set appropriately for the job to run as desired.\n\nYEAR_END_AUTO_DISAPPROVE_ANNOTATION\nYEAR_END_AUTO_DISAPPROVE_DOCUMENT_CREATE_DATE\nYEAR_END_AUTO_DISAPPROVE_DOCUMENT_RUN_DATE\nYEAR_END_AUTO_DISAPPROVE_DOCUMENT_TYPES\nYEAR_END_AUTO_DISAPPROVE_PARENT_DOCUMENT_TYPE\n\n----\n %%DATE %%TIME" | mutt -s "PRD - KFS-FY1-PARME - Review and Confirm Fiscal Year Close Autodisapprove Parameters - General Ledger Processing Team" FSO_KFS_Reports_Financial_Management@fso.arizona.edu; exit 0;
+
+[KFS-FY1-REPE => NONE]:
+ cd /home/tomcat/app/work/kfs/reports/sys; echo -e "%%$DATE %%TIME - Attached is/are the report(s) that show the results and/or provide information on any error conditions found, if any, as a result of any eInvoice files that were processed for the day." | mutt -s "PRD - KFS-FY1-REPE - Auto-Disapprove Information - Financial Management Team Review" `att.sh autoDisapproveErrors*.txt` FSO_KFS_Reports_Financial_Management@fso.arizona.edu; exit 0;
+
+[KFS-FY2-POSTR2E => NONE]:
+ cd /home/tomcat/app/work/kfs/reports/gl; echo "Please see the attached reports." | mutt -s "General Ledger reports" `att.sh scrubberJob_*.txt posterJob_*.txt balancing_*.txt` FSO_KFS_Reports_Financial_Management@fso.arizona.edu; exit 0;
+
+[KFS-FY2-EMAIL => NONE]:
+ echo -e "%%$DATE %%TIME - Review parameters for your organization revision for the current year" | mutt -s "PRD - KFS-FY2-EMAIL - Check year end" FSO_KFS_Reports_Financial_Management@fso.arizona.edu; exit 0;
+
+[KFS-FY2-EMAIL2 => NONE]:
+ cd /home/tomcat/app/work/kfs/staging/gl/correctionProcess/; echo -e "%%$DATE %%TIME - Review parameters for your organization revision for the current year" | mutt -s "PRD - KFS-FY2-EMAIL2 - General Ledger Correction Processing Information" `att.sh glcp*.data` FSO_KFS_Reports_Financial_Management@fso.arizona.edu; exit 0;
+
+[KFS-FY2-EMAIGL => NONE]:
+ cd /home/tomcat/app/work/kfs/reports/gl; echo -e "%%$DATE %%TIME - Notifying to process files created from prior processes with GLCP and that GL Scrubber job is on hold pending processing of file and tech team needs notified when ready to release." | mutt -s "PRD - KFS-FY2-EMAIGL - Labor Balance Forward Job" `att.sh year_end_nominal_activity_closing_*.txt` FSO_KFS_Reports_Financial_Management@fso.arizona.edu; exit 0;
+
+[KFS-FY2-EMAILB => NONE]:
+ echo -e "%%$DATE %%TIME - Review parameters for your organization revision for the current year" | mutt -s "PRD - KFS-FY2-EMAILB - Labor Balance Forward Processing Information -" FSO_KFS_Reports_Financial_Management@fso.arizona.edu; exit 0;
+
+[KFS-FY2-EMAIEM => NONE]:
+ echo -e "%%$DATE %%TIME -  Check the parms for Encumbrance Forward Job" | mutt -s "PRD - KFS-FY2-EMAIEM - Review parms for Encumbrance Forward Job" FSO_KFS_Reports_Financial_Management@fso.arizona.edu; exit 0;
+
+[KFS-FY2-EMLBREP => NONE]:
+ cd /home/tomcat/app/work/kfs/reports/ld; echo -e "%%$DATE %%TIME - The latest labor reports" | mutt -s "PRD - KFS-FY2-EMLBREP - Email latest labor reports" `att.sh llcp_*_*.txt laborScrubberJob_*.txt laborPosterJob_*.txt laborBalancing_*.txt labor_gl_summary_ledger_*.txt` FSO_KFS_Reports_Payroll_Accounting@fso.arizona.edu; exit 0;
+
+[KFS-FY2-EMAIL3 => NONE]:
+ cd /home/tomcat/app/work/kfs/staging/gl/; echo -e "%%$DATE %%TIME - Notifying that the notify to process files created from prior processes with GLCP and that GL Scrubber job is on hold pending processing of file and tech team needs notified when ready to release." | mutt -s "PRD - KFS-FY2-EMAIL3 - General Ledger Correction Process" `att.sh year_end_encumbrance_closing_*.txt` katt-automation@list.arizona.edu; exit 0;
+
+[KFS-FY2-EMAICP => NONE]:
+ cd /home/tomcat/app/work/kfs/reports/ld; echo -e "%%$DATE %%TIME - A data file has been produced from the execution of the laborbalanceforward process. This file can be reviewed within the LLCP or by downloading the file from the batch file link. The remaining jobs are on hold pending completion of the review of the data file created from this process to confirm that processing can continue accurately. File location/name - reports/ld/labor_year_end_balance_forward_*.txt" | mutt -s "PRD - KFS-FY2-EMAICP - LLCP and Labor scrubber on hold pending completion of this process" `att.sh labor_year_end_balance_forward_*.txt` FSO_KFS_Reports_Payroll_Accounting@fso.arizona.edu; exit 0;
+
+[KFS-FY3-POSTR3E => NONE]:
+ cd /home/tomcat/app/work/kfs/reports/gl; echo "Please see the attached reports." | mutt -s "General Ledger reports" `att.sh scrubberJob_*.txt posterJob_*.txt balancing_*.txt` FSO_KFS_Reports_Financial_Management@fso.arizona.edu; exit 0;
+
+[KFS-FY3-EMAIGL => NONE]:
+ echo -e "%%$DATE %%TIME - Notifying that the notify to process files created from prior processes with GLCP and that jobs are on hold pending processing of file and tech team needs notified when ready to release." | mutt -s "PRD - KFS-FY3-EMAIGL - General Ledger Correction Process" katt-automation@list.arizona.edu; exit 0;
+
+[KFS-FY3-EMAIL => NONE]:
+ echo -e "%%$DATE %%TIME -  Regarding the parms for nominalActivityClosing Job" | mutt -s "PRD - KFS-FY3-EMAIL - Review parms for nominal Activity Closing Job" FSO_KFS_Reports_Financial_Management@fso.arizona.edu; exit 0;
+
+[KFS-FY4-POSTR4E => NONE]:
+ cd /home/tomcat/app/work/kfs/reports/gl; echo "Please see the attached reports." | mutt -s "General Ledger reports" `att.sh scrubberJob_*.txt posterJob_*.txt balancing_*.txt` FSO_KFS_Reports_Financial_Management@fso.arizona.edu; exit 0;
+
+[KFS-FY4-EMAIL => NONE]:
+ echo -e "%%$DATE %%TIME - Review parameters for balanceForwardJob" | mutt -s "PRD - KFS-FY4-EMAIL - Check year end" FSO_KFS_Reports_Financial_Management@fso.arizona.edu; exit 0;
+
+[KFS-FY4-EMAIGL => NONE]:
+ cd /home/tomcat/app/work/kfs/reports/gl; echo -e "%%$DATE %%TIME - Notifying that the notify to process files created from prior processes with GLCP and that jobs are on hold pending processing of file and tech team needs notified when ready to release." | mutt -s "PRD - KFS-FY4-EMAIGL - General Ledger Correction Process" `att.sh year_end_balance_forward_*.txt` FSO_KFS_Reports_Rate_Studies@fso.arizona.edu; exit 0;
+
+[KFS-FYM-EMAIL => NONE]:
+ echo -e "The execution of the fiscal year maker process is ready to be ran, but has been placed on hold. Please review the KFS parameters (SOURCE_FISCAL_YEAR and OVERRIDE_TARGET_YEAR_DATA_IND) found within the KFS-SYS namespace to ensure they are set appropriately for the job to run as desired.\n\nAfter the parms have been reviewed and approved, please contact the KFS technical support team for the job to be released.\n\nProcurement & Contracting Services Reminder: AFTER this job has been approved by Financial Services and run by KFS technical support, update the parameter value for ALLOW_ENCUMBER_NEXT_YEAR_DAYS to open up Requisitions to the next fiscal year.\n\n----\n %%DATE %%TIME" | mutt -s "PRD - KFS-FYM-EMAIL - Review and confirm Fiscal Year Maker Parameters - PACS/AP Team Review" -c kfs_pacs_errors@list.arizona.edu kfsbsa@list.arizona.edu FSO_KFS_Reports_Financial_Management@fso.arizona.edu; exit 0;
+
+[KFS-GLE-ENTRFDE => UAF-GLENTFD-DLV-GLENTRPT]:
+ cd /home/tomcat/app/work/kfs/reports/gl; echo "%%$DATE %%TIME - Attached are the report(s) that provide the results associated with the external system interface file(s) processed for the general ledger. These reports will provide information with regard to statistics and errors found, if any, from the data files received as a result of the execution of the enterprise feed process." | mutt -s "PRD - KFS-GLE-ENTRFDE - Enterprise Feed Reporting - FP Team Review" `att.sh enterprise_feed_*.txt` -c kfsbsateam@list.arizona.edu dblev@email.arizona.edu FSO_KFS_Reports_Financial_Management@fso.arizona.edu; exit 0;
+
+[KFS-GLE-ENTRFDA => UAF-ARCHV-EXE-GLENTFD]:
+ cd /home/tomcat/app/work/kfs/staging/gl/enterpriseFeed/; touch *.data; mv -v *.data ../../../archive/gl; exit 0;
+
+[KFS-GLE-BYPASS => UAF-GLENTFD-EXE-BYPASS]:
+ echo "bypass"; exit 0;
+
+[KFS-GLE-BYPAS1S => UAF-GLCOLL-EXE-BYPASS]:
+ echo "bypass"; exit 0;
+
+[KFS-GLM-GLREPE => UAF-GLMAINT-DLV-GLRPTS]:
+ cd /home/tomcat/app/work/kfs/reports/gl; echo "%%$DATE %%TIME - Attached are the reports that provide the results associated with the batch processing for the general ledger. These reports will provide information with regard to statistics and errors found, if any, from any of the external files or internal documents processed associated with general ledger transactions, along with providing information on the condition of the general ledger balances." | mutt -s "PRD - KFS-GLM-GLREPE - General Ledger Processing Report(s) - FP Team Review" `att.sh glpe_ledger_*.txt glpe_list_*.txt sufficient_funds_*.txt scrubberJob_*.txt posterJob_*.txt balancing_*.txt` -c kfsbsateam@list.arizona.edu dblev@email.arizona.edu FSO_KFS_Reports_Financial_Management@fso.arizona.edu; exit 0;
+
+[KFS-GLM-CABRPE => UAF-GLCAPITAL-DLV-CABMISRPT]:
+ cd /home/tomcat/app/work/kfs/reports/cab; echo "%%$DATE %%TIME - Attached is the report reflecting errors found from processing the asset related data created within the purchasing and/or accounts payable areas. Please review these items and take action as necessary to correct these situations." | mutt -s "PRD - KFS-GLM-CABRPE - CAB Mismatch Report - CAM Team Review" `att.sh cab_batch_mismatch_report_*.pdf` propertymanagement@fso.arizona.edu; exit 0;
+
+[KFS-GLM-PURGES => UAF-PURGE-EXE-PRGARCHIVE]:
+ find /home/tomcat/app/work/kfs/archive -name eInvoice -prune -o -type f -mtime +90 -exec rm -v {} +;
+
+[KFS-GLM-GLCPE => UAF-GLNITEOUT-DLV-GLCPRPT]:
+ cd /home/tomcat/app/work/kfs/reports/gl; echo -e "%%$DATE %%TIME - Attached is/are the report(s) that show the results and/or provide information on any error conditions found, if any, as a result of the general ledger correction document files processed for the day.\n\nThis data will be further processed with any additional internal or external generated transactions for the general ledger and ultimately will be found within the entries and balances that make up the general ledger." | mutt -s "PRD - KFS-GLM-GLCPE - GLCP Results Report(s)" `att.sh glcp_*_*.txt` -c kfsbsateam@list.arizona.edu FSO_KFS_Reports_Financial_Management@fso.arizona.edu; exit 0;
+
+[KFS-GLM-CABRP2E => UAF-GLCAPITAL-DLV-CABRPT]:
+ cd /home/tomcat/app/work/kfs/reports/cab; echo "%%$DATE %%TIME - Attached is the summary report reflective of the general ledger processing that occurred during the nightly batch schedule for any asset related data." | mutt -s "PRD - KFS-GLM-CABRP2E - CAB Status Report - CAM Team Review" `att.sh cab_batch_status_report_*.pdf` propertymanagement@fso.arizona.edu; exit 0;
+
+[KFS-GLM-PURGE2S => UAF-PURGE-EXE-PRGEINVOICE]:
+ find /home/tomcat/app/work/kfs/archive/eInvoice/inactive -maxdepth 1 -type f -mtime +3653 -name \*.xml -exec rm {} \;
+
+[KFS-GLM-CLENUPS => UAF-PURGE-EXE-PRGBATCH]:
+ find /home/tomcat/app/work/kfs/ -path /home/tomcat/app/work/kfs/attachments -prune -o -path /home/tomcat/app/work/kfs/archive -prune -o -type f -name "uaz-em*.fin" -exec rm -v {} \+;
+
+[KFS-GLM-DOCWRES => UAF-DOCUWR-EXE-ARCHIVE]:
+ if [ "PRD" = "PRD" ]; then u=kfsftp;dcw=ftp.fso.arizona.edu;base="/home/tomcat/app/work/kfs";dirs="reports";ran="/home/tomcat/app/work/kfs/docuware_run.txt";if [ ! -e $ran ]; then touch -t 201101010000 $ran;fi;err=0;for d in $dirs;do find "$base/$d" -type f -newer $ran -not -empty -exec lftp -c "open -u $u, sftp://$dcw ; put ""'{}'""" \; ;e=$?;find "$base/$d" -type f -newer $ran -empty -exec ~/bin/dspace.sh '{}' $u $dcw \; ;if [ "$?" -ne "0" -o "$e" -ne "0" ]; then echo $d: failed;err=1;fi;done;if [ "$err" -eq "0" ]; then touch $ran;fi;fi
+
+[KFS-GLP-MONREPE => UAF-GLPRJE-DLV-GLRPTS]:
+ cd /home/tomcat/app/work/kfs/reports/gl; echo -e "%%$DATE %%TIME \nAttached are reports results associated with monthly PRJE batch process.\n\nAs a reminder, this should be the final processing item for the prior accounting period. Once confirmed, please inactivate the prior accounting period, which would prevent prior period accounting entries from posting. If any entry for prior period occurs after the inactivation, errors would be reported on the scrubber error report.\n\nReminder:\nAccounting Periods may be found in the following location in KFS:\nMaintenance Tab --> Chart Of Accounts Section --> Accounting Period Hyperlink" | mutt -s "PRD - KFS-GLP-MONREPE - General Ledger PRJE Processing Report(s) - FP Team Review" `att.sh scrubberJob_*.txt posterJob_*.txt balancing_*.txt` -c kfsbsateam@list.arizona.edu FSO_KFS_Reports_Financial_Management@fso.arizona.edu; exit 0;
+
+[KFS-GLP-CONFE => UAF-GLPRJE-DLV-PARME]:
+ echo -e "%%$DATE %%TIME - The monthly pro-rate journal entry process is ready to be ran, but has been placed on hold for parameter review.\n\nAfter the parameters have been reviewed and adjustments completed, as necessary, please contact the KFS technical support team for the schedule (Monthly PRJE) to be released for execution.\n\nIf notification is not received today to release the jobs for processing, the nightly batch processing will be held up until that event occurs.\n\nReminder:\n\nParameters can be found in the following location in KFS:\n\nAdministration Tab --> Configuration Section --> Functional Heading --> Parameter Hyperlink\nSelect KUALI-PRJE in the Namespace Code field before performing the 'Search'" | mutt -s "PRD - KFS-GLP-CONFE - Review and Confirm Monthly PRJE Parameters - FP Team Review" -c kfsbsateam@list.arizona.edu FSO_KFS_Reports_Financial_Management@fso.arizona.edu; exit 0;
+
+[KFS-GLP-PSTRE => UAF-GLPRJE-DLV-PRJERPTS]:
+ cd /home/tomcat/app/work/kfs/reports/prje; echo -e "%%$DATE %%TIME - Attached are the reports that provide the results associated with the batch processing after execution of the monthly PRJE process. This data will be further handled through the general ledger processing." | mutt -s "PRD - KFS-GLP-PSTRE - PRJE Processing Report(s) - FP Team Review" `att.sh prje_main_ledger_*.txt prje_audit_*.txt` -c kfsbsateam@list.arizona.edu FSO_KFS_Reports_Financial_Management@fso.arizona.edu; exit 0;
+
+[KFS-GLU-UNITGLA => UAF-ARCHV-EXE-GLCOLLXML]:
+ cd /home/tomcat/app/work/kfs/staging/gl/; touch *.xml *.data; mv -v collectorFlatFile/*.data collectorXml/*.xml ../../archive/gl/; exit 0;
+
+[KFS-GLU-COLECTE => UAF-GLCOLL-DLV-GLCOLLRPT]:
+ cd /home/tomcat/app/work/kfs/reports/gl; echo "%%$DATE %%TIME - Attached are the report(s) that provide the results associated with the external file(s) processed for the general ledger through the collector process. These reports will provide information with regard to statistics and errors found, if any, from the external interface data files received as a result of the execution of the collector process." | mutt -s "PRD - KFS-GLU-COLECTE - GL Collector Reporting - CRT Team Review" `att.sh collector_*.txt` -c kfsbsateam@list.arizona.edu FSO_KFS_Reports_Financial_Management@fso.arizona.edu; exit 0;
+
+[KFS-GPG-PARME => UAF-GLMANPRG-DLV-PARME]:
+ echo -e "The first execution of the Manual Purge process is ready to be ran, but has been placed on hold. Please review the KFS parameters found within the KFS-GL namespace to ensure they are set appropriately for the job to run as desired. \n\n----\n %%DATE %%TIME" | mutt -s "PRD - KFS-GPG-PARME - Review and Confirm Manual Purge Parameters - Financial Processing Team Review" FSO_KFS_Reports_Financial_Management@fso.arizona.edu; exit 0;
+
+[KFS-GSY-PSTBALE => NONE]:
+ cd home/tomcat/appwork/kfs/reports/gl; echo "Please see the attached reports." | mutt -s "Poster Balancing reports" `att.sh balancing_*.txt` FSO_KFS_Reports_Financial_Management@fso.arizona.edu; exit 0;
+
+[KFS-ICR-GLREPE => UAF-INDCOST-DLV-GLRPTS]:
+ cd /home/tomcat/app/work/kfs/reports/gl; echo "%%$DATE %%TIME - Attached are the reports that provide the results associated with the batch processing for the Indirect Cost Recovery Encumbrances. These reports will provide information with regard to statistics and errors found, if any, associated with the ICR general ledger transactions, along with providing information on the condition of the ICR general ledger balances." | mutt -s "PRD - KFS-ICR-GLREPE - Indirect Cost Recovery Processing Report(s) - FP Team Review" `att.sh scrubberJob_*.txt posterJob_*.txt balancing_*.txt` -c sponsor@email.arizona.edu kfsbsa@list.arizona.edu FSO_KFS_Reports_Financial_Management@fso.arizona.edu; exit 0;
+
+[KFS-IND-MTHCLSS => NONE]:
+ echo "placeholder"
+
+[KFS-IND-KBI => NONE]:
+ echo "placeholder job"
+
+[KFS-IND-NBNORMS => UAF-BEGIN-NORMALSTART]:
+ echo "placeholder job";
+
+[KFS-IND-HOLCLOS => UAF-BEGIN-LATESTART]:
+ echo "placeholder job";
+
+[KFS-IND-NBISGDS => UAF-END-SUMMARIZE]:
+ echo "placeholder job";
+
+[KFS-IND-AMCTFFS => NONE]:
+ echo "placeholder job";
+
+[KFS-LBI-LDE => UAF-LABORINT-DLV-CALCERERPT]:
+ cd /home/tomcat/app/work/kfs/reports/ld; echo -e "%%$DATE %%TIME - Attached is the report that shows the results and/or error conditions that have resulted from performing the ERE fringe calculations on the UAccess Employee interface files. The calculations would have occurred on any salary encumbrance, position budget, or payroll actuals files received.\n\nThis data will be further processed with any KFS generated transactions for the labor ledger and ultimately will be found within the entries and balances that make up the labor ledger, encumbrances, and the general ledger." | mutt -s "PRD - KFS-LBI-LDE - Fringe Calc Report - FP Team Review" `att.sh laborEreJob_*.txt` FSO_KFS_Reports_Payroll_Accounting@fso.arizona.edu; exit 0;
+
+[KFS-LBI-LDA => UAF-ARCHV-EXE-LABORINT]:
+ cd /home/tomcat/app/work/kfs/staging/ld/holding/complete; touch *.data; mv -v *.data ../../../../archive/ld/; exit 0;
+
+[KFS-LBI-LCPEREK => UAF-LABORINT-ASM-LLCPFILES]:
+ cd /home/tomcat/app/work/kfs/staging/ld/originEntry; ls -la; touch llcp*%%$DATE*.data; mv -v llcp*%%$DATE*.data llcp*%%$DATE*.done ../holding; ls -la ../holding;
+
+[KFS-LBI-LD2E => UAF-LABORINT-DLV-ENCADJRPT]:
+ cd /home/tomcat/app/work/kfs/reports/ld; echo -e "%%$DATE %%TIME - Attached is the report that shows the results and/or error conditions that have resulted from processing the UAccess Employee salary encumbrance interface file. The salary encumbrance adjustment results were determined based on the full salary encumbrance file received from the UAccess system and the current balances as they exist within the labor ledger.\n\nThis data will be further processed with any KFS generated transactions for the labor ledger and ultimately will be found within the entries and balances that make up the labor ledger, encumbrances, and the general ledger." | mutt -s "PRD - KFS-LBI-LD2E - Salary Encumbrance Adjustments Report - FP Team Review" `att.sh llEncumbranceAdjustmentReport*.txt` -c FSO_KFS_Reports_Rate_Studies@fso.arizona.edu  -c FSO_KFS_Reports_Financial_Management@fso.arizona.edu FSO_KFS_Reports_Payroll_Accounting@fso.arizona.edu; exit 0;
+
+[KFS-LBM-LABREPE => UAF-LABORMNT-DLV-LABPRRPT]:
+ cd /home/tomcat/app/work/kfs/reports/ld; echo "%%$DATE %%TIME - Attached are the reports that provide the results associated with the batch processing for the labor ledger. These reports will provide information with regard to statistics and errors found, if any, from any external files or internal documents processed associated with labor transactional data, along with providing information on the condition of the labor ledger balances." | mutt -s "PRD - KFS-LBM-LABREPE - Labor Ledger Processing Report(s) - FP Team Review" `att.sh llpe_ledger_*.txt laborScrubberJob_*.txt laborBalancing_*.txt laborPosterJob_*.txt` FSO_KFS_Reports_Payroll_Accounting@fso.arizona.edu; exit 0;
+
+[KFS-LBM-RPOST1E => UAF-LABORMNT-DLV-LABRPTS]:
+ cd /home/tomcat/app/work/kfs/reports/ld; echo -e "Attached are the reports that provide the results associated with the batch processing for the labor ledger after the execution of the ERE Budget sweep job. These reports provide the scrubber and poster information with regard to statistics and errors found, if any, from the data created as a result of the execution of this process.\n\nThis report notification should be followed by another email that will provide the remainder of the labor ledger associated reports.\n\nSent: %%$DATE %%TIME" | mutt -s "PRD - KFS-LBM-RPOST1E - Labor Processing Report(s) AFTER Fringe Budget Sweep - FP Team Review" `att.sh laborScrubberJob_*.txt laborPosterJob_*.txt` -c FSO_KFS_Reports_Financial_Management@fso.arizona.edu FSO_KFS_Reports_Payroll_Accounting@fso.arizona.edu; exit 0;
+
+[KFS-LBM-LLCPE => UAF-LABORMNT-DLV-LLCPRPT]:
+ cd /home/tomcat/app/work/kfs/reports/ld; echo -e "%%$DATE %%TIME - Attached is/are the report(s) that show the results and/or provide information on any error conditions found, if any, as a result of the labor ledger correction document files processed for the day.\n\nThis data will be further processed with any additional internal or external generated transactions for the labor ledger and ultimately will be found within the entries and balances that make up the labor ledger and the general ledger." | mutt -s "PRD - KFS-LBM-LLCPE - LLCP Results Report(s)" `att.sh llcp_*_*.txt` -c FSO_KFS_Reports_Financial_Management@fso.arizona.edu FSO_KFS_Reports_Payroll_Accounting@fso.arizona.edu; exit 0;
+
+[KFS-LBM-RPOST2E => UAF-LABORMNT-DLV-ERESWRPTS]:
+ cd /home/tomcat/app/work/kfs/reports/ld; echo -e "Attached are the additional reports that provide the results associated with the batch processing for the labor ledger after the execution of the ERE Budget sweep job. These reports will provide information on the condition of the labor ledger balances, along with a report that provides the summary data that will feed to the GL.\n\nThis data will be further processed with the remainder of the generated ledger transactions from other internal and external areas and ultimately be found within the entries and balances that make up the general ledger.\n\nSent: %%$DATE %%TIME" | mutt -s "PRD - KFS-LBM-RPOST2E - Labor Processing Report(s) AFTER Fringe Budget Sweep - FP Team Review" `att.sh laborBalancing_*.txt labor_gl_summary_ledger_*.txt` -c FSO_KFS_Reports_Financial_Management@fso.arizona.edu FSO_KFS_Reports_Payroll_Accounting@fso.arizona.edu; exit 0;
+
+[KFS-LPG-PARME => UAF-LABORPRG-DLV-PARME]:
+ echo -e "The first execution of the Labor Purge process is ready to be ran, but has been placed on hold. Please review the KFS parameters found within the KFS-LD namespace to ensure they are set appropriately for the job to run as desired. \n\n----\n %%DATE %%TIME" | mutt -s "PRD - KFS-LPG-PARME - Review and Confirm Labor Purge Parameters - Labor Ledger Team Review" FSO_KFS_Reports_Financial_Management@fso.arizona.edu; exit 0;
+
+[KFS-LSY-LBRBALE => NONE]:
+ cd /home/tomcat/app/work/kfs/reports/ld; echo -e "Please see the attached reports." | mutt -s "Labor Balancing reports" `att.sh laborBalancing_*.txt` FSO_KFS_Reports_Financial_Management@fso.arizona.edu; exit 0;
+
+[KFS-PCD-CARDA => UAF-ARCHV-EXE-PCARDT]:
+ cd /home/tomcat/app/work/kfs/staging/fp/procurementCardHolder; ll; ll ../procurementCard; touch *.xml; mv -v *.xml ../procurementCard/*.xml ../../../archive/fp/; ls -la ../../../archive/fp/; exit 0;
+
+[KFS-PCD-HOLDAYS => NONE]:
+ echo "placeholder"
+
+[KFS-PCD-PCDOAAE => UAF-PCARDT-DLV-AUTORPT]:
+ cd /home/tomcat/app/work/kfs/reports/fp; echo -e "%%$DATE %%TIME - Attached is/are the report(s) that show the results and/or provide information on any error conditions found, if any, as a result of  PCDO validation errors thrown during the PCDO auto approve process." | mutt -s "PRD - KFS-PCD-PCDOAAE - PCard Validation Errors - PACS/AP Team Review" `att.sh pcdo_reroute_errors_*.txt` -c kfs_pcard_errors@list.arizona.edu kfsbsa@list.arizona.edu; exit 0;
+
+[KFS-PCD-PKBYPSS => NONE]:
+ echo "bypass"
+
+[KFS-PCD-PCBYPSS => NONE]:
+ echo "bypass"
+
+[KFS-PCD-CHBYPSS => NONE]:
+ echo "bypass"
+
+[KFS-PCD-TRBYPSS => NONE]:
+ echo "bypass"
+
+[KFS-PCD-TRANSCF => UAF-PCARDT-TRF-JPMC-WAIT]:
+ $HOME/bin/kfspcdo.sh "PRD" "/integration/kfs/jpmc/ENV" "US63978-K*xml" "US63978-K*txt" "KFS-PCD-TRANSCF" "JPMC Transaction File Statistics" "-c kfs_pcard_errors@list.arizona.edu kfsbsa@list.arizona.edu"
+
+[KFS-PCD-CARDCF => UAF-PCARDH-TRF-JPMC-WAIT]:
+ $HOME/bin/kfspcdh.sh "PRD" "/integration/kfs/jpmc/ENV" "US63978-C*xml" "US63978-C*txt" "KFS-PCD-CARDCF" "JPMC Cardholder File Statistics" "-c kfs_pcard_errors@list.arizona.edu kfsbsa@list.arizona.edu"
+
+[KFS-PDP-DLYREPE => NONE]:
+ cd /home/tomcat/app/work/kfs/reports/pdp; echo -e "%%$DATE %%TIME - Attached is/are the report(s) that reflect the summary breakdown by type and source of payments that are ELIGIBLE to be formatted via the online process based on the date(s) shown on the corresponding report(s). This will not necessarily reflect all of the payment data that is sitting within the PDP area of the system awaiting a payment date to be achieved.\n\nThe report(s) may also not reflect or tie to an actual check file that is ultimately produced for a particular day due to changes that can occur within the PDP area of the system, such as moving a payment to 'immediate' or placing a payment on hold, prior to performing the actual format process that would affect the payments that actually are made." | mutt -s "PRD - KFS-PDP-DLYREPE - PDP Daily Report(s) - PDP/AP/CRT Team Review" `att.sh pdp_daily_*.pdf` checkcontrol@fso.arizona.edu; exit 0;
+
+[KFS-PDP-PDPCANA => UAF-ARCHV-EXE-PDP]:
+ cd /home/tomcat/app/work/kfs/staging/pdp/paymentExtract; touch pdp_cancel_%%$DATE*.xml; mv -v pdp_cancel_%%$DATE*.xml ../../../archive/pdp/; exit 0;
+
+[KFS-PDP-LEDGERE => UAF-PDP-DLV-PDPLEDRPT]:
+ cd /home/tomcat/app/work/kfs/reports/pdp; echo "%%$DATE %%TIME - Attached is/are the report(s) that show the general ledger transaction data that was produced from the payment processing within the PDP. This data will be further processed with the remainder of the generated ledger transactions from other internal and external areas and ultimately be found within the entries and balances that make up the general ledger." | mutt -s "PRD - KFS-PDP-LEDGERE - General Ledger Report(s) from PDP - FP/PDP/AP Review Teams" `att.sh pdp_ledger_*.txt` -c checkcontrol@fso.arizona.edu kfsbsa@list.arizona.edu FMNonOperatingFunds@fso.arizona.edu; exit 0;
+
+[KFS-PDP-DAILYRE => UAF-PDP-DLV-DAILYRPT]:
+ cd /home/tomcat/app/work/kfs/reports/pdp; echo -e "%%$DATE %%TIME - Attached is/are the report(s) that reflect the summary breakdown by type and source of payments that are ELIGIBLE to be formatted via the online process based on the date(s) shown on the corresponding report(s).  This will not necessarily reflect all of the payment data that is sitting within the PDP area of the system awaiting a payment date to be achieved.\n\nThe report(s) may also not reflect or tie to an actual check file that is ultimately produced for a particular day due to changes that can occur within the PDP area of the system, such as moving a payment to 'immediate' or placing a payment on hold, prior to performing the actual format process that would affect the payments that actually are made." | mutt -s "PRD - KFS-PDP-DAILYRE - PDP Daily Report(s) - AP/PDP Team Review" `att.sh pdp_daily_*.pdf` checkcontrol@fso.arizona.edu; exit 0;
+
+[KFS-RED-BATSTS => UAF-BEGIN-EXE-SETMAINT]:
+ cd /var/opt/kuali/tomcat/kfs/webapps/kfs-prd/static/images; echo 1 > maint.txt; mkdir /home/tomcat/app/work/kfs/reports/emailed; mkdir $HOME/bin; echo -e "#!/bin/bash\nIND_DIR=/home/tomcat/app/work/kfs/reports/emailed;\nCOUNT=0;\nfor FILE in \$@;\ndo if [ -s \"\$FILE\" ] && [ ! -e \"\$IND_DIR/\$FILE.emailed\" ];\nthen\n  echo -n \"-a \$FILE \"\n  touch \"\$IND_DIR/\${FILE}.emailed\"\n  let COUNT+=1\nfi\ndone\nif [ \"\$COUNT\" -eq \"0\" ];\nthen\n  \`kill -s INT \$\$\`\nfi" > $HOME/bin/att.sh; chmod u+x $HOME/bin/att.sh; echo -e "#!/bin/bash\nCOUNT=0;\nfor FILE in \$@;\ndo if [ -s \"\$FILE\" ];\nthen\n  echo -n \"-a \$FILE \"\n  let COUNT+=1\nfi\ndone\nif [ \"\$COUNT\" -eq \"0\" ];\nthen\n  \`kill -s INT \$\$\`\nfi" > $HOME/bin/att2.sh; chmod u+x $HOME/bin/att2.sh; cat $HOME/bin/att.sh; cat $HOME/bin/att2.sh;
+
+[KFS-RED-BATENDS => UAF-END-EXE-UNSETMAINT]:
+ cd /var/opt/kuali/tomcat/kfs/webapps/kfs-prd/static/images; rm maint.txt
+
+[KFS-RED-BTTMLNS => UAF-FORMAT-INI-SCRIPT]:
+ echo -e '#/bin/bash\nu=$1\np=$2\nurl=$3\nshift\nshift\nshift\nfor f in `dir $1`\ndo\nx=`php -f $HOME/bin/urlencode.php<$f`\nif [ "$3" != "PRD" ]; then\nca="--cacert $HOME/sslcerts/devfso-cert.pem"\nfi\necho -n "xml=$x"|curl $ca -d "userid=$u" -d "pass=$p" -d "@-" $url\nif [ "$?" -ne "0" ]; then\necho -e "$6: $f"|mutt -s "\050$3\051 FAILURE: $4 - $7" $5\nelse\necho -e "$8: $f"|mutt -s "\050$3\051 SUCCESS: $4 - $9" $5\nmv $f $2\nfi\ndone'>$HOME/bin/kfsbl.sh;chmod u+x $HOME/bin/kfsbl.sh;cat $HOME/bin/kfsbl.sh; echo -e '<?php\n$f=file_get_contents("php://stdin");\necho urlencode($f);\n?>'>$HOME/bin/urlencode.php;chmod u+x $HOME/bin/urlencode.php;cat $HOME/bin/urlencode.php;
+
+[KFS-RED-DOCWRES => UAF-DOCUWR-INI-SCRIPT]:
+ echo -e '#/bin/bash\nf=`ls -1 "$1" | tr '\''\\n'\' \''\\0'\'' | xargs -0 -n 1 basename`\nu=$2\ndcw_host=$3\necho -n " " >"/tmp/$f"\nlftp -c '\"open -u '$u, sftp://$dcw_host ; put '\'/tmp/\$f\'\">$HOME/bin/dspace.sh;chmod u+x $HOME/bin/dspace.sh;cat $HOME/bin/dspace.sh
+
+[KFS-RED-PCDHS => UAF-PCARDH-INI-SCRIPT]:
+ echo -e '#/bin/bash\nr=`echo $1|tr '[:upper:]' '[:lower:]'`\ns=`echo $2|sed "s/ENV/$r/"`\nx=$3\nt=$4\ncd $s/outgoing\nn=`ls $t|wc -l`\nif [ "$n" -eq "0" ]; then\ncd ../incoming\nn=`ls $t|wc -l`\nif [ "$n" -ne "0" ]; then\nw=`grep -s "^ 20" $t|wc -l`\ncd ../outgoing\nz=`grep -s "<cardHolder>" $x|wc -l`\nif [ "$w" -eq "$z" ]; then\nm="PCDH files:\\n"\ncd ../incoming\nfor c in `ls $t`\ndo m="$m`du -h $c` - `grep -s "^ 20" $c|wc -l` cardholders \\n"\ndone\ncd ../outgoing\nm="$m\\nXML files: `ls $x|wc -l`\\n"\nm="${m}Transformed cardholders: $z"\necho -e "$m"|mutt -s "\050$1\051 $5 - $6" $7\necho finished\nelse echo working\nfi\nelse echo finished\nfi\nelse echo working\nfi\nexit 0'>$HOME/bin/kfspcdh.sh;chmod u+x $HOME/bin/kfspcdh.sh;cat $HOME/bin/kfspcdh.sh
+
+[KFS-RED-PCDOS => UAF-PCARDT-INI-SCRIPT]:
+ echo -e '#/bin/bash\nr=`echo $1|tr '[:upper:]' '[:lower:]'`\ns=`echo $2|sed "s/ENV/$r/"`\nx=$3\nt=$4\ncd $s/outgoing\nn=`ls $t|wc -l`\nif [ "$n" -eq "0" ]; then\ncd ../incoming\nn=`ls $t|wc -l`\nif [ "$n" -ne "0" ]; then\nw=`grep -s "^ 30" $t|wc -l`\ncd ../outgoing\nz=`grep -s "<transaction>" $x|wc -l`\nif [ "$w" -eq "$z" ]; then\nm="PCDO Files:\\n"\ncd ../incoming\nfor c in `ls $t`\ndo m="$m`du -h $c` - `grep -s "^ 30" $c|wc -l` transactions\\n"\ndone\ncd ../outgoing\nm="$m\\nXML files: `ls $x|wc -l`\\n"\nm="${m}Transformed transactions: $z"\necho -e "$m"|mutt -s "\050$1\051 $5 - $6" $7\necho finished\nelse echo working\nfi\nelse echo finished\nfi\nelse echo working\nfi\nexit 0'>$HOME/bin/kfspcdo.sh;chmod u+x $HOME/bin/kfspcdo.sh;cat $HOME/bin/kfspcdo.sh
+
+[KFS-ACH-BNKDTAE => UAF-ACHLOAD-DLV-ACHRPTS]:
+ cd /home/tomcat/app/work/kfs/reports/pdp; ls -la; echo "%%$DATE %%TIME - Attached are the reports that provides the results of processing the ACH bank setup information from both the UAccess Employee and UAccess Student interface files. These reports should be reviewed for any issues that resulted from processing these files. This interface process could have resulted in some default bank information having been established that will need updated appropriately." | mutt -s "PRD - KFS-ACH-BNKDTAE - ACH Interface Reporting 1 - AP Team Review" `att.sh pdpLoadBankDataJob-ach_bank_audit_report_*.txt` checkcontrol@fso.arizona.edu; exit 0;
+
+[KFS-ACH-BANKA => UAF-ARCHV-EXE-ACHLOADPAY]:
+ touch /home/tomcat/app/work/kfs/staging/pdp/achPayeeBankAccounts/*.data /home/tomcat/app/work/kfs/staging/pdp/achBanks/*.data; mv /home/tomcat/app/work/kfs/staging/pdp/achBanks/*.data /home/tomcat/app/work/kfs/staging/pdp/achPayeeBankAccounts/*.data    /home/tomcat/app/work/kfs/archive/pdp/; exit 0;
+
+[KFS-ACH-BNKDT2E => NONE]:
+ cd /home/tomcat/app/work/kfs/reports/pdp; ls -la; echo "%%$DATE %%TIME - Attached are the reports that show the results of processing the ACH/Direct Deposit setup information from both the UAccess Employee and UAccess Student interface files. These reports should be reviewed for any issues that resulted from processing these files as this will effect what type and to which account a payment would occur for anyone scheduled to receive a payment from the Kuali Financial System." | mutt -s "PRD - KFS-ACH-BNKDT2E - ACH Interface Reporting 2 - AP Team Review" `att.sh pdpLoadPayeeACHDataJob-payee_ach_audit_report_*.txt` checkcontrol@fso.arizona.edu; exit 0;
+
+[KFS-SAI-ODCHKA => UAF-ARCHV-EXE-PREPAID]:
+ cd /home/tomcat/app/work/kfs/staging/pdp/prepaidChecks/; touch *.xml; mv -v *.xml ../../../archive/pdp/; exit 0;
+
+[KFS-SAI-PPDCHKE => UAF-PREPAID-DLV-PREPDRPT]:
+ cd /home/tomcat/app/work/kfs/reports/pdp/prepaidChecks/; echo "%%$DATE %%TIME - Attached is the report that shows the results and/or provides information on the results of the payment interface file(s) processed for the day." | mutt -s "PRD - KFS-SAI-PPDCHKE - SA/HCM Payment Interface Report - PDP/AP Team Review" `att.sh *.xml.report` pdp@fso.arizona.edu; exit 0;
+
+[KFS-SAI-ZEROBTA => UAF-PREPAID-ASM-CHKEMPTY]:
+ cd /home/tomcat/app/work/kfs/staging/pdp/prepaidChecks/; touch *.xml; shopt -s nullglob; for f in *.xml; do if [ ! -s "$f" ]; then mv -v $f ../../../archive/pdp/;fi; done; exit 0;
+
+[KFS-SUP-PAYMTSA => UAF-ARCHV-EXE-PDPPAYMT]:
+ cd /home/tomcat/app/work/kfs/staging/pdp/paymentImport/; touch *.xml; mv -v *.xml ../../../archive/pdp/; exit 0;
+
+[KFS-SAI-ODCHKA => UAF-ARCHV-EXE-PREPAID]:
+ cd /home/tomcat/app/work/kfs/staging/pdp/prepaidChecks/; touch *.xml; mv -v *.xml ../../../archive/pdp/; exit 0;
+
+[KFS-SAI-PPDCHKE => UAF-PREPAID-DLV-PREPDRPT]:
+ cd /home/tomcat/app/work/kfs/reports/pdp/prepaidChecks/; echo "%%$DATE %%TIME - Attached is the report that shows the results and/or provides information on the results of the payment interface file(s) processed for the day." | mutt -s "PRD - KFS-SAI-PPDCHKE - SA/HCM Payment Interface Report - PDP/AP Team Review" `att.sh *.xml.report` pdp@fso.arizona.edu; exit 0;
+
+[KFS-SAI-HRBYPS => NONE]:
+ echo "placeholder"; exit 0;
+
+[KFS-SAI-ZEROBTA => UAF-PREPAID-ASM-CHKEMPTY]:
+ cd /home/tomcat/app/work/kfs/staging/pdp/prepaidChecks/; touch *.xml; shopt -s nullglob; for f in *.xml; do if [ ! -s "$f" ]; then mv -v $f ../../../archive/pdp/;fi; done; exit 0;
+
+[KFS-SAI-HOCHKE => UAF-PREPAID-DLV-HCMOFFRPT]:
+ cd /home/tomcat/app/work/kfs/staging/pdp/prepaidChecks; echo -e "%%$DATE %%TIME - Attached is/are the report(s) that show the results and/or provide information on any error conditions found, if any, as a result of any eInvoice files that were processed for the day." | mutt -s "PRD - KFS-SAI-HOCHKE - HCM off-cycle checks - PDP/APTeam Review" `att.sh PSHCM_OFFCYCLE_*.csv` -c checkcontrol@fso.arizona.edu kfsbsa@list.arizona.edu kfsbsateam@list.arizona.edu FMNonOperatingFunds@fso.arizona.edu; exit 0;
+
+[KFS-SHP-SHIPA => UAF-ARCHV-EXE-SHIPPING]:
+ cd /home/tomcat/app/work/kfs/staging/pdp/shipping/; touch *.xml; mv *.xml ../../../archive/pdp/; exit 0;
+
+[KFS-SHP-FEDBYPS => NONE]:
+ echo "placeholder"
+
+[KFS-SHP-DAILYRE => UAF-PDPRPT-DLV-DAILYRPT]:
+ cd /home/tomcat/app/work/kfs/reports/pdp; echo -e "%%$DATE %%TIME - Attached is/are the report(s) that reflect the summary breakdown by type and source of payments that are ELIGIBLE to be formatted via the online process based on the date(s) shown on the corresponding report(s).  This will not necessarily reflect all of the payment data that is sitting within the PDP area of the system awaiting a payment date to be achieved.\n\nThe report(s) may also not reflect or tie to an actual check file that is ultimately produced for a particular day due to changes that can occur within the PDP area of the system, such as moving a payment to 'immediate' or placing a payment on hold, prior to performing the actual format process that would affect the payments that actually are made." | mutt -s "PRD - KFS-SHP-DAILYRE - PDP Daily Report(s) - AP/PDP Team Review" `att.sh pdp_daily_*.pdf` %%TO_FSO_FEDEX_ADMIN; exit 0;
+
+[KFS-SHP-SHIPCF => UAF-SHIP-TRF-FEDEX-WAIT]:
+ s=`echo /integration/kfs/fedex/ENV/incoming/fedex* | sed 's/ENV/PRD/'| tr '[:upper:]' '[:lower:]'`;t=`ls $s |wc -l`;if [ "$t" -eq "0" ]; then echo finished;else echo working;fi
+
+[KFS-SHP-REMITE => UAF-SHIP-DLV-REMITLIST]:
+ s=`echo /integration/kfs/fedex/ENV/outgoing/fedex_remit* | sed 's/ENV/PRD/'| tr '[:upper:]' '[:lower:]'`;for f in `dir $s`;do echo -e "%%$DATE %%TIME - Attached is a copy of a Fedex remittance that is being sent electronically to Fedex."|mutt -s "(PRD) KFS-SHP-REMITE - Fedex Remittance File" -a $f -c checkcontrol@fso.arizona.edu kfsbsa@list.arizona.edu Fedex_admin@fso.arizona.edu;done; exit 0;
+
+[KFS-SHP-RMTBYPS => NONE]:
+ echo "placeholder"
+
+[KFS-SHP-SHIPA => UAF-ARCHV-EXE-SHIPPING]:
+ cd /home/tomcat/app/work/kfs/staging/pdp/shipping/; touch *.xml; mv *.xml ../../../archive/pdp/; exit 0;
+
+[KFS-SHP-DAILYRE => UAF-PDPRPT-DLV-DAILYRPT]:
+ cd /home/tomcat/app/work/kfs/reports/pdp; echo -e "%%$DATE %%TIME - Attached is/are the report(s) that reflect the summary breakdown by type and source of payments that are ELIGIBLE to be formatted via the online process based on the date(s) shown on the corresponding report(s).  This will not necessarily reflect all of the payment data that is sitting within the PDP area of the system awaiting a payment date to be achieved.\n\nThe report(s) may also not reflect or tie to an actual check file that is ultimately produced for a particular day due to changes that can occur within the PDP area of the system, such as moving a payment to 'immediate' or placing a payment on hold, prior to performing the actual format process that would affect the payments that actually are made." | mutt -s "PRD - KFS-SHP-DAILYRE - PDP Daily Report(s) - AP/PDP Team Review" `att.sh pdp_daily_*.pdf` %%TO_FSO_FEDEX_ADMIN; exit 0;
+
+[KFS-SHP-REMITE => UAF-SHIP-DLV-REMITLIST]:
+ s=`echo /integration/kfs/fedex/ENV/outgoing/fedex_remit* | sed 's/ENV/PRD/'| tr '[:upper:]' '[:lower:]'`;for f in `dir $s`;do echo -e "%%$DATE %%TIME - Attached is a copy of a Fedex remittance that is being sent electronically to Fedex."|mutt -s "(PRD) KFS-SHP-REMITE - Fedex Remittance File" -a $f -c checkcontrol@fso.arizona.edu kfsbsa@list.arizona.edu Fedex_admin@fso.arizona.edu;done; exit 0;
+
+[KFS-SHP-RMTBYPS => NONE]:
+ echo "placeholder"
+
+[KFS-SUP-PAYMTSA => UAF-ARCHV-EXE-PDPPAYMT]:
+ cd /home/tomcat/app/work/kfs/staging/pdp/paymentImport/; touch *.xml; mv -v *.xml ../../../archive/pdp/; exit 0;
+
+[KFS-TXE-331E => UAF-TAXEXTR-DLV-PARME]:
+ echo "The first execution of the 1099 payee extract process for the new year is ready to be ran, but has been placed on hold. Please review the KFS parameters to ensure they are set appropriately.\n\nAfter the parameters have been reviewed and adjustments completely approved, as necessary, please contact the KFS technical support team for the payee extract schedule (1099 Tax) to be released for execution. If the tech team does not receive notification today to release the jobs for processing, the nightly batch processing will be held up until that event occurs.\n\nReminder:\n\nParameters can be found in KFS:\n\nAdministration Tab --> Parameter Hyperlink\nSelect KUALI-TAX in the Namespace Code field before performing the 'Search'\n----\n %%DATE %%TIME" | mutt -s "PRD - KFS-TXE-331E - Review and Confirm Annual 1099 Extract Parameters - AP Team Review" fso_1099reportingteam@fso.arizona.edu; exit 0;
+
+[KFS-TXF-EMAILJ => NONE]:
+ echo -e "%%$DATE %%TIME - Please confirm/update 1099 form parms and that the current year IRS1099 form has been loaded into KFS. There are 1099 parameters that have the coordinates for this form. These parameters may be adjusted each year. Also notify development that KFS-TXF-EMAIL will need to be updated to look in the current year directory." | mutt -s "PRD - KFS-TXF-EMAILJ - 1099 Tax Processing Information" fso_1099reportingteam@fso.arizona.edu; exit 0;
+
+[KFS-TXF-EMAIL => NONE]:
+ echo "placeholder job";
+
+[KFS-VND-ASUE => NONE]:
+ cd /home/tomcat/app/work/kfs/staging/pdp/ecustoms; echo "Please see the attached reports." | mutt -s "ASU customs file" -a UA_ECUSTOMS.data UAecustoms@fso.arizona.edu; exit 0;
+
+[KFS-WFL-INGXMLA => UAF-ARCHV-EXE-WORKFLOW]:
+ cd /home/tomcat/app/work/kfs/staging/workflow/ingestion; touch *.xml; mv *.xml ../../../archive/workflow/; exit 0;
+
+[KFS-WML-NBMONS => NONE]:
+ echo "placeholder job"
+

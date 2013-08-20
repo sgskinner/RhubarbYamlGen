@@ -75,23 +75,39 @@ public class YamlGenerator {
 	}
 	
 	
-	public static void findMuttJobs(boolean replaceVariables){
+	public static void generateCmdLineFile(boolean replaceVariables){
 		
+		String outputDir = "data/output/";
+		String filename = "commandLineJobs.txt";
+		
+		Map<String, String> oldToNewNameMap = getOldToNewNameMap();
 		XmlDriver xmlDriver = new XmlDriver("data/input/controlm_prd_2013-07-22.xml");
 		List<JOBType> jobs =  xmlDriver.getAllJobs();
 		
+		StringBuffer sb = new StringBuffer();
 		for(JOBType job : jobs){
-			
+
 			String cmd = job.getCMDLINE();
-			if(StringUtils.isNotBlank(cmd)){
-				if (replaceVariables) {
-					cmd = replaceTokens(job, cmd);
-				}
-				String name = job.getJOBNAME();
-				System.out.printf("%-15s: %s%n%n", name, cmd);
+			if(cmd == null){
+				// Not all jobs have a CMDLINE element
+				continue;
 			}
 			
+			if (replaceVariables) {
+					cmd = replaceTokens(job, cmd);
+			}
+			
+			String legacyName = job.getJOBNAME();
+			String newName = oldToNewNameMap.get(legacyName);
+			if(newName == null){
+				newName = "NONE";
+			}
+			String commandInfo = String.format("[%s => %s]:%n %s%n%n", legacyName, newName, cmd);
+			sb.append(commandInfo);
+			
 		}//for
+		
+		FileUtils.writeStringToFile(outputDir + filename, sb.toString());
 		
 	}
 	
@@ -324,7 +340,8 @@ public class YamlGenerator {
 	public static void main(String[] sgs) {
 		//YamlGenerator.generateStubYaml();
 		//findMuttJobs(true);
-		generateCmdLineYaml();
+		//generateCmdLineYaml();
+		generateCmdLineFile(true);
 	}
 
 }
