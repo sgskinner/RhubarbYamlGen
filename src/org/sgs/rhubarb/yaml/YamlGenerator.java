@@ -34,90 +34,105 @@ public class YamlGenerator {
                                                        "JOSH_SHALOO_ADDRESS",
            											   "SCOTT_SKINNER_ADDRESS"};
 	
-	private static String generateJobYaml(String filePrefix, JOBType job){
-		// Instantiate an ordered data structure
-		Set<YamlEntry> entrySet = new TreeSet<YamlEntry>();
-
-		// Now make one of each type Yaml
-		String value = "";//TODO: Find easy way to get this, its not clear in xml how to
-		YamlEntry entry = new AttachmentsDirEntry(value);
-		entrySet.add(entry);
-
-		String[] valueArray = new String[]{};
-		entry = new AttachmentsGlobsEntry(valueArray);
-		entrySet.add(entry);
-
-		valueArray = new String[]{};
-		entry = new CcRecipientsEntry(valueArray);
-		entrySet.add(entry);
-
-		value = filePrefix;
-		entry = new JobNameEntry(value);
-		entrySet.add(entry);
-
-		String message = "This is a generic message for the " + filePrefix + " job.";
-		entry = new MessageEntry(message);
-		entrySet.add(entry);
-
-		entry = new OutputEntry();
-		entrySet.add(entry);
-
-		entry = new StartEntry();
-		entrySet.add(entry);
-
-		valueArray = new String[]{"DEV", filePrefix, "Automated Test Email"};
-		entry = new SubjectEntry(valueArray[0], valueArray[1], valueArray[2]);
-		entrySet.add(entry);
+	
+	/*
+	 * Generate generic YAML for *DLV* jobs and job-streams
+	 */
+	public static void generateGenericDlvYaml(){
 		
-		entry = new ToRecipientsEntry(TEST_EMAILS);
-		entrySet.add(entry);
+		String outputDir = "data/output/generic_yaml/";
 		
-		StringBuffer sb = new StringBuffer();
-		for(YamlEntry newEntry : entrySet) {
-			sb.append(newEntry);
+		Set<String> names = getNewDlvNames();
+		
+		Map<String, String> fileNameToConfigMap = getGenericYaml(names);
+		
+		for(Entry<String, String> entry : fileNameToConfigMap.entrySet()){
+			String filename = entry.getKey();
+			String configAsString = entry.getValue();
+			FileUtils.writeStringToFile(outputDir + filename, configAsString);
 		}
-		String actualResult = sb.toString();
-		
-		return actualResult;
+
 	}
 	
 	
 	/*
-	 * A filePrefix is a job name, job-stream name, group name, table-name, etc.
-	 * The idea being, we generate a config file for any Control-M construct, even if
-	 * the Control-M isn't currently wired to use the YAML config.
+	 * Generate generic YAML for *DLV* jobs and job-streams
 	 */
-	public static void generateStubYaml(){
+	public static void generateCmdLineYaml(){
 		
-		// Build unique set of job-stream names
-		Set<String> names = new TreeSet<String>();
-		List<String> lines = FileUtils.getLines("data/input/oldToNewJobNames.csv");
-		for(String line : lines){
+		String outputDir = "data/output/cmdline_yaml/";
+		
+		Set<String> names = getCmdLineNames();
+		
+		Map<String, String> fileNameToConfigMap = getGenericYaml(names);
+		
+		for(Entry<String, String> entry : fileNameToConfigMap.entrySet()){
+			String filename = entry.getKey();
+			String configAsString = entry.getValue();
+			FileUtils.writeStringToFile(outputDir + filename, configAsString);
+		}
+
+	}
+	
+	
+	public static void findMuttJobs(boolean replaceVariables){
+		
+		XmlDriver xmlDriver = new XmlDriver("data/input/controlm_prd_2013-07-22.xml");
+		List<JOBType> jobs =  xmlDriver.getAllJobs();
+		
+		for(JOBType job : jobs){
 			
-			// line[0] == old name
-			// line[1] == new name, fully qualified
-			String[] tokens = line.split(",");
-			String wholeName = tokens[1];
-			
-			if(!wholeName.contains("-DLV-")){
-				// Not a "batch_deliver" job, skip to check next
-				continue;
+			String cmd = job.getCMDLINE();
+			if(StringUtils.isNotBlank(cmd)){
+				if (replaceVariables) {
+					cmd = replaceTokens(job, cmd);
+				}
+				String name = job.getJOBNAME();
+				System.out.printf("%-15s: %s%n%n", name, cmd);
 			}
 			
-			// Capture the full job name
-			names.add(wholeName);
-			
-			// The form of the new name is "ENV-JOB_STREAM-EXECUTABLE-JOB_NAME",
-			// e.g.: "UAF-ARCHB-DLV-LOADRPT". This snippet will capture the
-			// job-stream name.
-			tokens = wholeName.split("-");
-			String jobStreamName = tokens[1];
-			names.add(jobStreamName);
-		}
+		}//for
 		
+	}
+	
+	
+	private static Set<String> getCmdLineNames() {
+		
+		Set<String> newCmdLineNames = new TreeSet<String>();
+		
+		XmlDriver xmlDriver = new XmlDriver("data/input/controlm_prd_2013-07-22.xml");
+		List<JOBType> jobs = xmlDriver.getAllJobs();
+		Map<String, String> oldNewNameMap = getOldToNewNameMap(); 
+		
+		for (JOBType job : jobs) {
+
+			String cmd = job.getCMDLINE();
+			if (StringUtils.isNotBlank(cmd)) {
+				String oldName = job.getJOBNAME();
+				String newName = oldNewNameMap.get(oldName);
+				if(StringUtils.isNotBlank(newName)){
+					newCmdLineNames.add(newName);
+				}
+			}
+
+		}// for
+		
+		return newCmdLineNames;
+	}
+	
+	
+	/*
+	 * Given a list of job/job-stream names, return a map
+	 * of generic configs suitable for writing out to file --
+	 * the map key is the filename, and the map value is
+	 * the actual YAML config
+	 */
+	private static Map<String, String> getGenericYaml(Set<String> names){
+		
+		Map<String, String> fileNameToConfigMap = new HashMap<String, String>();
 		
 		for (String name : names) {
-		
+			
 			Set<YamlEntry> entrySet = new TreeSet<YamlEntry>();
 			
 			YamlEntry entry = new StartEntry();
@@ -215,95 +230,16 @@ public class YamlGenerator {
 			
 			StringBuffer sb = new StringBuffer();
 			for (YamlEntry newEntry : entrySet) {
-				try {
 					sb.append(newEntry);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
 			}
 			
 			String configAsString= sb.toString();
-			String filename = "data/output/" + name.toLowerCase() + "_email.yaml";
-			FileUtils.writeStringToFile(filename, configAsString);
-			
-			
-		}
-		
-	}
-	
-	
-	/*
-	 * This was an attempt at creating files for the 50 files Julie
-	 * had identified for UAF testing in ctmtest. The method only produced
-	 * 33 files, as the "new name" did not map one-to-one with the
-	 * "old names". 
-	 */
-	public static void generateJuliesUafConfigs(){
-		Map<String, String> oldToNewJobNames = new HashMap<String,String>();
-		for(String line : FileUtils.getLines("data/input/oldToNewJobNames.csv")){
-			String[] tokens = line.split(",");
-			String oldName = tokens[0];
-			String newName = tokens[1];
-			if(oldName.startsWith("--")){
-				continue;
-			}
-			oldToNewJobNames.put(oldName, newName);
-		}
-		
-		
-		Set<String> jobNameSet = new TreeSet<String>();
-		jobNameSet.addAll(FileUtils.getLines("data/input/trialJobs.txt"));
-		
-		
-		Map<String, String> foundJobNamesMap = new TreeMap<String, String>();
-		for(String name : jobNameSet){
-			for(Entry<String, String> entry : oldToNewJobNames.entrySet()){
-				String oldName = entry.getKey();
-				String newName = entry.getValue();
-				if(newName.contains(name)){
-					foundJobNamesMap.put(name, oldName);
-				}
-			}
-		}
-		
-		XmlDriver xmlDriver = new XmlDriver("data/input/controlm_prd_2013-07-22.xml");
-		List<JOBType> allJobs = xmlDriver.getAllJobs();
-		
-		Map<String, String> configMap = new HashMap<String, String>();
-		for(Entry<String, String> entry : foundJobNamesMap.entrySet()) {
-			String fileName = entry.getKey();
-			String oldName = entry.getValue();
-			for(JOBType job : allJobs){
-				if(job.getJOBNAME().equals(oldName)){
-					configMap.put(fileName, generateJobYaml(fileName, job));
-					break;
-				}
-			}
-		}
-		
-		for(Entry<String, String> entry : configMap.entrySet()){
-			String filename = entry.getKey().toLowerCase() + "_email.yaml";
-			FileUtils.writeStringToFile("data/output/" + filename, entry.getValue());
-		}
-	}
-	
-	
-	public static void findMuttJobs(){
-		
-		XmlDriver xmlDriver = new XmlDriver("data/input/controlm_prd_2013-07-22.xml");
-		List<JOBType> jobs =  xmlDriver.getAllJobs();
-		
-		for(JOBType job : jobs){
-			
-			String cmd = job.getCMDLINE();
-			if(StringUtils.isNotBlank(cmd)){
-				cmd = replaceTokens(job, cmd);
-				String name = job.getJOBNAME();
-				System.out.printf("%-15s: %s%n", name, cmd);
-			}
+			String filename = name.toLowerCase() + "_email.yaml";
+			fileNameToConfigMap.put(filename, configAsString);
 			
 		}//for
 		
+		return fileNameToConfigMap;
 	}
 	
 	
@@ -335,9 +271,60 @@ public class YamlGenerator {
 	}
 	
 	
+	private static Map<String, String> getOldToNewNameMap(){
+		Map<String, String> nameMap = new TreeMap<String, String>();
+		List<String> lines = FileUtils.getLines("data/input/oldToNewJobNames.csv");
+		for(String line : lines){
+			String[] tokens = line.split(",");
+			String key = tokens[0];
+			String value = tokens[1];
+			if(key.equals("--")){
+				// we have no mapping for this legacy name, skip
+				continue;
+			}
+			nameMap.put(key, value);
+		}
+		return nameMap;
+	}
+	
+	
+	private static Set<String> getNewDlvNames(){
+		
+		// Build unique set of job-stream names
+		Set<String> names = new TreeSet<String>();
+		List<String> lines = FileUtils.getLines("data/input/oldToNewJobNames.csv");
+		for(String line : lines){
+			
+			// line[0] == old name
+			// line[1] == new name, fully qualified
+			String[] tokens = line.split(",");
+			String wholeName = tokens[1];
+			
+			if(!wholeName.contains("-DLV-")){
+				// Not a "batch_deliver" job, skip to check next
+				continue;
+			}
+			
+			// Capture the full job name
+			names.add(wholeName);
+			
+			// The form of the new name is "ENV-JOB_STREAM-EXECUTABLE-JOB_NAME",
+			// e.g.: "UAF-ARCHB-DLV-LOADRPT". This snippet will capture the
+			// job-stream name.
+			tokens = wholeName.split("-");
+			String jobStreamName = tokens[1];
+			names.add(jobStreamName);
+		}
+		
+		return names;
+	}
+	
+	
+	
 	public static void main(String[] sgs) {
 		//YamlGenerator.generateStubYaml();
-		findMuttJobs();
+		//findMuttJobs(true);
+		generateCmdLineYaml();
 	}
 
 }
