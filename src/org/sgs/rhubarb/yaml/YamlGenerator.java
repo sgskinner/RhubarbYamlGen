@@ -77,8 +77,8 @@ public class YamlGenerator {
 	
 	public static void generateCmdLineFile(boolean replaceVariables){
 		
-		String outputDir = "data/output/";
-		String filename = "commandLineJobs.txt";
+		String outputDir = "data/input/";
+		String filename = "cmdLineJobContents.txt";
 		
 		Map<String, String> oldToNewNameMap = getOldToNewNameMap();
 		XmlDriver xmlDriver = new XmlDriver("data/input/controlm_prd_2013-07-22.xml");
