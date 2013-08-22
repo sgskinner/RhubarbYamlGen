@@ -1,0 +1,34 @@
+---
+name: UAF-FYAUTOD-DLV-AUTORPT
+outputs:
+  start:
+    subject: %%ENV - UAF-FYAUTOD-DLV-AUTORPT - Start Notice
+    message: >
+      The 'UAF-FYAUTOD-DLV-AUTORPT' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  log:
+    subject: %%ENV - UAF-FYAUTOD-DLV-AUTORPT - Log Email
+    message: >
+      Please find the attached log(s) for the  'UAF-FYAUTOD-DLV-AUTORPT' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  report:
+    subject: %%ENV - UAF-FYAUTOD-DLV-AUTORPT - Auto-Disapprove Information - Financial Management Team Review
+    message: >
+      %%$DATE %%TIME - Attached is/are the report(s) that show the results and/or
+      provide information on any error conditions found, if any, as a result of any
+      eInvoice files that were processed for the day.
+    to:
+    - FSO_KFS_REPORTS_FIN_MGMT
+    cc:
+    attachments_dir:
+    - reports/sys
+    attachments_globs:
+    - autoDisapproveErrors%%DATE*.txt

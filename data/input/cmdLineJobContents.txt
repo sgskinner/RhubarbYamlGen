@@ -112,10 +112,10 @@
 [KFS-FY1-PARME => UAF-FYAUTOD-DLV-PARME]:
  echo -e "The autodisapprove process is being prepared to run soon, but has been placed on hold. Please review the following KFS parameters found within the KFS-SYS namespace to ensure they are set appropriately for the job to run as desired.\n\nYEAR_END_AUTO_DISAPPROVE_ANNOTATION\nYEAR_END_AUTO_DISAPPROVE_DOCUMENT_CREATE_DATE\nYEAR_END_AUTO_DISAPPROVE_DOCUMENT_RUN_DATE\nYEAR_END_AUTO_DISAPPROVE_DOCUMENT_TYPES\nYEAR_END_AUTO_DISAPPROVE_PARENT_DOCUMENT_TYPE\n\n----\n %%DATE %%TIME" | mutt -s "PRD - KFS-FY1-PARME - Review and Confirm Fiscal Year Close Autodisapprove Parameters - General Ledger Processing Team" FSO_KFS_Reports_Financial_Management@fso.arizona.edu; exit 0;
 
-[KFS-FY1-REPE => NONE]:
+[KFS-FY1-REPE => UAF-FYAUTOD-DLV-AUTORPT]:
  cd /home/tomcat/app/work/kfs/reports/sys; echo -e "%%$DATE %%TIME - Attached is/are the report(s) that show the results and/or provide information on any error conditions found, if any, as a result of any eInvoice files that were processed for the day." | mutt -s "PRD - KFS-FY1-REPE - Auto-Disapprove Information - Financial Management Team Review" `att.sh autoDisapproveErrors*.txt` FSO_KFS_Reports_Financial_Management@fso.arizona.edu; exit 0;
 
-[KFS-FY2-POSTR2E => NONE]:
+[KFS-FY2-POSTR2E => UAF-FYENCFOR-DLV-GLRPTS]:
  cd /home/tomcat/app/work/kfs/reports/gl; echo "Please see the attached reports." | mutt -s "General Ledger reports" `att.sh scrubberJob_*.txt posterJob_*.txt balancing_*.txt` FSO_KFS_Reports_Financial_Management@fso.arizona.edu; exit 0;
 
 [KFS-FY2-EMAIL => NONE]:
