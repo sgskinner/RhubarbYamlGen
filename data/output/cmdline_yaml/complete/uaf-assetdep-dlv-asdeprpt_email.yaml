@@ -1,0 +1,30 @@
+---
+name: UAF-ASSETDEP-DLV-ASDEPRPT
+outputs:
+  start:
+    subject: %%ENV - UAF-ASSETDEP-DLV-ASDEPRPT - Start Notice
+    message: >
+      The 'UAF-ASSETDEP-DLV-ASDEPRPT' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  log:
+    subject: %%ENV - UAF-ASSETDEP-DLV-ASDEPRPT - Log Email
+    message: >
+      Please find the attached log(s) for the  'UAF-ASSETDEP-DLV-ASDEPRPT' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+  report:
+    subject: %%ENV - UAF-ASSETDEP-DLV-ASDEPRPT - Depreciation reports
+    message: >
+      Please see the attached reports.
+    to:
+    - KFS_CAPITAL_ASSETS_ADDRESS
+    attachments_dir:
+    - reports/cam
+    attachments_globs:
+    - *%%DATE*.PDF

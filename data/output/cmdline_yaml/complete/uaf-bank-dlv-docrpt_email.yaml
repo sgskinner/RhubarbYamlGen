@@ -1,0 +1,33 @@
+---
+name: UAF-BANK-DLV-DOCRPT
+outputs:
+  start:
+    subject: %%ENV - UAF-BANK-DLV-DOCRPT - Start Notice
+    message: >
+      The 'UAF-BANK-DLV-DOCRPT' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  log:
+    subject: %%ENV - UAF-BANK-DLV-DOCRPT - Log Email
+    message: >
+      Please find the attached log(s) for the  'UAF-BANK-DLV-DOCRPT' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  report:
+    subject: %%ENV - UAF-BANK-DLV-DOCRPT - Bank Load Error report - ???? Team Review
+    message: >
+      %%$DATE %%TIME - Attached is/are the report(s) that show the results and/or
+      provide information on any error conditions found, if any, as a result of any
+      eInvoice files that were processed for the day.
+    to:
+    - FM_NON_OPERATING_FUNDS_ADDRESS
+    attachments_dir:
+    - reports/fp
+    attachments_globs:
+    - *Tfile_error.report

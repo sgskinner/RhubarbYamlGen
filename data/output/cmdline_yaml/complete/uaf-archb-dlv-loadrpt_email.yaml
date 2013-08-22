@@ -1,0 +1,40 @@
+---
+name: UAF-ARCHB-DLV-LOADRPT
+outputs:
+  start:
+    subject: %%ENV - UAF-ARCHB-DLV-LOADRPT - Start Notice
+    message: >
+      The 'UAF-ARCHB-DLV-LOADRPT' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  log:
+    subject: %%ENV - UAF-ARCHB-DLV-LOADRPT - Log Email
+    message: >
+      Please find the attached log(s) for the  'UAF-ARCHB-DLV-LOADRPT' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  report:
+    subject: %%ENV - UAF-ARCHB-DLV-LOADRPT - Archibus Processing Information - Capital Assets Team Review
+    message: >
+      %%$DATE %%TIME - Attached are the reports that show the results and provide
+      information on building/room records successfully updated and any error
+      conditions found, if any, as a result of any Archibus files that were processed
+      for the day.
+    to:
+    - KFS_CAPITAL_ASSETS_ADDRESS
+    cc:
+    - UA_CENTRAL_RECEIVING_ADDRESS
+    - KFS_BSA_ADDRESS
+    attachments_dir:
+    - reports/sys
+    attachments_globs:
+    - buildingImportErrorReport_*.txt
+    - buildingImportSuccessReport_*.txt
+    - roomImportErrorReport_*.txt
+    - roomImportSuccessReport_*.txt

@@ -1,10 +1,10 @@
-[KFS-AAD-DEPRRPE => NONE]:
+[KFS-AAD-DEPRRPE => UAF-ASSETDEP-DLV-ASDEPRPT]:
  cd /home/tomcat/app/work/kfs/reports/cam; echo "Please see the attached reports." | mutt -s "PRD - KFS-AAD-DEPRRPE - Depreciation reports" `att.sh *.PDF` propertymanagement@fso.arizona.edu; exit 0;
 
-[KFS-AAD-EMAIL => NONE]:
+[KFS-AAD-EMAIL => UAF-ASSETDEP-DLV-PARME]:
  echo -e "%%$DATE %%TIME - The request to execute the Asset Depreciation Batch Job has been received, but has been placed on hold. Please review the KFS parameter DEPRECIATION_RUN_DATE found within the KFS-CAM namespace to ensure it is set appropriately for the job to run as desired.\n\nAfter the parameter has been reviewed and the adjustment has been completely approved, as necessary, please contact the KFS technical support team for the Asset Depreciation Batch Job to be released for execution. If the tech team does not receive notification today to release the job for processing, the nightly batch processing will be held up until that event occurs.\n\nParameter Location:\nAdministration Tab --> Configuration Section --> Functional Heading --> Parameter Hyperlink\nSelect KFS-CAM in the Namespace Code field before performing the 'Search'" | mutt -s "PRD - KFS-AAD-EMAIL - Check prior to close of fiscal year" propertymanagement@fso.arizona.edu; exit 0;
 
-[KFS-AAD-EMLREPE => NONE]:
+[KFS-AAD-EMLREPE => UAF-ASSETDEP-DLV-GLRPTS]:
  cd /home/tomcat/app/work/kfs/reports/gl; echo "%%$DATE %%TIME -  Regarding the completion of GL Reports" | mutt -s "PRD - KFS-AAD-EMLREPE - General Ledger Processing Report(s) - FP Team Review" `att.sh glpe_ledger_*.txt glpe_list_*.txt scrubberJob_*.txt posterJob_*.txt balancing_*.txt` FSO_KFS_Reports_Financial_Management@fso.arizona.edu; exit 0;
 
 [KFS-ACH-BNKDTAE => UAF-ACHLOAD-DLV-ACHRPTS]:
@@ -334,7 +334,7 @@
 [KFS-ACH-BANKA => UAF-ARCHV-EXE-ACHLOADPAY]:
  touch /home/tomcat/app/work/kfs/staging/pdp/achPayeeBankAccounts/*.data /home/tomcat/app/work/kfs/staging/pdp/achBanks/*.data; mv /home/tomcat/app/work/kfs/staging/pdp/achBanks/*.data /home/tomcat/app/work/kfs/staging/pdp/achPayeeBankAccounts/*.data    /home/tomcat/app/work/kfs/archive/pdp/; exit 0;
 
-[KFS-ACH-BNKDT2E => NONE]:
+[KFS-ACH-BNKDT2E => UAF-ACHLOAD-DLV-ACHRPTS]:
  cd /home/tomcat/app/work/kfs/reports/pdp; ls -la; echo "%%$DATE %%TIME - Attached are the reports that show the results of processing the ACH/Direct Deposit setup information from both the UAccess Employee and UAccess Student interface files. These reports should be reviewed for any issues that resulted from processing these files as this will effect what type and to which account a payment would occur for anyone scheduled to receive a payment from the Kuali Financial System." | mutt -s "PRD - KFS-ACH-BNKDT2E - ACH Interface Reporting 2 - AP Team Review" `att.sh pdpLoadPayeeACHDataJob-payee_ach_audit_report_*.txt` checkcontrol@fso.arizona.edu; exit 0;
 
 [KFS-SAI-ODCHKA => UAF-ARCHV-EXE-PREPAID]:

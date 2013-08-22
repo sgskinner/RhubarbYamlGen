@@ -303,7 +303,10 @@ public class YamlGenerator {
 		return nameMap;
 	}
 	
-	
+	/*
+	 * Return all names for new Control-M jobs *and* job-streams
+	 * that contain the string "-DLV-".
+	 */
 	private static Set<String> getNewDlvNames(){
 		
 		// Build unique set of job-stream names
@@ -334,7 +337,6 @@ public class YamlGenerator {
 		
 		return names;
 	}
-	
 	
 	
 	public static void main(String[] sgs) {

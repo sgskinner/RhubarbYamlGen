@@ -1,0 +1,37 @@
+---
+name: UAF-CUSTINV-DLV-CUSTINVRPT
+outputs:
+  start:
+    subject: %%ENV - UAF-CUSTINV-DLV-CUSTINVRPT - Start Notice
+    message: >
+      The 'UAF-CUSTINV-DLV-CUSTINVRPT' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  log:
+    subject: %%ENV - UAF-CUSTINV-DLV-CUSTINVRPT - Log Email
+    message: >
+      Please find the attached log(s) for the  'UAF-CUSTINV-DLV-CUSTINVRPT' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  report:
+    subject: %%ENV - KFS-ARP-INVWOE - Customer Invoice WriteOff Report - SPS Team Review
+    message: >
+      %%$DATE %%TIME - Attached is the report that provides the results and/or
+      provides information on any error conditions found, if any, as a result of the
+      customer invoice writeoff processing that occurred during the nightly batch
+      schedule.
+    to:
+    - FSO_KFS_REPORTS_FIN_MGMT
+    cc:
+    - SPONSER_ADDRESS
+    - KFS_BSA_ADDRESS
+    attachments_dir:
+    - reports/ar
+    attachments_globs:
+    - customer_invoice_writeoff_%%DATE*.pdf

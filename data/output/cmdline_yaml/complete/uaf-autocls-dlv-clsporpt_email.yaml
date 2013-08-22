@@ -1,0 +1,35 @@
+---
+name: UAF-AUTOCLS-DLV-CLSPORPT
+outputs:
+  start:
+    subject: %%ENV - UAF-AUTOCLS-DLV-CLSPORPT - Start Notice
+    message: >
+      The 'UAF-AUTOCLS-DLV-CLSPORPT' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  log:
+    subject: %%ENV - UAF-AUTOCLS-DLV-CLSPORPT - Log Email
+    message: >
+      Please find the attached log(s) for the  'UAF-AUTOCLS-DLV-CLSPORPT' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  report:
+    subject: %%ENV - UAF-AUTOCLS-DLV-CLSPORPT - Report Email
+    message: >
+      %%$DATE %%TIME - Attached is/are the report(s) that show the results and/or
+      provide information on any error conditions found, if any, as a result of any
+      PO Close files that were processed for the day.
+    to:
+    - KFS_PACS_ERRORS_ADDRESS
+    cc:
+    - KFS_BSA_ADDRESS
+    attachments_dir:
+    - reports/purap
+    attachments_globs:
+    - autoClose*%%DATE*.log
