@@ -7,10 +7,6 @@ outputs:
       The 'UAF-EINV-DLV-EINVEXTR' process has started.
     to:
     - KATT_AUTOMATION_ADDRESS
-    - JULIE_WINGATE_ADDRESS
-    - HEATHER_LO_ADDRESS
-    - JOSH_SHALOO_ADDRESS
-    - SCOTT_SKINNER_ADDRESS
     cc:
     attachments_dir:
     attachments_globs:
@@ -20,23 +16,20 @@ outputs:
       Please find the attached log(s) for the  'UAF-EINV-DLV-EINVEXTR' process.
     to:
     - KATT_AUTOMATION_ADDRESS
-    - JULIE_WINGATE_ADDRESS
-    - HEATHER_LO_ADDRESS
-    - JOSH_SHALOO_ADDRESS
-    - SCOTT_SKINNER_ADDRESS
     cc:
     attachments_dir:
     attachments_globs:
   report:
-    subject: DEV - UAF-EINV-DLV-EINVEXTR - Report Email
+    subject: %%ENV - UAF-EINV-DLV-EINVEXTR - eInvoice Processing Information - PACS/AP Team Review
     message: >
-      Please find the attached report(s) for the  'UAF-EINV-DLV-EINVEXTR' process.
+      %%$DATE %%TIME - Attached is/are the report(s) that show the results and/or
+      provide information on any error conditions found, if any, as a result of any
+      eInvoice files that were processed for the day.
     to:
-    - KATT_AUTOMATION_ADDRESS
-    - JULIE_WINGATE_ADDRESS
-    - HEATHER_LO_ADDRESS
-    - JOSH_SHALOO_ADDRESS
-    - SCOTT_SKINNER_ADDRESS
+    - KFS_BSA_ADDRESS
     cc:
+    - FSO_EIRT_ADDRESS
     attachments_dir:
+    - reports/purap
     attachments_globs:
+    - electronicInvoiceExtractJob-%%DATE*.txt

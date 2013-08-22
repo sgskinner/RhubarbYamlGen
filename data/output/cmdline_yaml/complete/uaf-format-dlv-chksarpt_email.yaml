@@ -1,0 +1,37 @@
+---
+name: UAF-FORMAT-DLV-CHKSARPT
+outputs:
+  start:
+    subject: %%ENV - UAF-FORMAT-DLV-CHKSARPT - Start Notice
+    message: >
+      The 'UAF-FORMAT-DLV-CHKSARPT' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  log:
+    subject: %%ENV - UAF-FORMAT-DLV-CHKSARPT - Log Email
+    message: >
+      Please find the attached log(s) for the  'UAF-FORMAT-DLV-CHKSARPT' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  report:
+    subject: %%ENV - UAF-FORMAT-DLV-CHKSARPT - Student Interface Check File
+    message: >
+      %%$DATE %%TIME - Attached is/are the report(s) that show the results and/or
+      provide information on any error conditions found, if any, as a result of any
+      Student Interface files that were processed for the day.
+    to:
+    - KFS_BSA_ADDRESS
+    - FM_NON_OPERATING_FUNDS_ADDRESS
+    cc:
+    - CHECK_CONTROL_ADDRESS
+    - FSO_BURSAR_ADDRESS
+    attachments_dir:
+    - reports/pdp
+    attachments_globs:
+    - pdp_sa_check_report%%DATE*.txt

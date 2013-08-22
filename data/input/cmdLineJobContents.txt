@@ -95,7 +95,7 @@
  cd /home/tomcat/app/work/kfs/reports/recon; echo "Attached is the report that provides the results and/or provides information on any error conditions found, if any, as a result of the check reconciliation processing that followed the check creation process." | mutt -s "PRD - KFS-FMT-CKRECNE - Check Reconciliation Error Report - PDP Team Review" `att.sh cr_*.txt` FMNonOperatingFunds@fso.arizona.edu; exit 0;
 
 [KFS-FMT-BLINEFF => UAF-FORMAT-DLV-CHKBL]:
- $HOME/bin/kfsbl.sh "kfsbottomline" "fru9Re3E" "https://legacy.fso.arizona.edu/isw/webservices/kfsbottomline.asp" "/home/tomcat/app/work/kfs/staging/pdp/paymentExtract/pdp_check*.xml" "/home/tomcat/app/work/kfs/archive/pdp" "PRD" "KFS-FMT-BLINEFF" "-c checkcontrol@fso.arizona.edu kfsbsa@list.arizona.edu" "Sending a PDP checks file to Bottomline failed" "Check files send to BottomLine failed" "Checks file sent to BottomLine" "Sent a PDP checks file to BottomLine"
+ $HOME/bin/kfsbl.sh "kfsbottomline" "XXXXXXXXXX" "https://legacy.fso.arizona.edu/isw/webservices/kfsbottomline.asp" "/home/tomcat/app/work/kfs/staging/pdp/paymentExtract/pdp_check*.xml" "/home/tomcat/app/work/kfs/archive/pdp" "PRD" "KFS-FMT-BLINEFF" "-c checkcontrol@fso.arizona.edu kfsbsa@list.arizona.edu" "Sending a PDP checks file to Bottomline failed" "Check files send to BottomLine failed" "Checks file sent to BottomLine" "Sent a PDP checks file to BottomLine"
 
 [KFS-FMT-STUINTE => UAF-FORMAT-DLV-CHKSARPT]:
  cd /home/tomcat/app/work/kfs/reports/pdp; echo -e "%%$DATE %%TIME - Attached is/are the report(s) that show the results and/or provide information on any error conditions found, if any, as a result of any Student Interface files that were processed for the day." | mutt -s "PRD - KFS-FMT-STUINTE - KFS-FMT-STUINTE - Student Interface Check File" `att.sh pdp_sa_check_report*.txt` -c checkcontrol@fso.arizona.edu kfsbsa@list.arizona.edu -c BursarKFS@fso.arizona.edu FMNonOperatingFunds@fso.arizona.edu; exit 0;
@@ -109,7 +109,7 @@
 [KFS-FMT-EMPTYA => UAF-FORMAT-ASM-CHKEMPTY]:
  cd /home/tomcat/app/work/kfs/staging/pdp/paymentExtract/; shopt -s nullglob; for f in pdp_check_*.xml; do if [ `stat --printf="%s" "$f"` -lt 100  ]; then mv -v $f ../../../archive/pdp/;fi; done; exit 0;
 
-[KFS-FY1-PARME => NONE]:
+[KFS-FY1-PARME => UAF-FYAUTOD-DLV-PARME]:
  echo -e "The autodisapprove process is being prepared to run soon, but has been placed on hold. Please review the following KFS parameters found within the KFS-SYS namespace to ensure they are set appropriately for the job to run as desired.\n\nYEAR_END_AUTO_DISAPPROVE_ANNOTATION\nYEAR_END_AUTO_DISAPPROVE_DOCUMENT_CREATE_DATE\nYEAR_END_AUTO_DISAPPROVE_DOCUMENT_RUN_DATE\nYEAR_END_AUTO_DISAPPROVE_DOCUMENT_TYPES\nYEAR_END_AUTO_DISAPPROVE_PARENT_DOCUMENT_TYPE\n\n----\n %%DATE %%TIME" | mutt -s "PRD - KFS-FY1-PARME - Review and Confirm Fiscal Year Close Autodisapprove Parameters - General Ledger Processing Team" FSO_KFS_Reports_Financial_Management@fso.arizona.edu; exit 0;
 
 [KFS-FY1-REPE => NONE]:

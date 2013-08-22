@@ -2,41 +2,43 @@
 name: UAF-CFDAUPD-DLV-CFDANOT
 outputs:
   start:
-    subject: DEV - UAF-CFDAUPD-DLV-CFDANOT - Start Notice
+    subject: %%ENV - UAF-CFDAUPD-DLV-CFDANOT - Start Notice
     message: >
       The 'UAF-CFDAUPD-DLV-CFDANOT' process has started.
     to:
     - KATT_AUTOMATION_ADDRESS
-    - JULIE_WINGATE_ADDRESS
-    - HEATHER_LO_ADDRESS
-    - JOSH_SHALOO_ADDRESS
-    - SCOTT_SKINNER_ADDRESS
     cc:
     attachments_dir:
     attachments_globs:
   log:
-    subject: DEV - UAF-CFDAUPD-DLV-CFDANOT - Log Email
+    subject: %%ENV - UAF-CFDAUPD-DLV-CFDANOT - Log Email
     message: >
-      Please find the attached log(s) for the  'UAF-CFDAUPD-DLV-CFDANOT' process.
+      Please find the attached job for the 'UAF-CFDAUPD-DLV-CFDANOT' process.
     to:
     - KATT_AUTOMATION_ADDRESS
-    - JULIE_WINGATE_ADDRESS
-    - HEATHER_LO_ADDRESS
-    - JOSH_SHALOO_ADDRESS
-    - SCOTT_SKINNER_ADDRESS
     cc:
     attachments_dir:
     attachments_globs:
   report:
-    subject: DEV - UAF-CFDAUPD-DLV-CFDANOT - Report Email
+    subject: %%ENV - KFS-CFD-CFDAE - CFDA reminder
     message: >
-      Please find the attached report(s) for the  'UAF-CFDAUPD-DLV-CFDANOT' process.
+      %%$DATE %%TIME - The CFDA update process has been completed.
+      
+      Any existing CFDA values that were in the system prior to the execution of the
+      process would not have been automatically updated due to the manual setting
+      that is in place. Although, as a reminder, there may have been new CFDA values
+      added to the system as a result of the process. These new values must have the
+      maintenance type flag set to MANUAL in the system or the next time the process
+      is ran, the process will automatically update these values.
+      
+      Reminder:
+      
+      CFDA values can be found in the following location in KFS:
+      
+      Maintenance Tab --> Contracts & Grants --> CFDA
     to:
-    - KATT_AUTOMATION_ADDRESS
-    - JULIE_WINGATE_ADDRESS
-    - HEATHER_LO_ADDRESS
-    - JOSH_SHALOO_ADDRESS
-    - SCOTT_SKINNER_ADDRESS
+    - KFS_BSA_ADDRESSs
     cc:
+    - SPONSER_ADDRESS
     attachments_dir:
     attachments_globs:

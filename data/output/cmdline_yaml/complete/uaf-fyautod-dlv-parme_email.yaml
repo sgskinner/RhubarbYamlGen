@@ -1,0 +1,41 @@
+---
+name: UAF-FYAUTOD-DLV-PARME
+outputs:
+  start:
+    subject: %%ENV - UAF-FYAUTOD-DLV-PARME - Start Notice
+    message: >
+      The 'UAF-FYAUTOD-DLV-PARME' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  log:
+    subject: %%ENV - UAF-FYAUTOD-DLV-PARME - Log Email
+    message: >
+      Please find the attached log(s) for the  'UAF-FYAUTOD-DLV-PARME' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  report:
+    subject: %%ENV - UAF-FYAUTOD-DLV-PARME - Review and Confirm Fiscal Year Close Autodisapprove Parameters - General Ledger Processing Team
+    message: >
+      The autodisapprove process is being prepared to run soon, but has been placed
+      on hold. Please review the following KFS parameters found within the KFS-SYS
+      namespace to ensure they are set appropriately for the job to run as desired:
+      
+      YEAR_END_AUTO_DISAPPROVE_ANNOTATION
+      YEAR_END_AUTO_DISAPPROVE_DOCUMENT_CREATE_DATE
+      YEAR_END_AUTO_DISAPPROVE_DOCUMENT_RUN_DATE
+      YEAR_END_AUTO_DISAPPROVE_DOCUMENT_TYPES
+      YEAR_END_AUTO_DISAPPROVE_PARENT_DOCUMENT_TYPE
+      
+      ----
+      %%DATE %%TIME
+    to:
+    - FSO_KFS_REPORTS_FIN_MGMT
+    cc:
+    attachments_dir:
+    attachments_globs:
