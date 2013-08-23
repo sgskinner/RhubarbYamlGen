@@ -127,25 +127,25 @@
 [KFS-FY2-EMAIGL => NONE]:
  cd /home/tomcat/app/work/kfs/reports/gl; echo -e "%%$DATE %%TIME - Notifying to process files created from prior processes with GLCP and that GL Scrubber job is on hold pending processing of file and tech team needs notified when ready to release." | mutt -s "PRD - KFS-FY2-EMAIGL - Labor Balance Forward Job" `att.sh year_end_nominal_activity_closing_*.txt` FSO_KFS_Reports_Financial_Management@fso.arizona.edu; exit 0;
 
-[KFS-FY2-EMAILB => NONE]:
+[KFS-FY2-EMAILB => UAF-FYLABFOR-DLV-PARME]:
  echo -e "%%$DATE %%TIME - Review parameters for your organization revision for the current year" | mutt -s "PRD - KFS-FY2-EMAILB - Labor Balance Forward Processing Information -" FSO_KFS_Reports_Financial_Management@fso.arizona.edu; exit 0;
 
-[KFS-FY2-EMAIEM => NONE]:
+[KFS-FY2-EMAIEM => UAF-FYENCFOR-DLV-PARME]:
  echo -e "%%$DATE %%TIME -  Check the parms for Encumbrance Forward Job" | mutt -s "PRD - KFS-FY2-EMAIEM - Review parms for Encumbrance Forward Job" FSO_KFS_Reports_Financial_Management@fso.arizona.edu; exit 0;
 
-[KFS-FY2-EMLBREP => NONE]:
+[KFS-FY2-EMLBREP => UAF-FYLABFOR-DLV-LABRPTS]:
  cd /home/tomcat/app/work/kfs/reports/ld; echo -e "%%$DATE %%TIME - The latest labor reports" | mutt -s "PRD - KFS-FY2-EMLBREP - Email latest labor reports" `att.sh llcp_*_*.txt laborScrubberJob_*.txt laborPosterJob_*.txt laborBalancing_*.txt labor_gl_summary_ledger_*.txt` FSO_KFS_Reports_Payroll_Accounting@fso.arizona.edu; exit 0;
 
-[KFS-FY2-EMAIL3 => NONE]:
+[KFS-FY2-EMAIL3 => UAF-FYENCFOR-DLV-ENCMBRPT]:
  cd /home/tomcat/app/work/kfs/staging/gl/; echo -e "%%$DATE %%TIME - Notifying that the notify to process files created from prior processes with GLCP and that GL Scrubber job is on hold pending processing of file and tech team needs notified when ready to release." | mutt -s "PRD - KFS-FY2-EMAIL3 - General Ledger Correction Process" `att.sh year_end_encumbrance_closing_*.txt` katt-automation@list.arizona.edu; exit 0;
 
-[KFS-FY2-EMAICP => NONE]:
+[KFS-FY2-EMAICP => UAF-FYLABFOR-DLV-LABBALRPT]:
  cd /home/tomcat/app/work/kfs/reports/ld; echo -e "%%$DATE %%TIME - A data file has been produced from the execution of the laborbalanceforward process. This file can be reviewed within the LLCP or by downloading the file from the batch file link. The remaining jobs are on hold pending completion of the review of the data file created from this process to confirm that processing can continue accurately. File location/name - reports/ld/labor_year_end_balance_forward_*.txt" | mutt -s "PRD - KFS-FY2-EMAICP - LLCP and Labor scrubber on hold pending completion of this process" `att.sh labor_year_end_balance_forward_*.txt` FSO_KFS_Reports_Payroll_Accounting@fso.arizona.edu; exit 0;
 
-[KFS-FY3-POSTR3E => NONE]:
+[KFS-FY3-POSTR3E => UAF-FYNOMACT-DLV-GLRPTS]:
  cd /home/tomcat/app/work/kfs/reports/gl; echo "Please see the attached reports." | mutt -s "General Ledger reports" `att.sh scrubberJob_*.txt posterJob_*.txt balancing_*.txt` FSO_KFS_Reports_Financial_Management@fso.arizona.edu; exit 0;
 
-[KFS-FY3-EMAIGL => NONE]:
+[KFS-FY3-EMAIGL => UAF-FYNOMACT-DLV-NOMARPT]:
  echo -e "%%$DATE %%TIME - Notifying that the notify to process files created from prior processes with GLCP and that jobs are on hold pending processing of file and tech team needs notified when ready to release." | mutt -s "PRD - KFS-FY3-EMAIGL - General Ledger Correction Process" katt-automation@list.arizona.edu; exit 0;
 
 [KFS-FY3-EMAIL => NONE]:

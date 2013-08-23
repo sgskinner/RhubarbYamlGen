@@ -23,8 +23,8 @@ outputs:
     subject: %%ENV - UAF-FYAUTOD-DLV-AUTORPT - Auto-Disapprove Information - Financial Management Team Review
     message: >
       %%$DATE %%TIME - Attached is/are the report(s) that show the results and/or
-      provide information on any error conditions found, if any, as a result of any
-      eInvoice files that were processed for the day.
+      provide information on any error conditions found, if any, as a result of the
+      Auto-Disapprove batch job.
     to:
     - FSO_KFS_REPORTS_FIN_MGMT
     cc:

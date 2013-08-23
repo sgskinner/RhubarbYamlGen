@@ -1,0 +1,34 @@
+---
+name: UAF-FYENCFOR-DLV-ENCMBRPT
+outputs:
+  start:
+    subject: %%ENV - UAF-FYENCFOR-DLV-ENCMBRPT - Start Notice
+    message: >
+      The 'UAF-FYENCFOR-DLV-ENCMBRPT' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  log:
+    subject: %%ENV - UAF-FYENCFOR-DLV-ENCMBRPT - Log Email
+    message: >
+      Please find the attached log(s) for the  'UAF-FYENCFOR-DLV-ENCMBRPT' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  report:
+    subject: %%ENV - UAF-FYENCFOR-DLV-ENCMBRPT - General Ledger Correction Process
+    message: >
+      %%$DATE %%TIME - Notifying that the notify to process files created from prior
+      processes with GLCP and that GL Scrubber job is on hold pending processing of
+      file and tech team needs notified when ready to release.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    - staging/gl
+    attachments_globs:
+    - year_end_encumbrance_closing_%%DATE*.txt
