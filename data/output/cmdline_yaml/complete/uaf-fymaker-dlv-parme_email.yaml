@@ -1,0 +1,43 @@
+---
+name: UAF-FYMAKER-DLV-PARME
+outputs:
+  start:
+    subject: %%ENV - UAF-FYMAKER-DLV-PARME - Start Notice
+    message: >
+      The 'UAF-FYMAKER-DLV-PARME' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  log:
+    subject: %%ENV - UAF-FYMAKER-DLV-PARME - Log Email
+    message: >
+      Please find the attached log(s) for the  'UAF-FYMAKER-DLV-PARME' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  report:
+    subject: %%ENV - UAF-FYMAKER-DLV-PARME - Review and confirm Fiscal Year Maker Parameters, PACS/AP Team Review
+    message: >
+      %%DATE %%TIME - The execution of the fiscal year maker process is ready to be
+      ran, but has been placed on hold. Please review the KFS parameters
+      (SOURCE_FISCAL_YEAR and OVERRIDE_TARGET_YEAR_DATA_IND) found within the KFS-SYS
+      namespace to ensure they are set appropriately for the job to run as desired.
+      
+      After the parms have been reviewed and approved, please contact the KFS
+      technical support team for the job to be released.
+      
+      Procurement & Contracting Services Reminder: AFTER this job has been approved
+      by Financial Services and run by KFS technical support, update the parameter
+      value for ALLOW_ENCUMBER_NEXT_YEAR_DAYS to open up Requisitions to the next
+      fiscal year.
+    to:
+    - FSO_KFS_REPORTS_FIN_MGMT
+    cc:
+    - KFS_PACS_ERRORS_ADDRESS
+    - KFS_BSA_ADDRESS
+    attachments_dir:
+    attachments_globs:
