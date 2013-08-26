@@ -1,0 +1,33 @@
+---
+name: UAF-LABORPRG-DLV-PARME
+outputs:
+  start:
+    subject: %%ENV - UAF-LABORPRG-DLV-PARME - Start Notice
+    message: >
+      The 'UAF-LABORPRG-DLV-PARME' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  log:
+    subject: %%ENV - UAF-LABORPRG-DLV-PARME - Log Email
+    message: >
+      Please find the attached log(s) for the  'UAF-LABORPRG-DLV-PARME' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  report:
+    subject: %%ENV - UAF-LABORPRG-DLV-PARME - Review and Confirm Labor Purge Parameters, Labor Ledger Team Review
+    message: >
+      %%DATE %%TIME - The first execution of the Labor Purge process is ready to be
+      ran, but has been placed on hold. Please review the KFS parameters found
+      within the KFS-LD namespace to ensure they are set appropriately for the job to
+      run as desired.
+    to:
+    - FSO_KFS_REPORTS_FIN_MGMT
+    cc:
+    attachments_dir:
+    attachments_globs:

@@ -1,0 +1,39 @@
+---
+name: UAF-LABORMNT-DLV-LLCPRPT
+outputs:
+  start:
+    subject: %%ENV - UAF-LABORMNT-DLV-LLCPRPT - Start Notice
+    message: >
+      The 'UAF-LABORMNT-DLV-LLCPRPT' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  log:
+    subject: %%ENV - UAF-LABORMNT-DLV-LLCPRPT - Log Email
+    message: >
+      Please find the attached log(s) for the  'UAF-LABORMNT-DLV-LLCPRPT' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  report:
+    subject: %%ENV - UAF-LABORMNT-DLV-LLCPRPT - LLCP Results Report(s)
+    message: >
+      %%$DATE %%TIME - Attached is/are the report(s) that show the results and/or
+      provide information on any error conditions found, if any, as a result of the
+      labor ledger correction document files processed for the day.
+      
+      This data will be further processed with any additional internal or external
+      generated transactions for the labor ledger and ultimately will be found within
+      the entries and balances that make up the labor ledger and the general ledger.
+    to:
+    - FSO_PAYROLL_ADDRESS
+    cc:
+    - FSO_KFS_REPORTS_FIN_MGMT
+    attachments_dir:
+    - reports/ld
+    attachments_globs:
+    - llcp_%%DATE*_*.txt

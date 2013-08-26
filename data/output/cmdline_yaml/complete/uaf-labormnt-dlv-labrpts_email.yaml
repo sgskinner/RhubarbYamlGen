@@ -1,0 +1,41 @@
+---
+name: UAF-LABORMNT-DLV-LABRPTS
+outputs:
+  start:
+    subject: %%ENV - UAF-LABORMNT-DLV-LABRPTS - Start Notice
+    message: >
+      The 'UAF-LABORMNT-DLV-LABRPTS' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  log:
+    subject: %%ENV - UAF-LABORMNT-DLV-LABRPTS - Log Email
+    message: >
+      Please find the attached log(s) for the  'UAF-LABORMNT-DLV-LABRPTS' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  report:
+    subject: %%ENV - UAF-LABORMNT-DLV-LABRPTS - Labor Processing Report(s) AFTER Fringe Budget Sweep, FP Team Review
+    message: >
+      %%$DATE %%TIME - Attached are the reports that provide the results associated
+      with the batch processing for the labor ledger after the execution of the ERE
+      Budget sweep job. These reports provide the scrubber and poster information
+      with regard to statistics and errors found, if any, from the data created as a
+      result of the execution of this process.
+      
+      This report notification should be followed by another email that will provide
+      the remainder of the labor ledger associated reports.
+    to:
+    - FSO_PAYROLL_ADDRESS
+    cc:
+    - FSO_KFS_REPORTS_FIN_MGMT
+    attachments_dir:
+    - reports/ld
+    attachments_globs:
+    - laborScrubberJob_%%DATE*.txt
+    - laborPosterJob_%%DATE*.txt
