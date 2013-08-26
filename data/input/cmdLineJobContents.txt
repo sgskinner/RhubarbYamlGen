@@ -217,7 +217,7 @@
 [KFS-GPG-PARME => UAF-GLMANPRG-DLV-PARME]:
  echo -e "The first execution of the Manual Purge process is ready to be ran, but has been placed on hold. Please review the KFS parameters found within the KFS-GL namespace to ensure they are set appropriately for the job to run as desired. \n\n----\n %%DATE %%TIME" | mutt -s "PRD - KFS-GPG-PARME - Review and Confirm Manual Purge Parameters - Financial Processing Team Review" FSO_KFS_Reports_Financial_Management@fso.arizona.edu; exit 0;
 
-[KFS-GSY-PSTBALE => NONE]:
+[KFS-GSY-PSTBALE => UAF-GLHIST-DLV-GLHISTRPT]:
  cd home/tomcat/appwork/kfs/reports/gl; echo "Please see the attached reports." | mutt -s "Poster Balancing reports" `att.sh balancing_*.txt` FSO_KFS_Reports_Financial_Management@fso.arizona.edu; exit 0;
 
 [KFS-ICR-GLREPE => UAF-INDCOST-DLV-GLRPTS]:
@@ -238,7 +238,7 @@
 [KFS-IND-NBISGDS => UAF-END-SUMMARIZE]:
  echo "placeholder job";
 
-[KFS-IND-AMCTFFS => NONE]:
+[KFS-IND-AMCTFFS => UAF-END-EXE-UNSETMAINT]:
  echo "placeholder job";
 
 [KFS-LBI-LDE => UAF-LABORINT-DLV-CALCERERPT]:
