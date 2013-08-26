@@ -1,26 +1,26 @@
 ---
-name: UAF-PDPRPT-DLV-DAILYRPT
+name: UAF-PDP-DLV-DAILYRPT
 outputs:
   start:
-    subject: %%ENV - UAF-PDPRPT-DLV-DAILYRPT - Start Notice
+    subject: %%ENV - UAF-PDP-DLV-DAILYRPT - Start Notice
     message: >
-      The 'UAF-PDPRPT-DLV-DAILYRPT' process has started.
+      The 'UAF-PDP-DLV-DAILYRPT' process has started.
     to:
     - KATT_AUTOMATION_ADDRESS
     cc:
     attachments_dir:
     attachments_globs:
   log:
-    subject: %%ENV - UAF-PDPRPT-DLV-DAILYRPT - Log Email
+    subject: %%ENV - UAF-PDP-DLV-DAILYRPT - Log Email
     message: >
-      Please find the attached log(s) for the  'UAF-PDPRPT-DLV-DAILYRPT' process.
+      Please find the attached log(s) for the  'UAF-PDP-DLV-DAILYRPT' process.
     to:
     - KATT_AUTOMATION_ADDRESS
     cc:
     attachments_dir:
     attachments_globs:
   report:
-    subject: %%ENV - UAF-PDPRPT-DLV-DAILYRPT - PDP/AP/CRT Team Review
+    subject: %%ENV - UAF-PDP-DLV-DAILYRPT - PDP Daily Report(s), AP/PDP Team Review
     message: >
       %%$DATE %%TIME - Attached is/are the report(s) that reflect the summary
       breakdown by type and source of payments that are ELIGIBLE to be formatted via
@@ -34,7 +34,7 @@ outputs:
       a payment on hold, prior to performing the actual format process that would
       affect the payments that actually are made.
     to:
-    - FEDEX_ADMIN_ADDRESS
+    - CHECK_CONTROL_ADDRESS
     cc:
     attachments_dir:
     - reports/pdp

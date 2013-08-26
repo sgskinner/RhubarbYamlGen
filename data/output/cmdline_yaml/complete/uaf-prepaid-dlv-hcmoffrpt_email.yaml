@@ -1,0 +1,36 @@
+---
+name: UAF-PREPAID-DLV-HCMOFFRPT
+outputs:
+  start:
+    subject: %%ENV - UAF-PREPAID-DLV-HCMOFFRPT - Start Notice
+    message: >
+      The 'UAF-PREPAID-DLV-HCMOFFRPT' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  log:
+    subject: %%ENV - UAF-PREPAID-DLV-HCMOFFRPT - Log Email
+    message: >
+      Please find the attached log(s) for the  'UAF-PREPAID-DLV-HCMOFFRPT' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  report:
+    subject: %%ENV - UAF-PREPAID-DLV-HCMOFFRPT - HCM off-cycle checks, PDP/APTeam Review
+    message: >
+      %%$DATE %%TIME - Attached is/are the report(s) that show the results and/or
+      provide information on any error conditions found, if any, as a result of any
+      eInvoice files that were processed for the day.
+    to:
+    - FM_NON_OPERATING_FUNDS_ADDRESS
+    cc:
+    - CHECK_CONTROL_ADDRESS
+    - KFS_BSA_ADDRESS
+    attachments_dir:
+    - staging/pdp/prepaidChecks
+    attachments_globs:
+    - PSHCM_OFFCYCLE_*.csv
