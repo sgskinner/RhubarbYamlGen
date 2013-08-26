@@ -2,41 +2,34 @@
 name: UAF-GLCAPITAL-DLV-CABMISRPT
 outputs:
   start:
-    subject: DEV - UAF-GLCAPITAL-DLV-CABMISRPT - Start Notice
+    subject: %%ENV - UAF-GLCAPITAL-DLV-CABMISRPT - Start Notice
     message: >
       The 'UAF-GLCAPITAL-DLV-CABMISRPT' process has started.
     to:
     - KATT_AUTOMATION_ADDRESS
-    - JULIE_WINGATE_ADDRESS
-    - HEATHER_LO_ADDRESS
-    - JOSH_SHALOO_ADDRESS
-    - SCOTT_SKINNER_ADDRESS
     cc:
     attachments_dir:
     attachments_globs:
   log:
-    subject: DEV - UAF-GLCAPITAL-DLV-CABMISRPT - Log Email
+    subject: %%ENV - UAF-GLCAPITAL-DLV-CABMISRPT - Log Email
     message: >
       Please find the attached log(s) for the  'UAF-GLCAPITAL-DLV-CABMISRPT' process.
     to:
     - KATT_AUTOMATION_ADDRESS
-    - JULIE_WINGATE_ADDRESS
-    - HEATHER_LO_ADDRESS
-    - JOSH_SHALOO_ADDRESS
-    - SCOTT_SKINNER_ADDRESS
     cc:
     attachments_dir:
     attachments_globs:
   report:
-    subject: DEV - UAF-GLCAPITAL-DLV-CABMISRPT - Report Email
+    subject: %%ENV - UAF-GLCAPITAL-DLV-CABMISRPT - CAB Mismatch Report, CAM Team Review
     message: >
-      Please find the attached report(s) for the  'UAF-GLCAPITAL-DLV-CABMISRPT' process.
+      %%$DATE %%TIME - Attached is the report reflecting errors found from processing
+      the asset related data created within the purchasing and/or accounts payable
+      areas. Please review these items and take action as necessary to correct these
+      situations.
     to:
-    - KATT_AUTOMATION_ADDRESS
-    - JULIE_WINGATE_ADDRESS
-    - HEATHER_LO_ADDRESS
-    - JOSH_SHALOO_ADDRESS
-    - SCOTT_SKINNER_ADDRESS
+    - KFS_CAPITAL_ASSETS_ADDRESS
     cc:
     attachments_dir:
+    - reports/cab
     attachments_globs:
+    - cab_batch_mismatch_report_%%DATE*.pdf
