@@ -1,0 +1,43 @@
+---
+name: UAF-GLPRJE-DLV-PARME
+outputs:
+  start:
+    subject: %%ENV - UAF-GLPRJE-DLV-PARME - Start Notice
+    message: >
+      The 'UAF-GLPRJE-DLV-PARME' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  log:
+    subject: %%ENV - UAF-GLPRJE-DLV-PARME - Log Email
+    message: >
+      Please find the attached log(s) for the  'UAF-GLPRJE-DLV-PARME' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  report:
+    subject: %%ENV - UAF-GLPRJE-DLV-PARME - Review and Confirm Monthly PRJE Parameters, FP Team Review
+    message: >
+      %%$DATE %%TIME - The monthly pro-rate journal entry process is ready to be ran,
+      but has been placed on hold for parameter review.
+      
+      After the parameters have been reviewed and adjustments completed, as
+      necessary, please contact the KFS technical support team for the schedule
+      (Monthly PRJE) to be released for execution.
+      
+      If notification is not received today to release the jobs for processing, the
+      nightly batch processing will be held up until that event occurs.
+      
+      Reminder, parameters can be found in the following location in KFS:
+      Administration Tab --> Configuration Section --> Functional Heading --> Parameter Hyperlink
+      Select KUALI-PRJE in the Namespace Code field before performing the 'Search'"
+    to:
+    - FSO_KFS_REPORTS_FIN_MGMT
+    cc:
+    - KFS_BSA_ADDRESS
+    attachments_dir:
+    attachments_globs:

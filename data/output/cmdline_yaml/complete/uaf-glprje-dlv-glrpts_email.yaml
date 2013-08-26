@@ -1,0 +1,46 @@
+---
+name: UAF-GLPRJE-DLV-GLRPTS
+outputs:
+  start:
+    subject: %%ENV - UAF-GLPRJE-DLV-GLRPTS - Start Notice
+    message: >
+      The 'UAF-GLPRJE-DLV-GLRPTS' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  log:
+    subject: %%ENV - UAF-GLPRJE-DLV-GLRPTS - Log Email
+    message: >
+      Please find the attached log(s) for the  'UAF-GLPRJE-DLV-GLRPTS' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  report:
+    subject: %%ENV - UAF-GLPRJE-DLV-GLRPTS - General Ledger PRJE Processing Report(s), FP Team Review
+    message: >
+      %%$DATE %%TIME
+      Attached are reports results associated with monthly PRJE batch process.
+      
+      As a reminder, this should be the final processing item for the prior accounting
+      period. Once confirmed, please inactivate the prior accounting period, which
+      would prevent prior period accounting entries from posting. If any entry for
+      prior period occurs after the inactivation, errors would be reported on the
+      scrubber error report.
+      
+      Reminder:
+      Accounting Periods may be found in the following location in KFS:
+      Maintenance Tab --> Chart Of Accounts Section --> Accounting Period Hyperlink
+    to:
+    - FSO_KFS_REPORTS_FIN_MGMT
+    cc:
+    - KFS_BSA_ADDRESS
+    attachments_dir:
+    - reports/gl
+    attachments_globs:
+    - scrubberJob_%%DATE*.txt
+    - posterJob_%%DATE*.txt
+    - balancing_%%DATE*.txt
