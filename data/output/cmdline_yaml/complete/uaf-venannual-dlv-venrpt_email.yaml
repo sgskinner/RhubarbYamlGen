@@ -1,0 +1,32 @@
+---
+name: UAF-VENANNUAL-DLV-VENRPT
+outputs:
+  start:
+    subject: %%ENV - UAF-VENANNUAL-DLV-VENRPT - Start Notice
+    message: >
+      The 'UAF-VENANNUAL-DLV-VENRPT' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  log:
+    subject: %%ENV - UAF-VENANNUAL-DLV-VENRPT - Log Email
+    message: >
+      Please find the attached log(s) for the  'UAF-VENANNUAL-DLV-VENRPT' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  report:
+    subject: %%ENV - UAF-VENANNUAL-DLV-VENRPT - ASU Customs File
+    message: >
+      %%DATE %%TIME - Please see the attached reports.
+    to:
+    - UA_CUSTOMS_ADDRESS
+    cc:
+    attachments_dir:
+    - pdp/ecustoms
+    attachments_globs:
+    - UA_ECUSTOMS.data

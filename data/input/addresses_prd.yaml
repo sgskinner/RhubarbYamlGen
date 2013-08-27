@@ -4,6 +4,7 @@ DBLEV_ADDRESS: dblev@email.arizona.edu
 FEDEX_ADMIN_ADDRESS: Fedex_admin@fso.arizona.edu
 FROM_ADDRESS: katt-automation@list.arizona.edu
 FM_NON_OPERATING_FUNDS_ADDRESS: FMNonOperatingFunds@fso.arizona.edu
+FSO_1099_TEAM_ADDRESS: fso_1099reportingteam@fso.arizona.edu
 FSO_BURSAR_ADDRESS: BursarKFS@fso.arizona.edu
 FSO_EIRT_ADDRESS: EIRT@fso.arizona.edu
 FSO_KFS_REPORTS_FIN_MGMT: FSO_KFS_Reports_Financial_Management@fso.arizona.edu
@@ -22,3 +23,4 @@ KFSDEVELOPERS_ADDRESS: kfsdevelopers@list.arizona.edu
 SCOTT_SKINNER_ADDRESS: sskinner@email.arizona.edu
 SPONSER_ADDRESS: sponsor@email.arizona.edu
 UA_CENTRAL_RECEIVING_ADDRESS: pacs-centralreceiving
+UA_CUSTOMS_ADDRESS: UAecustoms@fso.arizona.edu
