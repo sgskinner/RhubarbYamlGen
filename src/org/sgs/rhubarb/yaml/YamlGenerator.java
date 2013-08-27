@@ -79,39 +79,35 @@ public class YamlGenerator {
 	}
 	
 
-	public static void generateTunedDlvYaml(){
-		
-		String outputDir = "data/output/tuned_yaml/";
+	public static void generateSuccessEmailYaml(){
+		Set<ConfigTuple> successJobTuples = getSuccessJobTuples();
+		for(ConfigTuple tuple : successJobTuples){
+			
+		}
+	}
+	
+	
+	private static Set<ConfigTuple> getSuccessJobTuples(){
+		Set<ConfigTuple> successJobTuples = new TreeSet<ConfigTuple>();
 		
 		List<JOBType> jobs = getAllJobs();
-		Set<String> newDlvNames = getNewDlvNames();
-		Map<String, String> newToOldNameMap = getNewToOldNameMap();
-		Set<ConfigTuple> configTuples = new TreeSet<ConfigTuple>();
 		
-		// Correlate old-to-new-names, then create tuple with all relevant info
-		for(String newName : newDlvNames){
-			String testLegacyName = newToOldNameMap.get(newName);
+		List<String> lines =  FileUtils.getLines("data/input/successEmailJobNameMap.csv");
+		for(String line : lines){
+			String[] tokens = line.split(",");
+			String legacyName = tokens[0];
+			String newSuccessName = tokens[1];
+			ConfigTuple tuple = new ConfigTuple(legacyName, newSuccessName, null);
 			for(JOBType job : jobs){
-				if(testLegacyName != null){
-					ConfigTuple tuple = new ConfigTuple(testLegacyName, newName, job);
-					configTuples.add(tuple);
-					break;
+				if(job.getJOBNAME().equals(legacyName)){
+					tuple.setJob(job);
+					successJobTuples.add(tuple);
 				}
 			}
 		}
 		
-		
-		
-		Map<String, String> fileNameToConfigMap = getTunedYaml(configTuples);
-		
-		for(Entry<String, String> entry : fileNameToConfigMap.entrySet()){
-			String filename = entry.getKey();
-			String configAsString = entry.getValue();
-			FileUtils.writeStringToFile(outputDir + filename, configAsString);
-		}
-
+		return successJobTuples;
 	}
-	
 	
 	/*
 	 * Generate generic YAML for *DLV* jobs and job-streams
@@ -324,7 +320,7 @@ public class YamlGenerator {
 	/*
 	 * Hydrate as much of the YAML from the Control-M XML as possible
 	 */
-	private static Map<String, String> getTunedYaml(Set<ConfigTuple> configTuples){
+	private static Map<String, String> getSuccessEmailYaml(Set<ConfigTuple> configTuples){
 		
 		Map<String, String> fileNameToConfigMap = new HashMap<String, String>();
 		List<JOBType> jobs = getAllJobs();
