@@ -22,9 +22,10 @@ outputs:
     attachments_globs:
     - kfs-sup-sapdbkf.log
   success:
-    subject: %%ENV - UAF-PDPPAYMT-ASM-SADISB - (PRD) SUCCESS:  KFS-SUP-SAPDBKF - Student AP Disbursement file sent to KFS
+    subject: %%ENV - UAF-PDPPAYMT-ASM-SADISB - SUCCESS, Student AP Disbursement file sent to KFS
     message: >
-      0019Job name: KFS-SUP-SAPDBKF0017Table: %%SCHEDTAB0024Run date: %%$DATE %%TIME0027Order date: %%$ODATE %%TIME0027Number of tries: %%RUNCOUNT
+      Job name: UAF-PDPPAYMT-ASM-SADISB
+      Run date: %%$DATE %%TIME
     to:
     - FSO_PDP_ADDRESS
     - KFS_BSA_ADDRESS

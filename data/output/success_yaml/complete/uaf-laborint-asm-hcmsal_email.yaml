@@ -22,9 +22,10 @@ outputs:
     attachments_globs:
     - kfs-lbi-lldgrkf.log
   success:
-    subject: %%ENV - UAF-LABORINT-ASM-HCMSAL - (PRD) SUCCESS:  KFS-LBI-LLDGRKF - HCM salary and wage file sent to KFS
+    subject: %%ENV - UAF-LABORINT-ASM-HCMSAL - SUCCESS, HCM salary and wage file sent to KFS
     message: >
-      0019Job name: KFS-LBI-LLDGRKF0017Table: %%SCHEDTAB0024Run date: %%$DATE %%TIME0027Order date: %%$ODATE %%TIME0027Number of tries: %%RUNCOUNT
+      Job name: UAF-LABORINT-ASM-HCMSAL
+      Run date: %%$DATE %%TIME
     to:
     - FSO_PAYROLL_ADDRESS
     cc:

@@ -22,9 +22,10 @@ outputs:
     attachments_globs:
     - kfs-sai-odchkkf.log
   success:
-    subject: %%ENV - UAF-PREPAID-ASM-SAHAND - (PRD) SUCCESS: KFS-SAI-ODCHKKF - SA hand drawn checks file sent to KFS
+    subject: %%ENV - UAF-PREPAID-ASM-SAHAND - SUCCESS, SA hand drawn checks file sent to KFS
     message: >
-      0019Job name: KFS-SAI-ODCHKKF0017Table: %%SCHEDTAB0024Run date: %%$DATE %%TIME0027Order date: %%$ODATE %%TIME0027Number of tries: %%RUNCOUNT
+      Job name: UAF-PREPAID-ASM-SAHAND
+      Run date: %%$DATE %%TIME
     to:
     - FSO_PDP_ADDRESS
     - KFS_BSA_ADDRESS

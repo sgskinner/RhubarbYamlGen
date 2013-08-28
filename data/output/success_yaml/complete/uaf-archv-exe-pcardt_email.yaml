@@ -22,9 +22,13 @@ outputs:
     attachments_globs:
     - kfs-pcd-carda.log
   success:
-    subject: %%ENV - UAF-ARCHV-EXE-PCARDT - (PRD) BATCH STATUS: PCard processing segment has finished
+    subject: %%ENV - UAF-ARCHV-EXE-PCARDT - SUCCESS, PCard processing segment has finished
     message: >
-      0120As of %%$DATE at %%TIME, in PRD, the PCard processing segment, also known as the "after midnight jobs," has completed.00000127Next up is the processing of Bank files, typically scheduled to occur at 5am (in producition and production-like environments).000000000015---------------0014%%$DATE.%%TIME0009KFS-PCD-CARDA
+      %%$DATE.%%TIME - The PCard processing segment, also known as
+      the "after midnight jobs," has completed.
+      
+      Next up is the processing of Bank files, typically scheduled to occur at 5am
+      (in producition and production-like environments).
     to:
     - KATT_AUTOMATION_ADDRESS
     cc:

@@ -22,9 +22,10 @@ outputs:
     attachments_globs:
     - kfs-sai-hochkkf.log
   success:
-    subject: %%ENV - UAF-PREPAID-ASM-HCMOFF - (PRD) SUCCESS: KFS-SAI-HOCHKKF - HCM off-cycle checks file sent to KFS
+    subject: %%ENV - UAF-PREPAID-ASM-HCMOFF - SUCCESS, HCM off-cycle checks file sent to KFS
     message: >
-      0019Job name: KFS-SAI-HOCHKKF0017Table: %%SCHEDTAB0024Run date: %%$DATE %%TIME0027Order date: %%$ODATE %%TIME0027Number of tries: %%RUNCOUNT
+      Job name: UAF-PREPAID-ASM-HCMOFF 
+      Run date: %%$DATE %%TIME
     to:
     - FSO_PDP_ADDRESS
     - KFS_BSA_ADDRESS

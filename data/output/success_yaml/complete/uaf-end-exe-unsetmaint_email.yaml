@@ -22,9 +22,11 @@ outputs:
     attachments_globs:
     - kfs-red-batends.log
   success:
-    subject: %%ENV - UAF-END-EXE-UNSETMAINT - (PRD) BATCH STATUS: KFS user access has been re-enabled
+    subject: %%ENV - UAF-END-EXE-UNSETMAINT - SUCCESS, KFS user access has been re-enabled
     message: >
-      0165As of %%$DATE at %%TIME, user access to the PRD system has been requested to be restored. It may take up to ten minutes for the ACE to actually let people back in.00000015---------------0014%%$DATE.%%TIME
+      %%$DATE at %%TIME - User access to the %ENV system has been requested to be
+      restored. It may take up to ten minutes for the ACE to actually let people back
+      in.
     to:
     - KATT_AUTOMATION_ADDRESS
     cc:

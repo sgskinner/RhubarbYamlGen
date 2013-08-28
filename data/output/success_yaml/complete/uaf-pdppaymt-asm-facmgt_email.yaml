@@ -22,9 +22,10 @@ outputs:
     attachments_globs:
     - kfs-sup-fmkf.log
   success:
-    subject: %%ENV - UAF-PDPPAYMT-ASM-FACMGT - (PRD) SUCCESS: KFS-SUP-FMKF - Facilities Management PDP file sent to KFS
+    subject: %%ENV - UAF-PDPPAYMT-ASM-FACMGT - SUCCESS, Facilities Management PDP file sent to KFS
     message: >
-      0019Job name: KFS-SUP-FMKF0017Table: %%SCHEDTAB0024Run date: %%$DATE %%TIME0027Order date: %%$ODATE %%TIME0027Number of tries: %%RUNCOUNT
+      Job name: UAF-PDPPAYMT-ASM-FACMGT
+      Run date: %%$DATE %%TIME
     to:
     - FSO_PDP_ADDRESS
     - KFS_BSA_ADDRESS

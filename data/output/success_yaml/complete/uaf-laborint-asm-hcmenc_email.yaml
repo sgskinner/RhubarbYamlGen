@@ -22,9 +22,10 @@ outputs:
     attachments_globs:
     - kfs-lbi-encmbkf.log
   success:
-    subject: %%ENV - UAF-LABORINT-ASM-HCMENC - (PRD) SUCCESS: KFS-LBI-ENCMBKF - HCM salary encumbrance file sent to KFS
+    subject: %%ENV - UAF-LABORINT-ASM-HCMENC - SUCCESS, HCM salary encumbrance file sent to KFS
     message: >
-      0019Job name: KFS-LBI-ENCMBKF0017Table: %%SCHEDTAB0024Run date: %%$DATE %%TIME0027Order date: %%$ODATE %%TIME0027Number of tries: %%RUNCOUNT
+      Job name: UAF-LABORINT-ASM-HCMENC
+      Run date: %%$DATE %%TIME
     to:
     - FSO_PAYROLL_ADDRESS
     cc:

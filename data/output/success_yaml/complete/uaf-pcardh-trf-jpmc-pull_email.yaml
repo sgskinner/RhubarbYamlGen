@@ -22,9 +22,10 @@ outputs:
     attachments_globs:
     - kfs-pcd-cardkf.log
   success:
-    subject: %%ENV - UAF-PCARDH-TRF-JPMC-PULL - (PRD) SUCCESS:  KFS-PCD-CARDKF - PCard cardholder file sent to KFS
+    subject: %%ENV - UAF-PCARDH-TRF-JPMC-PULL - SUCCESS, PCard cardholder file sent to KFS
     message: >
-      0019Job name: KFS-PCD-CARDKF0017Table: %%SCHEDTAB0024Run date: %%$DATE %%TIME0027Order date: %%$ODATE %%TIME0027Number of tries: %%RUNCOUNT
+      Job name: UAF-PCARDH-TRF-JPMC-PULL
+      Run date: %%$DATE %%TIME
     to:
     - KFS_PCARD_ERROR_ADDRESS
     - KFS_BSA_ADDRESS
