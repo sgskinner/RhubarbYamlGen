@@ -1,0 +1,34 @@
+---
+name: UAF-SHIP-TRF-FEDEX-PULL
+outputs:
+  start:
+    subject: %%ENV - UAF-SHIP-TRF-FEDEX-PULL - Start Notice
+    message: >
+      
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  log:
+    subject: %%ENV - UAF-SHIP-TRF-FEDEX-PULL - Logs Email
+    message: >
+      Please find the attached log(s) for the  'UAF-SHIP-TRF-FEDEX-PULL' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    - logs
+    attachments_globs:
+    - kfs-shp-shipkf.log
+  success:
+    subject: %%ENV - UAF-SHIP-TRF-FEDEX-PULL - (PRD) SUCCESS:  KFS-SHP-SHIPKF - Shipping file sent
+    message: >
+      0019Job name: KFS-SHP-SHIPKF0017Table: %%SCHEDTAB0024Run date: %%$DATE %%TIME0027Number of tries: %%RUNCOUNT
+    to:
+    - FEDEX_ADMIN_ADDRESS
+    cc:
+    attachments_dir:
+    - logs
+    attachments_globs:
+    - kfs-shp-shipkf.log

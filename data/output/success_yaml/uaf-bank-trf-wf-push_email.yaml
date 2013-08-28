@@ -1,0 +1,34 @@
+---
+name: UAF-BANK-TRF-WF-PUSH
+outputs:
+  start:
+    subject: %%ENV - UAF-BANK-TRF-WF-PUSH - Start Notice
+    message: >
+      
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  log:
+    subject: %%ENV - UAF-BANK-TRF-WF-PUSH - Logs Email
+    message: >
+      Please find the attached log(s) for the  'UAF-BANK-TRF-WF-PUSH' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    - logs
+    attachments_globs:
+    - kfs-bnk-wfif.log
+  success:
+    subject: %%ENV - UAF-BANK-TRF-WF-PUSH - (PRD) SUCCESS:  KFS-BNK-WFIF - Wells Fargo BAI file received
+    message: >
+      0019Job name: KFS-BNK-WFIF0017Table: %%SCHEDTAB0024Run date: %%$DATE %%TIME0027Order date: %%$ODATE %%TIME0027Number of tries: %%RUNCOUNT
+    to:
+    - FM_NON_OPERATING_FUNDS_ADDRESS
+    cc:
+    attachments_dir:
+    - logs
+    attachments_globs:
+    - kfs-bnk-wfif.log

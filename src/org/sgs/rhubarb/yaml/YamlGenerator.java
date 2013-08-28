@@ -30,7 +30,9 @@ import org.sgs.rhubarb.yaml.utils.FileUtils;
 
 public class YamlGenerator {
 	
-	private static String[] TEST_EMAILS = new String[]{"KATT_AUTOMATION_ADDRESS"};
+	private static final String[] TEST_EMAILS = new String[]{"KATT_AUTOMATION_ADDRESS"};
+	private static final String EMAIL_DELIM = ";";
+	private static final Map<String, String> emailToTokenMap; 
 	
 	/* Complete set of possible "ON" @code values for elements
 	 * having "DOMAIL" children. Control-M will, for
@@ -57,6 +59,16 @@ public class YamlGenerator {
 		SUCCESS_CODES = new TreeSet<String>();
 		SUCCESS_CODES.add("*Percent: 100  status: Ended OK*");
 		SUCCESS_CODES.add("OK");
+		
+		emailToTokenMap = new TreeMap<String, String>();
+		List<String> lines = FileUtils.getLines("data/input/addresses_prd.yaml");
+		lines.remove(0); // first line is "---"
+		for(String line : lines){
+			String[] tokens = line.split(": ");
+			String token = tokens[0];
+			String email = tokens[1];
+			emailToTokenMap.put(email, token);
+		}
 	}
 
 	/*
@@ -82,7 +94,9 @@ public class YamlGenerator {
 	public static void generateSuccessEmailYaml(){
 		Set<ConfigTuple> successJobTuples = getSuccessJobTuples();
 		for(ConfigTuple tuple : successJobTuples){
-			
+			String config = getSuccessEmailYaml(tuple);
+			String filename = "data/output/success_yaml/" + tuple.getNewJobName().toLowerCase() + "_email.yaml";
+			FileUtils.writeStringToFile(filename, config);
 		}
 	}
 	
@@ -97,6 +111,11 @@ public class YamlGenerator {
 			String[] tokens = line.split(",");
 			String legacyName = tokens[0];
 			String newSuccessName = tokens[1];
+			
+			if(newSuccessName.equals("NONE")){
+				continue;
+			}
+			
 			ConfigTuple tuple = new ConfigTuple(legacyName, newSuccessName, null);
 			for(JOBType job : jobs){
 				if(job.getJOBNAME().equals(legacyName)){
@@ -317,131 +336,227 @@ public class YamlGenerator {
 		return fileNameToConfigMap;
 	}
 	
+	
+	private static DOMAILType extractSuccessDoMail(JOBType job){
+		List<ONType> onTypes = job.getON();
+		if (onTypes != null) {
+			for (ONType onType : onTypes) {
+				List<Object> doTypes = onType.getDOMAILOrDOOrDOCOND();
+				if (doTypes != null) {
+					for (Object o : doTypes) {
+						if (o instanceof DOMAILType && SUCCESS_CODES.contains(onType.getCODE())) {
+							DOMAILType doMail = (DOMAILType)o;
+							return doMail;
+						}
+					}
+				}
+			}
+		}
+		return null;
+	}
+	
+
+	private static String[] split(String string, String delim){
+		if(string == null || string.length() == 0){
+			return new String[]{};
+		}
+		
+		String[] tokens = string.split(delim);
+		String[] results = new String[tokens.length];
+		int index = 0;
+		for(String s : tokens){
+			results[index] = s.trim();
+			index++;
+		}
+		
+		return results;
+	}
+	
+	
+	private static String[] substituteEmails(String[] emails){
+		
+		String[] results = new String[emails.length];
+		int index = 0;
+		for(String email : emails){
+			String val = emailToTokenMap.get(email.toLowerCase());
+			if(val == null){
+				throw new RuntimeException("Unknown email: " + email);
+			}
+			results[index] = val;
+			index++;
+		}
+		return results;
+	}
+	
+	
 	/*
 	 * Hydrate as much of the YAML from the Control-M XML as possible
 	 */
-	private static Map<String, String> getSuccessEmailYaml(Set<ConfigTuple> configTuples){
+	private static String getSuccessEmailYaml(ConfigTuple configTuple) {
+
+		// Setup to pull needed info from XML objects
+		String newName = configTuple.getNewJobName();
+		JOBType job = configTuple.getJob();
+		DOMAILType doMail = extractSuccessDoMail(job);
 		
-		Map<String, String> fileNameToConfigMap = new HashMap<String, String>();
-		List<JOBType> jobs = getAllJobs();
+		// All entries that will make a complete YAML config
+		Set<YamlEntry> entrySet = new TreeSet<YamlEntry>();
 		
-		for (ConfigTuple tuple : configTuples) {
-			
-			Set<YamlEntry> entrySet = new TreeSet<YamlEntry>();
-			String name = tuple.getNewJobName();
-			
-			
-			YamlEntry entry = new StartEntry();
-			entrySet.add(entry);
-			entry = new StartEntry();
-			entrySet.add(entry);
-			
-			entry = new JobNameEntry(name);
-			entrySet.add(entry);
-			
-			entry = new OutputEntry();
-			entrySet.add(entry);
+		YamlEntry entry = new StartEntry();
+		entrySet.add(entry);
+		entry = new StartEntry();
+		entrySet.add(entry);
 
-			// TargetEntry: "job_start" ****************************************************************
-			TargetEntry targetEntry = new TargetEntry(3, "start");
-			
-			entry = new SubjectEntry("%%ENV", name, "Start Notice");
-			targetEntry.addSubEntry(entry);
-			
-			entry = new MessageEntry("The '" + name + "' process has started.");
-			targetEntry.addSubEntry(entry);
-			
-			entry = new ToRecipientsEntry(TEST_EMAILS);
-			targetEntry.addSubEntry(entry);
-			
-			entry = new CcRecipientsEntry(new String[] {});
-			targetEntry.addSubEntry(entry);
-			
-			entry = new AttachmentsDirEntry(new String[]{});
-			targetEntry.addSubEntry(entry);
-			
-			entry = new AttachmentsDirEntry(new String[]{});
-			targetEntry.addSubEntry(entry);
-			
-			entry = new AttachmentsGlobsEntry(new String[]{});
-			targetEntry.addSubEntry(entry);
-			
-			entrySet.add(targetEntry);
-			
-			
-			// TargetEntry: "log" ****************************************************************
-			targetEntry = new TargetEntry(4, "log");
+		entry = new JobNameEntry(newName);
+		entrySet.add(entry);
 
-			entry = new SubjectEntry("%%ENV", name, "Log Email");
-			targetEntry.addSubEntry(entry);
+		entry = new OutputEntry();
+		entrySet.add(entry);
 
-			entry = new MessageEntry("Please find the attached log(s) for the  '" + name + "' process.");
-			targetEntry.addSubEntry(entry);
+		// TargetEntry: "start"
+		// ****************************************************************
+		TargetEntry targetEntry = new TargetEntry(3, "start");
 
-			entry = new ToRecipientsEntry(TEST_EMAILS);
-			targetEntry.addSubEntry(entry);
+		entry = new SubjectEntry("%%ENV", newName, "Start Notice");
+		targetEntry.addSubEntry(entry);
 
-			entry = new CcRecipientsEntry(new String[] {});
-			targetEntry.addSubEntry(entry);
-
-			entry = new AttachmentsDirEntry(new String[] {});
-			targetEntry.addSubEntry(entry);
-
-			entry = new AttachmentsDirEntry(new String[] {});
-			targetEntry.addSubEntry(entry);
-
-			entry = new AttachmentsGlobsEntry(new String[] {});
-			targetEntry.addSubEntry(entry);
-
-			entrySet.add(targetEntry);
-			
-			
-			// TargetEntry: "report" ****************************************************************
-			targetEntry = new TargetEntry(5, "report");
-
-			entry = new SubjectEntry("%%ENV", name, "Report Email");
-			targetEntry.addSubEntry(entry);
-
-			entry = new MessageEntry("Please find the attached report(s) for the  '" + name + "' process.");
-			targetEntry.addSubEntry(entry);
-
-			entry = new ToRecipientsEntry(TEST_EMAILS);
-			targetEntry.addSubEntry(entry);
-
-			entry = new CcRecipientsEntry(new String[] {});
-			targetEntry.addSubEntry(entry);
-
-			entry = new AttachmentsDirEntry(new String[] {});
-			targetEntry.addSubEntry(entry);
-
-			entry = new AttachmentsDirEntry(new String[] {});
-			targetEntry.addSubEntry(entry);
-
-			entry = new AttachmentsGlobsEntry(new String[] {});
-			targetEntry.addSubEntry(entry);
-
-			entrySet.add(targetEntry);
-			
-
-			
-			StringBuffer sb = new StringBuffer();
-			for (YamlEntry newEntry : entrySet) {
-					sb.append(newEntry);
-			}
-			
-			String configAsString= sb.toString();
-			String filename = name.toLowerCase() + "_email.yaml";
-			fileNameToConfigMap.put(filename, configAsString);
-			
-		}//for
+		entry = new MessageEntry("");
+		targetEntry.addSubEntry(entry);
 		
-		return fileNameToConfigMap;
+		entry = new ToRecipientsEntry("KATT_AUTOMATION_ADDRESS");
+		targetEntry.addSubEntry(entry);
+
+		entry = new CcRecipientsEntry(new String[]{});
+		targetEntry.addSubEntry(entry);
+
+		entry = new AttachmentsDirEntry(new String[] {});
+		targetEntry.addSubEntry(entry);
+
+		entry = new AttachmentsGlobsEntry(new String[] {});
+		targetEntry.addSubEntry(entry);
+
+		entrySet.add(targetEntry);
+
+		// TargetEntry: "log"
+		// ****************************************************************
+		targetEntry = new TargetEntry(4, "log");
+
+		entry = new SubjectEntry("%%ENV", newName, "Logs Email");
+		targetEntry.addSubEntry(entry);
+
+		String msg = doMail.getMESSAGE();
+		entry = new MessageEntry("Please find the attached log(s) for the  '" + newName + "' process.");
+		targetEntry.addSubEntry(entry);
+
+		entry = new ToRecipientsEntry("KATT_AUTOMATION_ADDRESS");
+		targetEntry.addSubEntry(entry);
+
+		entry = new CcRecipientsEntry(new String[] {});
+		targetEntry.addSubEntry(entry);
+
+		entry = new AttachmentsDirEntry("logs");
+		targetEntry.addSubEntry(entry);
+
+		entry = new AttachmentsGlobsEntry(new String[] {job.getJOBNAME().toLowerCase() + ".log"});
+		targetEntry.addSubEntry(entry);
+
+		entrySet.add(targetEntry);
+
+		
+		// TargetEntry: "success"
+		// ****************************************************************
+		targetEntry = new TargetEntry(5, "success");
+		
+		String subj = replaceTokens(job, doMail.getSUBJECT());
+		entry = new SubjectEntry("%%ENV", newName, subj);
+		targetEntry.addSubEntry(entry);
+
+		msg = doMail.getMESSAGE();
+		msg = replaceTokens(job, msg);
+		entry = new MessageEntry(msg);
+		targetEntry.addSubEntry(entry);
+		
+		String toRecipientString = replaceTokens(job, doMail.getDEST());
+		String[] toRecipients = split(toRecipientString, EMAIL_DELIM);
+		toRecipients = substituteEmails(toRecipients);
+		entry = new ToRecipientsEntry(toRecipients);
+		targetEntry.addSubEntry(entry);
+
+		
+		String ccRecipientString = doMail.getCCDEST();
+		if(ccRecipientString != null){
+			ccRecipientString = replaceTokens(job, doMail.getCCDEST());
+			String[] ccRecipients = split(ccRecipientString, EMAIL_DELIM);;
+			ccRecipients = substituteEmails(ccRecipients);
+			entry = new CcRecipientsEntry(ccRecipients);
+		}else{
+			entry = new CcRecipientsEntry(new String[]{});
+		}
+		targetEntry.addSubEntry(entry);
+
+		entry = new AttachmentsDirEntry("logs");
+		targetEntry.addSubEntry(entry);
+
+		entry = new AttachmentsGlobsEntry(job.getJOBNAME().toLowerCase() + ".log");
+		targetEntry.addSubEntry(entry);
+
+		entrySet.add(targetEntry);
+
+		StringBuffer sb = new StringBuffer();
+		for (YamlEntry newEntry : entrySet) {
+			sb.append(newEntry);
+		}
+
+		return sb.toString();
+
 	}
 	
-	// Helper method to replace tokens in a Control-M CMDLINE string
-	private static String replaceTokens(JOBType job,  String commandString){
+	
+	private static String[] replaceTokens(JOBType job,  String[] strings){
+
 		
-		String result = new String(commandString);
+		// Hydrate map of key-value pairs built from "AUTOEDIT2" elements 
+		Map<String, String> tokenMap = new HashMap<String, String>();
+		tokenMap.put("%%JOBNAME", job.getJOBNAME());
+		List<AUTOEDIT2Type> entries = job.getAUTOEDIT2();
+		for(AUTOEDIT2Type entry : entries){
+			String key = entry.getNAME();
+			String value = entry.getValueAttribute();
+			tokenMap.put(key, value);
+		}
+		
+		
+		String[] results = new String[strings.length];
+		for(int i = 0; i < strings.length; i++){
+			results[i] = strings[i];
+		}
+		
+		
+		// Replace each entry of tokenMap in commandString
+		for (int i = 0; i < strings.length; i++) {
+			
+			String string = strings[i];
+			
+			for (Entry<String, String> entry : tokenMap.entrySet()) {
+				
+				String key = entry.getKey();
+				String value = entry.getValue();
+				
+				if (string.contains(key)) {
+					results[i] = string.replace(key, value);
+				}
+			}
+
+		}
+
+		return results;
+	}
+	
+	
+	// Helper method to replace tokens in a Control-M CMDLINE string
+	private static String replaceTokens(JOBType job,  String tokenString){
+
+		String result = new String(tokenString);
 		
 		// Hydrate map of key-value pairs built from "AUTOEDIT2" elements 
 		Map<String, String> tokenMap = new HashMap<String, String>();
@@ -623,7 +738,8 @@ public class YamlGenerator {
 		//generateCmdLineYaml();
 		//generateCmdLineFile(true);
 		//printUniqueOnCodes();
-		printNewDlvJobNames();
+		//printNewDlvJobNames();
+		generateSuccessEmailYaml();
 	}
 
 }

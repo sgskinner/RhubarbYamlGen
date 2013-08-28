@@ -1,0 +1,35 @@
+---
+name: UAF-PREPAID-ASM-SAHAND
+outputs:
+  start:
+    subject: %%ENV - UAF-PREPAID-ASM-SAHAND - Start Notice
+    message: >
+      
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  log:
+    subject: %%ENV - UAF-PREPAID-ASM-SAHAND - Logs Email
+    message: >
+      Please find the attached log(s) for the  'UAF-PREPAID-ASM-SAHAND' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    - logs
+    attachments_globs:
+    - kfs-sai-odchkkf.log
+  success:
+    subject: %%ENV - UAF-PREPAID-ASM-SAHAND - (PRD) SUCCESS: KFS-SAI-ODCHKKF - SA hand drawn checks file sent to KFS
+    message: >
+      0019Job name: KFS-SAI-ODCHKKF0017Table: %%SCHEDTAB0024Run date: %%$DATE %%TIME0027Order date: %%$ODATE %%TIME0027Number of tries: %%RUNCOUNT
+    to:
+    - FSO_PDP_ADDRESS
+    - KFS_BSA_ADDRESS
+    cc:
+    attachments_dir:
+    - logs
+    attachments_globs:
+    - kfs-sai-odchkkf.log

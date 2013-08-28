@@ -1,0 +1,36 @@
+---
+name: UAF-FORMAT-DLV-ACHWF
+outputs:
+  start:
+    subject: %%ENV - UAF-FORMAT-DLV-ACHWF - Start Notice
+    message: >
+      
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  log:
+    subject: %%ENV - UAF-FORMAT-DLV-ACHWF - Logs Email
+    message: >
+      Please find the attached log(s) for the  'UAF-FORMAT-DLV-ACHWF' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    - logs
+    attachments_globs:
+    - kfs-fmt-achbf.log
+  success:
+    subject: %%ENV - UAF-FORMAT-DLV-ACHWF - (PRD) SUCCESS:  KFS-FMT-ACHBF - ACH file sent to Wells Fargo
+    message: >
+      0019Job name: KFS-FMT-ACHBF0017Table: %%SCHEDTAB0025Run date: %%$ODATE %%TIME0027Number of tries: %%RUNCOUNT
+    to:
+    - FM_NON_OPERATING_FUNDS_ADDRESS
+    cc:
+    - CHECK_CONTROL_ADDRESS
+    - KFS_BSA_ADDRESS
+    attachments_dir:
+    - logs
+    attachments_globs:
+    - kfs-fmt-achbf.log

@@ -1,0 +1,35 @@
+---
+name: UAF-GLCOLL-ASM-URIC
+outputs:
+  start:
+    subject: %%ENV - UAF-GLCOLL-ASM-URIC - Start Notice
+    message: >
+      
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  log:
+    subject: %%ENV - UAF-GLCOLL-ASM-URIC - Logs Email
+    message: >
+      Please find the attached log(s) for the  'UAF-GLCOLL-ASM-URIC' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    - logs
+    attachments_globs:
+    - kfs-glu-urkf.log
+  success:
+    subject: %%ENV - UAF-GLCOLL-ASM-URIC - (PRD) SUCCESS:  KFS-GLU-URKF - URIC GL collector file sent to KFS
+    message: >
+      0019Job name: KFS-GLU-URKF0017Table: %%SCHEDTAB0024Run date: %%$DATE %%TIME0027Order date: %%$ODATE %%TIME0027Number of tries: %%RUNCOUNT
+    to:
+    - FSO_KFS_REPORTS_FIN_MGMT
+    - JENNIFER_PIERSON_ADDRESS
+    cc:
+    attachments_dir:
+    - logs
+    attachments_globs:
+    - kfs-glu-urkf.log

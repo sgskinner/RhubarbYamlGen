@@ -1,0 +1,35 @@
+---
+name: UAF-GLCOLL-ASM-PARKTRN
+outputs:
+  start:
+    subject: %%ENV - UAF-GLCOLL-ASM-PARKTRN - Start Notice
+    message: >
+      
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  log:
+    subject: %%ENV - UAF-GLCOLL-ASM-PARKTRN - Logs Email
+    message: >
+      Please find the attached log(s) for the  'UAF-GLCOLL-ASM-PARKTRN' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    - logs
+    attachments_globs:
+    - kfs-glu-ptkf.log
+  success:
+    subject: %%ENV - UAF-GLCOLL-ASM-PARKTRN - (PRD) SUCCESS:  KFS-GLU-PTKF - Parking and Transportation GL collector file sent to KFS
+    message: >
+      0019Job name: KFS-GLU-PTKF0017Table: %%SCHEDTAB0024Run date: %%$DATE %%TIME0027Order date: %%$ODATE %%TIME0027Number of tries: %%RUNCOUNT
+    to:
+    - FSO_KFS_REPORTS_FIN_MGMT
+    - MARIA_GALOS_ADDRESS
+    cc:
+    attachments_dir:
+    - logs
+    attachments_globs:
+    - kfs-glu-ptkf.log

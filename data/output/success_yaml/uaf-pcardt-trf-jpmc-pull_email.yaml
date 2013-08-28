@@ -1,0 +1,35 @@
+---
+name: UAF-PCARDT-TRF-JPMC-PULL
+outputs:
+  start:
+    subject: %%ENV - UAF-PCARDT-TRF-JPMC-PULL - Start Notice
+    message: >
+      
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  log:
+    subject: %%ENV - UAF-PCARDT-TRF-JPMC-PULL - Logs Email
+    message: >
+      Please find the attached log(s) for the  'UAF-PCARDT-TRF-JPMC-PULL' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    - logs
+    attachments_globs:
+    - kfs-pcd-transkf.log
+  success:
+    subject: %%ENV - UAF-PCARDT-TRF-JPMC-PULL - (PRD) SUCCESS:  KFS-PCD-TRANSKF - PCard transaction file sent to KFS
+    message: >
+      0019Job name: KFS-PCD-TRANSKF0017Table: %%SCHEDTAB0024Run date: %%$DATE %%TIME0027Order date: %%$ODATE %%TIME0027Number of tries: %%RUNCOUNT
+    to:
+    - KFS_PCARD_ERROR_ADDRESS
+    - KFS_BSA_ADDRESS
+    cc:
+    attachments_dir:
+    - logs
+    attachments_globs:
+    - kfs-pcd-transkf.log

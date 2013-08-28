@@ -1,0 +1,34 @@
+---
+name: UAF-BANK-TRF-WF-PULL
+outputs:
+  start:
+    subject: %%ENV - UAF-BANK-TRF-WF-PULL - Start Notice
+    message: >
+      
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  log:
+    subject: %%ENV - UAF-BANK-TRF-WF-PULL - Logs Email
+    message: >
+      Please find the attached log(s) for the  'UAF-BANK-TRF-WF-PULL' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    - logs
+    attachments_globs:
+    - kfs-bnk-baikf.log
+  success:
+    subject: %%ENV - UAF-BANK-TRF-WF-PULL - (PRD) SUCCESS: KFS-BNK-BAIKF - BAI transaction file sent to KFS
+    message: >
+      0019Job name: KFS-BNK-BAIKF0017Table: %%SCHEDTAB0024Run date: %%$DATE %%TIME0027Order date: %%$ODATE %%TIME0027Number of tries: %%RUNCOUNT
+    to:
+    - FM_NON_OPERATING_FUNDS_ADDRESS
+    cc:
+    attachments_dir:
+    - logs
+    attachments_globs:
+    - kfs-bnk-baikf.log

@@ -1,0 +1,35 @@
+---
+name: UAF-LABORINT-ASM-BUDGET
+outputs:
+  start:
+    subject: %%ENV - UAF-LABORINT-ASM-BUDGET - Start Notice
+    message: >
+      
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  log:
+    subject: %%ENV - UAF-LABORINT-ASM-BUDGET - Logs Email
+    message: >
+      Please find the attached log(s) for the  'UAF-LABORINT-ASM-BUDGET' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    - logs
+    attachments_globs:
+    - kfs-lbi-bdsalkf.log
+  success:
+    subject: %%ENV - UAF-LABORINT-ASM-BUDGET - (PRD) SUCCESS: KFS-LBI-BDSALKF - HCM position budget file sent to KFS
+    message: >
+      0019Job name: KFS-LBI-BDSALKF0017Table: %%SCHEDTAB0024Run date: %%$DATE %%TIME0027Order date: %%$ODATE %%TIME0027Number of tries: %%RUNCOUNT
+    to:
+    - BUDGET_OFFICE_EMAIL
+    cc:
+    - FSO_RATE_STUDIES_ADDRESS
+    attachments_dir:
+    - logs
+    attachments_globs:
+    - kfs-lbi-bdsalkf.log

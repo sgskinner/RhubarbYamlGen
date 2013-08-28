@@ -1,0 +1,36 @@
+---
+name: UAF-GLCOLL-ASM-PLANDC
+outputs:
+  start:
+    subject: %%ENV - UAF-GLCOLL-ASM-PLANDC - Start Notice
+    message: >
+      
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  log:
+    subject: %%ENV - UAF-GLCOLL-ASM-PLANDC - Logs Email
+    message: >
+      Please find the attached log(s) for the  'UAF-GLCOLL-ASM-PLANDC' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    - logs
+    attachments_globs:
+    - kfs-glu-pdkf.log
+  success:
+    subject: %%ENV - UAF-GLCOLL-ASM-PLANDC - (PRD) SUCCESS:  KFS-GLU-PDKF - Planning Design and Construction GL collector file sent to KFS
+    message: >
+      0019Job name: KFS-GLU-PDKF0017Table: %%SCHEDTAB0024Run date: %%$DATE %%TIME0027Order date: %%$ODATE %%TIME0027Number of tries: %%RUNCOUNT
+    to:
+    - FSO_KFS_REPORTS_FIN_MGMT
+    - RANDY_MATTHEWS_ADDRESS
+    - DRENNON_BROWN_ADDRESS
+    cc:
+    attachments_dir:
+    - logs
+    attachments_globs:
+    - kfs-glu-pdkf.log

@@ -1,0 +1,35 @@
+---
+name: UAF-GLCOLL-ASM-TECHSVC
+outputs:
+  start:
+    subject: %%ENV - UAF-GLCOLL-ASM-TECHSVC - Start Notice
+    message: >
+      
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  log:
+    subject: %%ENV - UAF-GLCOLL-ASM-TECHSVC - Logs Email
+    message: >
+      Please find the attached log(s) for the  'UAF-GLCOLL-ASM-TECHSVC' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    - logs
+    attachments_globs:
+    - kfs-glu-ctkf.log
+  success:
+    subject: %%ENV - UAF-GLCOLL-ASM-TECHSVC - (PRD) SUCCESS:  KFS-GLU-CTKF - CTS GL collector file sent to KFS
+    message: >
+      0019Job name: KFS-GLU-CTKF0017Table: %%SCHEDTAB0024Run date: %%$DATE %%TIME0027Order date: %%$ODATE %%TIME0027Number of tries: %%RUNCOUNT
+    to:
+    - FSO_KFS_REPORTS_FIN_MGMT
+    - WINKLE_P_ADDRESS
+    cc:
+    attachments_dir:
+    - logs
+    attachments_globs:
+    - kfs-glu-ctkf.log

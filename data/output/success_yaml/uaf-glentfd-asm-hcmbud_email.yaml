@@ -1,0 +1,36 @@
+---
+name: UAF-GLENTFD-ASM-HCMBUD
+outputs:
+  start:
+    subject: %%ENV - UAF-GLENTFD-ASM-HCMBUD - Start Notice
+    message: >
+      
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  log:
+    subject: %%ENV - UAF-GLENTFD-ASM-HCMBUD - Logs Email
+    message: >
+      Please find the attached log(s) for the  'UAF-GLENTFD-ASM-HCMBUD' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    - logs
+    attachments_globs:
+    - kfs-gle-budgtkf.log
+  success:
+    subject: %%ENV - UAF-GLENTFD-ASM-HCMBUD - (PRD) SUCCESS: KFS-GLE-BUDGTKF - HCM operational budget file sent to KFS
+    message: >
+      0019Job name: KFS-GLE-BUDGTKF0017Table: %%SCHEDTAB0024Run date: %%$DATE %%TIME0027Order date: %%$ODATE %%TIME0027Number of tries: %%RUNCOUNT
+    to:
+    - FSO_KFS_REPORTS_FIN_MGMT
+    cc:
+    - BUDGET_OFFICE_EMAIL
+    - DBLEV_ADDRESS
+    attachments_dir:
+    - logs
+    attachments_globs:
+    - kfs-gle-budgtkf.log

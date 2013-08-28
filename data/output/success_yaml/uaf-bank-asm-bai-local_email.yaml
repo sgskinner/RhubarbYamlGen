@@ -1,0 +1,34 @@
+---
+name: UAF-BANK-ASM-BAI-LOCAL
+outputs:
+  start:
+    subject: %%ENV - UAF-BANK-ASM-BAI-LOCAL - Start Notice
+    message: >
+      
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  log:
+    subject: %%ENV - UAF-BANK-ASM-BAI-LOCAL - Logs Email
+    message: >
+      Please find the attached log(s) for the  'UAF-BANK-ASM-BAI-LOCAL' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    - logs
+    attachments_globs:
+    - kfs-bnk-baiif.log
+  success:
+    subject: %%ENV - UAF-BANK-ASM-BAI-LOCAL - (PRD) BATCH STATUS: Bank Transaction processing segment has begun
+    message: >
+      0164As of %%$DATE at %%TIME, in PRD, the Bank Transaction processing has begun. The transfer of wells fargo data has completed and processing of the data is starting.00000116This segment of the Nightly Batch goes from sequence 136.00 to 141.00 in the Control-M Batch Schedule on Sharepoint.00000015---------------0014%%$DATE.%%TIME0009KFS-BNK-BAIIF
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    - logs
+    attachments_globs:
+    - kfs-bnk-baiif.log

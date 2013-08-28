@@ -1,0 +1,34 @@
+---
+name: UAF-WORKFLOW-ASM-WKFLOW
+outputs:
+  start:
+    subject: %%ENV - UAF-WORKFLOW-ASM-WKFLOW - Start Notice
+    message: >
+      
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  log:
+    subject: %%ENV - UAF-WORKFLOW-ASM-WKFLOW - Logs Email
+    message: >
+      Please find the attached log(s) for the  'UAF-WORKFLOW-ASM-WKFLOW' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    - logs
+    attachments_globs:
+    - kfs-wfl-xmlsend.log
+  success:
+    subject: %%ENV - UAF-WORKFLOW-ASM-WKFLOW - (PRD) SUCCESS: KFS-WFL-XMLSEND
+    message: >
+      0019Job name: KFS-WFL-XMLSEND0017Table: %%SCHEDTAB0024Run date: %%$DATE %%TIME0027Number of tries: %%RUNCOUNT
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    - logs
+    attachments_globs:
+    - kfs-wfl-xmlsend.log

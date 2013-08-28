@@ -1,0 +1,34 @@
+---
+name: UAF-ACHLOAD-ASM-HCMBANK
+outputs:
+  start:
+    subject: %%ENV - UAF-ACHLOAD-ASM-HCMBANK - Start Notice
+    message: >
+      
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  log:
+    subject: %%ENV - UAF-ACHLOAD-ASM-HCMBANK - Logs Email
+    message: >
+      Please find the attached log(s) for the  'UAF-ACHLOAD-ASM-HCMBANK' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    - logs
+    attachments_globs:
+    - kfs-ach-hbankkf.log
+  success:
+    subject: %%ENV - UAF-ACHLOAD-ASM-HCMBANK - (PRD) SUCCESS: KFS-ACH-HBANKKF - HCM ACH Bank file sent
+    message: >
+      0019Job name: KFS-ACH-HBANKKF0017Table: %%SCHEDTAB0024Run date: %%$DATE %%TIME0027Order date: %%$ODATE %%TIME0027Number of tries: %%RUNCOUNT
+    to:
+    - CHECK_CONTROL_ADDRESS
+    cc:
+    attachments_dir:
+    - logs
+    attachments_globs:
+    - kfs-ach-hbankkf.log

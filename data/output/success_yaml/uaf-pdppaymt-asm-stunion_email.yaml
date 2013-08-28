@@ -1,0 +1,36 @@
+---
+name: UAF-PDPPAYMT-ASM-STUNION
+outputs:
+  start:
+    subject: %%ENV - UAF-PDPPAYMT-ASM-STUNION - Start Notice
+    message: >
+      
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  log:
+    subject: %%ENV - UAF-PDPPAYMT-ASM-STUNION - Logs Email
+    message: >
+      Please find the attached log(s) for the  'UAF-PDPPAYMT-ASM-STUNION' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    - logs
+    attachments_globs:
+    - kfs-sup-sukf.log
+  success:
+    subject: %%ENV - UAF-PDPPAYMT-ASM-STUNION - (PRD) SUCCESS: KFS-SUP-SUKF - Student Union PDP file sent to KFS
+    message: >
+      0019Job name: KFS-SUP-SUKF0017Table: %%SCHEDTAB0024Run date: %%$DATE %%TIME0027Order date: %%$ODATE %%TIME0027Number of tries: %%RUNCOUNT
+    to:
+    - FSO_PDP_ADDRESS
+    - KFS_BSA_ADDRESS
+    - DIANE_COLLINS_ADDRESS
+    cc:
+    attachments_dir:
+    - logs
+    attachments_globs:
+    - kfs-sup-sukf.log

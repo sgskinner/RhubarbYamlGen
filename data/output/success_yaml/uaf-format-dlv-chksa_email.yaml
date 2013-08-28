@@ -1,0 +1,37 @@
+---
+name: UAF-FORMAT-DLV-CHKSA
+outputs:
+  start:
+    subject: %%ENV - UAF-FORMAT-DLV-CHKSA - Start Notice
+    message: >
+      
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  log:
+    subject: %%ENV - UAF-FORMAT-DLV-CHKSA - Logs Email
+    message: >
+      Please find the attached log(s) for the  'UAF-FORMAT-DLV-CHKSA' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    - logs
+    attachments_globs:
+    - kfs-fmt-chknmsf.log
+  success:
+    subject: %%ENV - UAF-FORMAT-DLV-CHKSA - (PRD) SUCCESS: KFS-FMT-CHKNMSF - SA check numbers file sent to SA
+    message: >
+      0019Job name: KFS-FMT-CHKNMSF0017Table: %%SCHEDTAB0024Run date: %%$DATE %%TIME0027Order date: %%$ODATE %%TIME0027Number of tries: %%RUNCOUNT
+    to:
+    - FM_NON_OPERATING_FUNDS_ADDRESS
+    cc:
+    - CHECK_CONTROL_ADDRESS
+    - KFS_BSA_ADDRESS
+    - FSO_BURSAR_ADDRESS
+    attachments_dir:
+    - logs
+    attachments_globs:
+    - kfs-fmt-chknmsf.log
