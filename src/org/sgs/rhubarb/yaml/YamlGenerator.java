@@ -512,47 +512,6 @@ public class YamlGenerator {
 	}
 	
 	
-	private static String[] replaceTokens(JOBType job,  String[] strings){
-
-		
-		// Hydrate map of key-value pairs built from "AUTOEDIT2" elements 
-		Map<String, String> tokenMap = new HashMap<String, String>();
-		tokenMap.put("%%JOBNAME", job.getJOBNAME());
-		List<AUTOEDIT2Type> entries = job.getAUTOEDIT2();
-		for(AUTOEDIT2Type entry : entries){
-			String key = entry.getNAME();
-			String value = entry.getValueAttribute();
-			tokenMap.put(key, value);
-		}
-		
-		
-		String[] results = new String[strings.length];
-		for(int i = 0; i < strings.length; i++){
-			results[i] = strings[i];
-		}
-		
-		
-		// Replace each entry of tokenMap in commandString
-		for (int i = 0; i < strings.length; i++) {
-			
-			String string = strings[i];
-			
-			for (Entry<String, String> entry : tokenMap.entrySet()) {
-				
-				String key = entry.getKey();
-				String value = entry.getValue();
-				
-				if (string.contains(key)) {
-					results[i] = string.replace(key, value);
-				}
-			}
-
-		}
-
-		return results;
-	}
-	
-	
 	// Helper method to replace tokens in a Control-M CMDLINE string
 	private static String replaceTokens(JOBType job,  String tokenString){
 
@@ -597,19 +556,6 @@ public class YamlGenerator {
 		return nameMap;
 	}
 	
-	private static Map<String, String> getNewToOldNameMap(){
-		Map<String, String> oldToNewNameMap = getOldToNewNameMap();
-		Map<String, String> newToOldNameMap = new TreeMap<String, String>();
-		for(Entry<String, String> entry : oldToNewNameMap.entrySet()){
-			String legacyName = entry.getKey();
-			String newName = entry.getValue();
-			if(legacyName == null || legacyName.equals("--")){
-				continue;
-			}
-			newToOldNameMap.put(newName, legacyName);
-		}
-		return newToOldNameMap;
-	}
 	
 	/*
 	 * Return all names for new Control-M jobs *and* job-streams
