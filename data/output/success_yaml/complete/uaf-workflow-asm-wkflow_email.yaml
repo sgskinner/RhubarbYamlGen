@@ -22,9 +22,10 @@ outputs:
     attachments_globs:
     - kfs-wfl-xmlsend.log
   success:
-    subject: %%ENV - UAF-WORKFLOW-ASM-WKFLOW - (PRD) SUCCESS: KFS-WFL-XMLSEND
+    subject: %%ENV - UAF-WORKFLOW-ASM-WKFLOW - SUCCESS
     message: >
-      0019Job name: KFS-WFL-XMLSEND0017Table: %%SCHEDTAB0024Run date: %%$DATE %%TIME0027Number of tries: %%RUNCOUNT
+      Job name: UAF-WORKFLOW-ASM-WKFLOW
+      Run date: %%$DATE %%TIME
     to:
     - KATT_AUTOMATION_ADDRESS
     cc:

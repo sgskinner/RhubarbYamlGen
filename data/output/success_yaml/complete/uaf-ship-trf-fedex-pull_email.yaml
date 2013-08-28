@@ -22,9 +22,10 @@ outputs:
     attachments_globs:
     - kfs-shp-shipkf.log
   success:
-    subject: %%ENV - UAF-SHIP-TRF-FEDEX-PULL - (PRD) SUCCESS:  KFS-SHP-SHIPKF - Shipping file sent
+    subject: %%ENV - UAF-SHIP-TRF-FEDEX-PULL - SUCCESS, Shipping file sent
     message: >
-      0019Job name: KFS-SHP-SHIPKF0017Table: %%SCHEDTAB0024Run date: %%$DATE %%TIME0027Number of tries: %%RUNCOUNT
+      Job name: UAF-SHIP-TRF-FEDEX-PULL
+      Run date: %%$DATE %%TIME
     to:
     - FEDEX_ADMIN_ADDRESS
     cc:

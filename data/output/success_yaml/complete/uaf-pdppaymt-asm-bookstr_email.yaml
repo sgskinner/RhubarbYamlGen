@@ -22,9 +22,10 @@ outputs:
     attachments_globs:
     - kfs-sup-bkkf.log
   success:
-    subject: %%ENV - UAF-PDPPAYMT-ASM-BOOKSTR - (PRD) SUCCESS: KFS-SUP-BKKF - Bookstore PDP file sent to KFS
+    subject: %%ENV - UAF-PDPPAYMT-ASM-BOOKSTR - SUCCESS, Bookstore PDP file sent to KFS
     message: >
-      0019Job name: KFS-SUP-BKKF0017Table: %%SCHEDTAB0024Run date: %%$DATE %%TIME0027Order date: %%$ODATE %%TIME0027Number of tries: %%RUNCOUNT
+      Job name: UAF-PDPPAYMT-ASM-BOOKSTR
+      Run date: %%$DATE %%TIME
     to:
     - FSO_PDP_ADDRESS
     - KFS_BSA_ADDRESS

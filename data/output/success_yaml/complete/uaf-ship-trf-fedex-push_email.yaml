@@ -22,9 +22,10 @@ outputs:
     attachments_globs:
     - kfs-shp-fedexif.log
   success:
-    subject: %%ENV - UAF-SHIP-TRF-FEDEX-PUSH - (PRD) SUCCESS: KFS-SHP-FEDEXIF - Invoice file(s) received from Fedex
+    subject: %%ENV - UAF-SHIP-TRF-FEDEX-PUSH - SUCCESS, Invoice file(s) received from Fedex
     message: >
-      0019Job name: KFS-SHP-FEDEXIF0017Table: %%SCHEDTAB0024Run date: %%$DATE %%TIME0027Number of tries: %%RUNCOUNT
+      Job name: UAF-SHIP-TRF-FEDEX-PUSH
+      Run date: %%$DATE %%TIME
     to:
     - FEDEX_ADMIN_ADDRESS
     cc:
