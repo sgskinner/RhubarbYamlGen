@@ -1,5 +1,6 @@
 package org.sgs.rhubarb.yaml;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -96,7 +97,11 @@ public class YamlGenerator {
 		for(ConfigTuple tuple : successJobTuples){
 			String config = getSuccessEmailYaml(tuple);
 			String filename = "data/output/success_yaml/" + tuple.getNewJobName().toLowerCase() + "_email.yaml";
-			FileUtils.writeStringToFile(filename, config);
+			
+			File testFile = new File("data/output/success_yaml/complete/" + tuple.getNewJobName().toLowerCase() + "_email.yaml");
+			if(!testFile.exists()){
+				FileUtils.writeStringToFile(filename, config);
+			}
 		}
 	}
 	
@@ -420,7 +425,7 @@ public class YamlGenerator {
 		entry = new SubjectEntry("%%ENV", newName, "Start Notice");
 		targetEntry.addSubEntry(entry);
 
-		entry = new MessageEntry("");
+		entry = new MessageEntry("%%DATE %%TIME - The '" + newName + "' process has started.");
 		targetEntry.addSubEntry(entry);
 		
 		entry = new ToRecipientsEntry("KATT_AUTOMATION_ADDRESS");

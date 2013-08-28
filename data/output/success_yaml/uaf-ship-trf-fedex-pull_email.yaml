@@ -4,7 +4,7 @@ outputs:
   start:
     subject: %%ENV - UAF-SHIP-TRF-FEDEX-PULL - Start Notice
     message: >
-      
+      %%DATE %%TIME - The 'UAF-SHIP-TRF-FEDEX-PULL' process has started.
     to:
     - KATT_AUTOMATION_ADDRESS
     cc:

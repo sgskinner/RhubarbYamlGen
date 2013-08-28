@@ -11,14 +11,16 @@ outputs:
     attachments_dir:
     attachments_globs:
   log:
-    subject: %%ENV - UAF-GLPRJE-DLV-GLRPTS - Log Email
+    subject: %%ENV - UAF-GLPRJE-DLV-GLRPTS - Logs Email
     message: >
       Please find the attached log(s) for the  'UAF-GLPRJE-DLV-GLRPTS' process.
     to:
     - KATT_AUTOMATION_ADDRESS
     cc:
     attachments_dir:
+    - logs
     attachments_globs:
+    - kfs-glp-monrepe.log
   report:
     subject: %%ENV - UAF-GLPRJE-DLV-GLRPTS - General Ledger PRJE Processing Report(s), FP Team Review
     message: >
@@ -44,3 +46,14 @@ outputs:
     - scrubberJob_%%DATE*.txt
     - posterJob_%%DATE*.txt
     - balancing_%%DATE*.txt
+  success:
+    subject: %%ENV - UAF-GLPRJE-DLV-GLRPTS - (PRD) BATCH STATUS: Month End processing segment has finished
+    message: >
+      0074As of %%$DATE at %%TIME, in PRD, the Month End processing has completed.00000262The receipt of this email does mean that the Month PRJE reports were mailed out (assuming attachments were found). However, it does not mean that all previous jobs in the chain succeeded (owing to the presence of jobs that were requested to continue on failure).00000015---------------0014%%$DATE.%%TIME
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    - logs
+    attachments_globs:
+    - kfs-glp-monrepe.log

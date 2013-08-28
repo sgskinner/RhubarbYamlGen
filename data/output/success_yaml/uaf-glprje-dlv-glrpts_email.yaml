@@ -4,7 +4,7 @@ outputs:
   start:
     subject: %%ENV - UAF-GLPRJE-DLV-GLRPTS - Start Notice
     message: >
-      
+      %%DATE %%TIME - The 'UAF-GLPRJE-DLV-GLRPTS' process has started.
     to:
     - KATT_AUTOMATION_ADDRESS
     cc:

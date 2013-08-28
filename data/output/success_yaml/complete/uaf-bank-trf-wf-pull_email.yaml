@@ -4,7 +4,7 @@ outputs:
   start:
     subject: %%ENV - UAF-BANK-TRF-WF-PULL - Start Notice
     message: >
-      
+      %%DATE %%TIME - The 'UAF-BANK-TRF-WF-PULL' process has started.
     to:
     - KATT_AUTOMATION_ADDRESS
     cc:
@@ -22,9 +22,10 @@ outputs:
     attachments_globs:
     - kfs-bnk-baikf.log
   success:
-    subject: %%ENV - UAF-BANK-TRF-WF-PULL - (PRD) SUCCESS: KFS-BNK-BAIKF - BAI transaction file sent to KFS
+    subject: %%ENV - UAF-BANK-TRF-WF-PULL - SUCCESS, BAI transaction file sent to KFS
     message: >
-      0019Job name: KFS-BNK-BAIKF0017Table: %%SCHEDTAB0024Run date: %%$DATE %%TIME0027Order date: %%$ODATE %%TIME0027Number of tries: %%RUNCOUNT
+      Job name: KFS-BNK-BAIKF
+      Run date: %%$DATE %%TIME
     to:
     - FM_NON_OPERATING_FUNDS_ADDRESS
     cc:

@@ -4,7 +4,7 @@ outputs:
   start:
     subject: %%ENV - UAF-GLCOLL-ASM-AZLAB - Start Notice
     message: >
-      
+      %%DATE %%TIME - The 'UAF-GLCOLL-ASM-AZLAB' process has started.
     to:
     - KATT_AUTOMATION_ADDRESS
     cc:
@@ -22,9 +22,10 @@ outputs:
     attachments_globs:
     - kfs-glu-arkf.log
   success:
-    subject: %%ENV - UAF-GLCOLL-ASM-AZLAB - (PRD) SUCCESS:  KFS-GLU-ARKF - ARL GL collector file sent to KFS
+    subject: %%ENV - UAF-GLCOLL-ASM-AZLAB - SUCCESS, ARL GL collector file sent to KFS
     message: >
-      0019Job name: KFS-GLU-ARKF0017Table: %%SCHEDTAB0024Run date: %%$DATE %%TIME0027Order date: %%$ODATE %%TIME0027Number of tries: %%RUNCOUNT
+      Job name: UAF-GLCOLL-ASM-AZLAB
+      Run date: %%$DATE %%TIME
     to:
     - FSO_KFS_REPORTS_FIN_MGMT
     - GARTH_PERRY_ADDRESS

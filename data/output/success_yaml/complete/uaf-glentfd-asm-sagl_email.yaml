@@ -4,7 +4,7 @@ outputs:
   start:
     subject: %%ENV - UAF-GLENTFD-ASM-SAGL - Start Notice
     message: >
-      
+      %%DATE %%TIME - The 'UAF-GLENTFD-ASM-SAGL' process has started.
     to:
     - KATT_AUTOMATION_ADDRESS
     cc:
@@ -22,9 +22,10 @@ outputs:
     attachments_globs:
     - kfs-gle-saglkf.log
   success:
-    subject: %%ENV - UAF-GLENTFD-ASM-SAGL - (PRD) SUCCESS: KFS-GLE-SAGLKF - SA GL transactions file sent to KFS
+    subject: %%ENV - UAF-GLENTFD-ASM-SAGL - SUCCESS, SA GL transactions file sent to KFS
     message: >
-      0019Job name: KFS-GLE-SAGLKF0017Table: %%SCHEDTAB0024Run date: %%$DATE %%TIME0027Order date: %%$ODATE %%TIME0027Number of tries: %%RUNCOUNT
+      Job name: UAF-GLENTFD-ASM-SAGL
+      Run date: %%$DATE %%TIME
     to:
     - FSO_KFS_REPORTS_FIN_MGMT
     cc:

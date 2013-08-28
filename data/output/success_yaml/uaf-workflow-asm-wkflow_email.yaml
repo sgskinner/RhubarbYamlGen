@@ -4,7 +4,7 @@ outputs:
   start:
     subject: %%ENV - UAF-WORKFLOW-ASM-WKFLOW - Start Notice
     message: >
-      
+      %%DATE %%TIME - The 'UAF-WORKFLOW-ASM-WKFLOW' process has started.
     to:
     - KATT_AUTOMATION_ADDRESS
     cc:

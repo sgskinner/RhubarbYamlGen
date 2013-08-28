@@ -4,7 +4,7 @@ outputs:
   start:
     subject: %%ENV - UAF-PDPPAYMT-ASM-BOOKSTR - Start Notice
     message: >
-      
+      %%DATE %%TIME - The 'UAF-PDPPAYMT-ASM-BOOKSTR' process has started.
     to:
     - KATT_AUTOMATION_ADDRESS
     cc:

@@ -4,7 +4,7 @@ outputs:
   start:
     subject: %%ENV - UAF-GLCOLL-ASM-MTRPOOL - Start Notice
     message: >
-      
+      %%DATE %%TIME - The 'UAF-GLCOLL-ASM-MTRPOOL' process has started.
     to:
     - KATT_AUTOMATION_ADDRESS
     cc:
@@ -22,12 +22,13 @@ outputs:
     attachments_globs:
     - kfs-glu-mpkf.log
   success:
-    subject: %%ENV - UAF-GLCOLL-ASM-MTRPOOL - (PRD) SUCCESS:  KFS-GLU-MPKF - Motor Pool GL collector file sent to KFS
+    subject: %%ENV - UAF-GLCOLL-ASM-MTRPOOL - SUCCESS, Motor Pool GL collector file sent to KFS
     message: >
-      0019Job name: KFS-GLU-MPKF0017Table: %%SCHEDTAB0024Run date: %%$DATE %%TIME0027Order date: %%$ODATE %%TIME0027Number of tries: %%RUNCOUNT
+      Job name: UAF-GLCOLL-ASM-MTRPOOL
+      Run date: %%$DATE %%TIME
     to:
     - FSO_KFS_REPORTS_FIN_MGMT
-    - sIMON_WHITE_ADDRESS
+    - SIMON_WHITE_ADDRESS
     cc:
     attachments_dir:
     - logs

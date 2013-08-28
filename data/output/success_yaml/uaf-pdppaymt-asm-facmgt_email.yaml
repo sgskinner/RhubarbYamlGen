@@ -4,7 +4,7 @@ outputs:
   start:
     subject: %%ENV - UAF-PDPPAYMT-ASM-FACMGT - Start Notice
     message: >
-      
+      %%DATE %%TIME - The 'UAF-PDPPAYMT-ASM-FACMGT' process has started.
     to:
     - KATT_AUTOMATION_ADDRESS
     cc:
@@ -28,7 +28,7 @@ outputs:
     to:
     - FSO_PDP_ADDRESS
     - KFS_BSA_ADDRESS
-    - sIMON_WHITE_ADDRESS
+    - SIMON_WHITE_ADDRESS
     cc:
     attachments_dir:
     - logs

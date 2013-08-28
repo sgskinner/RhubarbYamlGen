@@ -4,7 +4,7 @@ outputs:
   start:
     subject: %%ENV - UAF-PREPAID-ASM-HCMOFF - Start Notice
     message: >
-      
+      %%DATE %%TIME - The 'UAF-PREPAID-ASM-HCMOFF' process has started.
     to:
     - KATT_AUTOMATION_ADDRESS
     cc:

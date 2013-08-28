@@ -4,7 +4,7 @@ outputs:
   start:
     subject: %%ENV - UAF-FORMAT-DLV-ACHWF - Start Notice
     message: >
-      
+      %%DATE %%TIME - The 'UAF-FORMAT-DLV-ACHWF' process has started.
     to:
     - KATT_AUTOMATION_ADDRESS
     cc:
@@ -22,9 +22,10 @@ outputs:
     attachments_globs:
     - kfs-fmt-achbf.log
   success:
-    subject: %%ENV - UAF-FORMAT-DLV-ACHWF - (PRD) SUCCESS:  KFS-FMT-ACHBF - ACH file sent to Wells Fargo
+    subject: %%ENV - UAF-FORMAT-DLV-ACHWF - SUCCESS, ACH file sent to Wells Fargo
     message: >
-      0019Job name: KFS-FMT-ACHBF0017Table: %%SCHEDTAB0025Run date: %%$ODATE %%TIME0027Number of tries: %%RUNCOUNT
+      Job name: UAF-FORMAT-DLV-ACHWF
+      Run date: %%$ODATE %%TIME
     to:
     - FM_NON_OPERATING_FUNDS_ADDRESS
     cc:

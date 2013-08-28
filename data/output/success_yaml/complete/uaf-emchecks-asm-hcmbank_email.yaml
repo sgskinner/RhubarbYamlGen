@@ -4,7 +4,7 @@ outputs:
   start:
     subject: %%ENV - UAF-EMCHECKS-ASM-HCMBANK - Start Notice
     message: >
-      
+      %%DATE %%TIME - The 'UAF-EMCHECKS-ASM-HCMBANK' process has started.
     to:
     - KATT_AUTOMATION_ADDRESS
     cc:
@@ -22,9 +22,10 @@ outputs:
     attachments_globs:
     - kfs-emc-hbankkf.log
   success:
-    subject: %%ENV - UAF-EMCHECKS-ASM-HCMBANK - (PRD) SUCCESS: KFS-ACH-HBANKKF - HCM ACH Bank file sent
+    subject: %%ENV - UAF-EMCHECKS-ASM-HCMBANK - SUCCESS, HCM ACH Bank file sent
     message: >
-      0019Job name: KFS-EMC-HBANKKF0017Table: %%SCHEDTAB0024Run date: %%$DATE %%TIME0027Order date: %%$ODATE %%TIME0027Number of tries: %%RUNCOUNT
+      Job name: UAF-EMCHECKS-ASM-HCMBANK
+      Run date: %%$DATE %%TIME
     to:
     - CHECK_CONTROL_ADDRESS
     cc:

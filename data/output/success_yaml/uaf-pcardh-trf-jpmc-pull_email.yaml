@@ -4,7 +4,7 @@ outputs:
   start:
     subject: %%ENV - UAF-PCARDH-TRF-JPMC-PULL - Start Notice
     message: >
-      
+      %%DATE %%TIME - The 'UAF-PCARDH-TRF-JPMC-PULL' process has started.
     to:
     - KATT_AUTOMATION_ADDRESS
     cc:

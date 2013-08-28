@@ -4,7 +4,7 @@ outputs:
   start:
     subject: %%ENV - UAF-BANK-TRF-WF-PUSH - Start Notice
     message: >
-      
+      %%DATE %%TIME - The 'UAF-BANK-TRF-WF-PUSH' process has started.
     to:
     - KATT_AUTOMATION_ADDRESS
     cc:
@@ -22,9 +22,10 @@ outputs:
     attachments_globs:
     - kfs-bnk-wfif.log
   success:
-    subject: %%ENV - UAF-BANK-TRF-WF-PUSH - (PRD) SUCCESS:  KFS-BNK-WFIF - Wells Fargo BAI file received
+    subject: %%ENV - UAF-BANK-TRF-WF-PUSH - SUCCESS, Wells Fargo BAI file received
     message: >
-      0019Job name: KFS-BNK-WFIF0017Table: %%SCHEDTAB0024Run date: %%$DATE %%TIME0027Order date: %%$ODATE %%TIME0027Number of tries: %%RUNCOUNT
+      Job name: UAF-BANK-TRF-WF-PUSH
+      Run date: %%$DATE %%TIME
     to:
     - FM_NON_OPERATING_FUNDS_ADDRESS
     cc:

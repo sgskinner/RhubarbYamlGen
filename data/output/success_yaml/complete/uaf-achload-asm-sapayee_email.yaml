@@ -4,7 +4,7 @@ outputs:
   start:
     subject: %%ENV - UAF-ACHLOAD-ASM-SAPAYEE - Start Notice
     message: >
-      
+      %%DATE %%TIME - The 'UAF-ACHLOAD-ASM-SAPAYEE' process has started.
     to:
     - KATT_AUTOMATION_ADDRESS
     cc:
@@ -22,9 +22,10 @@ outputs:
     attachments_globs:
     - kfs-ach-spaykf.log
   success:
-    subject: %%ENV - UAF-ACHLOAD-ASM-SAPAYEE - (PRD) SUCCESS:  KFS-ACH-SPAYKF - SA ACH Pay file sent
+    subject: %%ENV - UAF-ACHLOAD-ASM-SAPAYEE - SUCCESS, SA ACH Pay file sent
     message: >
-      0019Job name: KFS-ACH-SPAYKF0017Table: %%SCHEDTAB0024Run date: %%$DATE %%TIME0027Order date: %%$ODATE %%TIME0027Number of tries: %%RUNCOUNT
+      Job name: KFS-ACH-SPAYKF0017
+      Run date: %%$DATE %%TIME
     to:
     - CHECK_CONTROL_ADDRESS
     cc:

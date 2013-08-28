@@ -4,7 +4,7 @@ outputs:
   start:
     subject: %%ENV - UAF-END-EXE-UNSETMAINT - Start Notice
     message: >
-      
+      %%DATE %%TIME - The 'UAF-END-EXE-UNSETMAINT' process has started.
     to:
     - KATT_AUTOMATION_ADDRESS
     cc:

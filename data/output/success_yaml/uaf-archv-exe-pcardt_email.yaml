@@ -4,7 +4,7 @@ outputs:
   start:
     subject: %%ENV - UAF-ARCHV-EXE-PCARDT - Start Notice
     message: >
-      
+      %%DATE %%TIME - The 'UAF-ARCHV-EXE-PCARDT' process has started.
     to:
     - KATT_AUTOMATION_ADDRESS
     cc:

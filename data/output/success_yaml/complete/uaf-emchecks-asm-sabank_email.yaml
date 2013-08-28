@@ -4,7 +4,7 @@ outputs:
   start:
     subject: %%ENV - UAF-EMCHECKS-ASM-SABANK - Start Notice
     message: >
-      
+      %%DATE %%TIME - The 'UAF-EMCHECKS-ASM-SABANK' process has started.
     to:
     - KATT_AUTOMATION_ADDRESS
     cc:
@@ -22,9 +22,10 @@ outputs:
     attachments_globs:
     - kfs-emc-sbankkf.log
   success:
-    subject: %%ENV - UAF-EMCHECKS-ASM-SABANK - (PRD) SUCCESS:  KFS-ACH-SBANKKF - SA ACH Bank file sent
+    subject: %%ENV - UAF-EMCHECKS-ASM-SABANK - SUCCESS, SA ACH Bank file sent
     message: >
-      0019Job name: KFS-EMC-SBANKKF0017Table: %%SCHEDTAB0024Run date: %%$DATE %%TIME0027Order date: %%$ODATE %%TIME0027Number of tries: %%RUNCOUNT
+      Job name: UAF-EMCHECKS-ASM-SABANK
+      Run date: %%$DATE %%TIME
     to:
     - CHECK_CONTROL_ADDRESS
     cc:

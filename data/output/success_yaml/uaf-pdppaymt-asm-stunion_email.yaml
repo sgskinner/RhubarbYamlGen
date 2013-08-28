@@ -4,7 +4,7 @@ outputs:
   start:
     subject: %%ENV - UAF-PDPPAYMT-ASM-STUNION - Start Notice
     message: >
-      
+      %%DATE %%TIME - The 'UAF-PDPPAYMT-ASM-STUNION' process has started.
     to:
     - KATT_AUTOMATION_ADDRESS
     cc:

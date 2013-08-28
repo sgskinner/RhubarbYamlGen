@@ -4,7 +4,7 @@ outputs:
   start:
     subject: %%ENV - UAF-GLENTFD-ASM-HCMPAY - Start Notice
     message: >
-      
+      %%DATE %%TIME - The 'UAF-GLENTFD-ASM-HCMPAY' process has started.
     to:
     - KATT_AUTOMATION_ADDRESS
     cc:
@@ -22,9 +22,10 @@ outputs:
     attachments_globs:
     - kfs-gle-payrlkf.log
   success:
-    subject: %%ENV - UAF-GLENTFD-ASM-HCMPAY - (PRD) SUCCESS: KFS-GLE-PAYRLKF - HCM payroll liabilities file sent to KFS
+    subject: %%ENV - UAF-GLENTFD-ASM-HCMPAY - SUCCESS, HCM payroll liabilities file sent to KFS
     message: >
-      0019Job name: KFS-GLE-PAYRLKF0017Table: %%SCHEDTAB0024Run date: %%$DATE %%TIME0027Order date: %%$ODATE %%TIME0027Number of tries: %%RUNCOUNT
+      Job name: UAF-GLENTFD-ASM-HCMPAY
+      Run date: %%$DATE %%TIME
     to:
     - FSO_KFS_REPORTS_FIN_MGMT
     cc:

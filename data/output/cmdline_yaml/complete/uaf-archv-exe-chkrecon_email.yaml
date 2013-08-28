@@ -7,36 +7,37 @@ outputs:
       The 'UAF-ARCHV-EXE-CHKRECON' process has started.
     to:
     - KATT_AUTOMATION_ADDRESS
-    - JULIE_WINGATE_ADDRESS
-    - HEATHER_LO_ADDRESS
-    - JOSH_SHALOO_ADDRESS
-    - SCOTT_SKINNER_ADDRESS
     cc:
     attachments_dir:
     attachments_globs:
   log:
-    subject: DEV - UAF-ARCHV-EXE-CHKRECON - Log Email
+    subject: %%ENV - UAF-ARCHV-EXE-CHKRECON - Logs Email
     message: >
       Please find the attached log(s) for the  'UAF-ARCHV-EXE-CHKRECON' process.
     to:
     - KATT_AUTOMATION_ADDRESS
-    - JULIE_WINGATE_ADDRESS
-    - HEATHER_LO_ADDRESS
-    - JOSH_SHALOO_ADDRESS
-    - SCOTT_SKINNER_ADDRESS
     cc:
     attachments_dir:
+    - logs
     attachments_globs:
+    - kfs-bnk-ckrecna.log
   report:
     subject: DEV - UAF-ARCHV-EXE-CHKRECON - Report Email
     message: >
       Please find the attached report(s) for the  'UAF-ARCHV-EXE-CHKRECON' process.
     to:
     - KATT_AUTOMATION_ADDRESS
-    - JULIE_WINGATE_ADDRESS
-    - HEATHER_LO_ADDRESS
-    - JOSH_SHALOO_ADDRESS
-    - SCOTT_SKINNER_ADDRESS
     cc:
     attachments_dir:
     attachments_globs:
+  success:
+    subject: %%ENV - UAF-ARCHV-EXE-CHKRECON - (PRD) BATCH STATUS: Bank Transaction processing segment has finished
+    message: >
+      0088As of %%$DATE at %%TIME, in PRD, the Bank Transaction processing segment has finished.00000234The receipt of this email does mean that archiving of Check Recon files has completed. However, it does not mean that all previous jobs in the chain succeeded (owing to the presence of jobs that were requested to continue on failure).00000015---------------0014%%$DATE.%%TIME0009KFS-BNK-CKRECNA
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    - logs
+    attachments_globs:
+    - kfs-bnk-ckrecna.log

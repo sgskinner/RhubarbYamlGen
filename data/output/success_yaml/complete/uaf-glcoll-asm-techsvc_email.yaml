@@ -4,7 +4,7 @@ outputs:
   start:
     subject: %%ENV - UAF-GLCOLL-ASM-TECHSVC - Start Notice
     message: >
-      
+      %%DATE %%TIME - The 'UAF-GLCOLL-ASM-TECHSVC' process has started.
     to:
     - KATT_AUTOMATION_ADDRESS
     cc:
@@ -22,9 +22,10 @@ outputs:
     attachments_globs:
     - kfs-glu-ctkf.log
   success:
-    subject: %%ENV - UAF-GLCOLL-ASM-TECHSVC - (PRD) SUCCESS:  KFS-GLU-CTKF - CTS GL collector file sent to KFS
+    subject: %%ENV - UAF-GLCOLL-ASM-TECHSVC - SUCCESS, CTS GL collector file sent to KFS
     message: >
-      0019Job name: KFS-GLU-CTKF0017Table: %%SCHEDTAB0024Run date: %%$DATE %%TIME0027Order date: %%$ODATE %%TIME0027Number of tries: %%RUNCOUNT
+      Job name: UAF-GLCOLL-ASM-TECHSVC
+      Run date: %%$DATE %%TIME
     to:
     - FSO_KFS_REPORTS_FIN_MGMT
     - WINKLE_P_ADDRESS

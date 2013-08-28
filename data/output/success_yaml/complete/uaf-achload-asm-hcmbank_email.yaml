@@ -4,7 +4,7 @@ outputs:
   start:
     subject: %%ENV - UAF-ACHLOAD-ASM-HCMBANK - Start Notice
     message: >
-      
+      %%DATE %%TIME - The 'UAF-ACHLOAD-ASM-HCMBANK' process has started.
     to:
     - KATT_AUTOMATION_ADDRESS
     cc:
@@ -22,9 +22,10 @@ outputs:
     attachments_globs:
     - kfs-ach-hbankkf.log
   success:
-    subject: %%ENV - UAF-ACHLOAD-ASM-HCMBANK - (PRD) SUCCESS: KFS-ACH-HBANKKF - HCM ACH Bank file sent
+    subject: %%ENV - UAF-ACHLOAD-ASM-HCMBANK - SUCCESS, HCM ACH Bank file sent
     message: >
-      0019Job name: KFS-ACH-HBANKKF0017Table: %%SCHEDTAB0024Run date: %%$DATE %%TIME0027Order date: %%$ODATE %%TIME0027Number of tries: %%RUNCOUNT
+      Job name: UAF-ACHLOAD-ASM-HCMBANK
+      Run date: %%$DATE %%TIME
     to:
     - CHECK_CONTROL_ADDRESS
     cc:

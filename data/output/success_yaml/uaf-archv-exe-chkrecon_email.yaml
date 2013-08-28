@@ -4,7 +4,7 @@ outputs:
   start:
     subject: %%ENV - UAF-ARCHV-EXE-CHKRECON - Start Notice
     message: >
-      
+      %%DATE %%TIME - The 'UAF-ARCHV-EXE-CHKRECON' process has started.
     to:
     - KATT_AUTOMATION_ADDRESS
     cc:

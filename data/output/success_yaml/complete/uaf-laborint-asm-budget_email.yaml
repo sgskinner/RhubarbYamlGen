@@ -4,7 +4,7 @@ outputs:
   start:
     subject: %%ENV - UAF-LABORINT-ASM-BUDGET - Start Notice
     message: >
-      
+      %%DATE %%TIME - The 'UAF-LABORINT-ASM-BUDGET' process has started.
     to:
     - KATT_AUTOMATION_ADDRESS
     cc:
@@ -22,9 +22,10 @@ outputs:
     attachments_globs:
     - kfs-lbi-bdsalkf.log
   success:
-    subject: %%ENV - UAF-LABORINT-ASM-BUDGET - (PRD) SUCCESS: KFS-LBI-BDSALKF - HCM position budget file sent to KFS
+    subject: %%ENV - UAF-LABORINT-ASM-BUDGET - SUCCESS, HCM position budget file sent to KFS
     message: >
-      0019Job name: KFS-LBI-BDSALKF0017Table: %%SCHEDTAB0024Run date: %%$DATE %%TIME0027Order date: %%$ODATE %%TIME0027Number of tries: %%RUNCOUNT
+      Job name: UAF-LABORINT-ASM-BUDGET
+      Run date: %%$DATE %%TIME
     to:
     - BUDGET_OFFICE_EMAIL
     cc:

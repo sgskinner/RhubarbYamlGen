@@ -4,7 +4,7 @@ outputs:
   start:
     subject: %%ENV - UAF-EINV-ASM-SCIQ - Start Notice
     message: >
-      
+      %%DATE %%TIME - The 'UAF-EINV-ASM-SCIQ' process has started.
     to:
     - KATT_AUTOMATION_ADDRESS
     cc:
@@ -22,9 +22,12 @@ outputs:
     attachments_globs:
     - kfs-ein-scikf.log
   success:
-    subject: %%ENV - UAF-EINV-ASM-SCIQ - (PRD) SUCCESS: KFS-EIN-SCIKF - Sciquest eInvoice file sent to KFS
+    subject: %%ENV - UAF-EINV-ASM-SCIQ - SUCCESS, Sciquest eInvoice file sent to KFS
     message: >
-      0019Job name: KFS-EIN-SCIKF0017Table: %%SCHEDTAB0024Run date: %%$DATE %%TIME0027Order date: %%$ODATE %%TIME00000027Number of tries: %%RUNCOUNT00000050This is an automated message. Please do not reply.
+      Job name: KFS-EIN-SCIKF
+      Run date: %%$DATE %%TIME
+      
+      This is an automated message. Please do not reply.
     to:
     - FSO_EIRT_ADDRESS
     - KFS_BSA_ADDRESS

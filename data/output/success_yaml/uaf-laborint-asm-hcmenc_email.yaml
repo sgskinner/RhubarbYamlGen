@@ -4,7 +4,7 @@ outputs:
   start:
     subject: %%ENV - UAF-LABORINT-ASM-HCMENC - Start Notice
     message: >
-      
+      %%DATE %%TIME - The 'UAF-LABORINT-ASM-HCMENC' process has started.
     to:
     - KATT_AUTOMATION_ADDRESS
     cc:
