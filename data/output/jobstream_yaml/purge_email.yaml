@@ -1,0 +1,34 @@
+---
+name: PURGE
+outputs:
+  start:
+    subject: ENV - PURGE - Job Stream Start Notice
+    message: >
+      DATE TIME - The 'PURGE' job stream has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  log:
+    subject: ENV - PURGE - Logs Email
+    message: >
+      DATE TIME - Please find the attached log(s) for the  'PURGE' job stream.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    - BATCH_HOME/logs
+    attachments_globs:
+    - GlobFileFilter: [purge.log]
+  success:
+    subject: ENV - PURGE - Success Email
+    message: >
+      DATE TIME - The 'PURGE' job stream has completed successfully, please find the attached log.'
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    - BATCH_HOME/logs
+    attachments_globs:
+    - GlobFileFilter: [purge.log]

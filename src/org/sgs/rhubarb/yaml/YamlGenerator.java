@@ -221,6 +221,129 @@ public class YamlGenerator {
 	
 	
 	/*
+	 * Hydrate as much of the YAML from the Control-M XML as possible
+	 */
+	private static String getJobStreamYaml(String jobStreamName) {
+		
+		// All entries that will make a complete YAML config
+		Set<YamlEntry> entrySet = new TreeSet<YamlEntry>();
+		
+		YamlEntry entry = new StartEntry();
+		entrySet.add(entry);
+		entry = new StartEntry();
+		entrySet.add(entry);
+
+		entry = new JobNameEntry(jobStreamName);
+		entrySet.add(entry);
+
+		entry = new OutputEntry();
+		entrySet.add(entry);
+
+		// TargetEntry: "start"
+		// ****************************************************************
+		TargetEntry targetEntry = new TargetEntry(3, "start");
+
+		entry = new SubjectEntry("ENV", jobStreamName, "Job Stream Start Notice");
+		targetEntry.addSubEntry(entry);
+
+		entry = new MessageEntry("DATE TIME - The '" + jobStreamName + "' job stream has started.");
+		targetEntry.addSubEntry(entry);
+		
+		entry = new ToRecipientsEntry("KATT_AUTOMATION_ADDRESS");
+		targetEntry.addSubEntry(entry);
+
+		entry = new CcRecipientsEntry(new String[]{});
+		targetEntry.addSubEntry(entry);
+
+		entry = new AttachmentsDirEntry(new String[] {});
+		targetEntry.addSubEntry(entry);
+
+		entry = new AttachmentsGlobsEntry(new String[] {});
+		targetEntry.addSubEntry(entry);
+
+		entrySet.add(targetEntry);
+
+		// TargetEntry: "log"
+		// ****************************************************************
+		targetEntry = new TargetEntry(4, "log");
+
+		entry = new SubjectEntry("ENV", jobStreamName, "Logs Email");
+		targetEntry.addSubEntry(entry);
+
+		entry = new MessageEntry("DATE TIME - Please find the attached log(s) for the  '" + jobStreamName + "' job stream.");
+		targetEntry.addSubEntry(entry);
+
+		entry = new ToRecipientsEntry("KATT_AUTOMATION_ADDRESS");
+		targetEntry.addSubEntry(entry);
+
+		entry = new CcRecipientsEntry(new String[] {});
+		targetEntry.addSubEntry(entry);
+
+		entry = new AttachmentsDirEntry("BATCH_HOME/logs");
+		targetEntry.addSubEntry(entry);
+
+		entry = new AttachmentsGlobsEntry(new String[] {"GlobFileFilter: [" + jobStreamName.toLowerCase() + ".log]"});
+		targetEntry.addSubEntry(entry);
+
+		entrySet.add(targetEntry);
+
+		
+		// TargetEntry: "success"
+		// ****************************************************************
+		targetEntry = new TargetEntry(5, "success");
+		
+		entry = new SubjectEntry("ENV", jobStreamName, "Success Email" );
+		targetEntry.addSubEntry(entry);
+
+		String msg = String.format("DATE TIME - The '%s' job stream has completed successfully, please find the attached log.'", jobStreamName);
+		entry = new MessageEntry(msg);
+		targetEntry.addSubEntry(entry);
+		
+		entry = new ToRecipientsEntry(new String[]{"KATT_AUTOMATION_ADDRESS"});
+		targetEntry.addSubEntry(entry);
+
+		entry = new CcRecipientsEntry(new String[]{});
+		targetEntry.addSubEntry(entry);
+
+		entry = new AttachmentsDirEntry("BATCH_HOME/logs");
+		targetEntry.addSubEntry(entry);
+
+		entry = new AttachmentsGlobsEntry("GlobFileFilter: [" + jobStreamName.toLowerCase() + ".log]");
+		targetEntry.addSubEntry(entry);
+
+		entrySet.add(targetEntry);
+
+		StringBuffer sb = new StringBuffer();
+		for (YamlEntry newEntry : entrySet) {
+			sb.append(newEntry);
+		}
+
+		return sb.toString();
+
+	}
+	
+	public static void generateJobStreamYaml() {
+		
+		Map<String, String> oldToNewNameMap = getOldToNewNameMap();
+		Set<String> jobStreamNames = new TreeSet<String>();
+		for(String newName : oldToNewNameMap.values()){
+			String[] tokens = newName.split("-");
+			String jobStreamName = tokens[1];
+			jobStreamNames.add(jobStreamName);
+		}
+		
+		for(String jobStreamName : jobStreamNames){
+			String config = getJobStreamYaml(jobStreamName);
+			String dir = "data/output/jobstream_yaml/";
+			String filename = jobStreamName.toLowerCase() + "_email.yaml";
+			String filePath = dir + filename;
+			FileUtils.writeStringToFile(filePath, config);
+			
+		}
+	}
+	
+	
+	/*
 	 * Given a list of job/job-stream names, return a map
 	 * of generic configs suitable for writing out to file --
 	 * the map key is the filename, and the map value is
@@ -683,6 +806,7 @@ public class YamlGenerator {
 		
 	}//printNewDlvJobNames()
 	
+	
 	public static void main(String[] sgs) {
 		//YamlGenerator.generateStubYaml();
 		//findMuttJobs(true);
@@ -690,7 +814,8 @@ public class YamlGenerator {
 		//generateCmdLineFile(true);
 		//printUniqueOnCodes();
 		//printNewDlvJobNames();
-		generateSuccessEmailYaml();
+		//generateSuccessEmailYaml();
+		generateJobStreamYaml();
 	}
 
 }

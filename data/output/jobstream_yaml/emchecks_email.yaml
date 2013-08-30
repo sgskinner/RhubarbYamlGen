@@ -1,0 +1,34 @@
+---
+name: EMCHECKS
+outputs:
+  start:
+    subject: ENV - EMCHECKS - Job Stream Start Notice
+    message: >
+      DATE TIME - The 'EMCHECKS' job stream has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  log:
+    subject: ENV - EMCHECKS - Logs Email
+    message: >
+      DATE TIME - Please find the attached log(s) for the  'EMCHECKS' job stream.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    - BATCH_HOME/logs
+    attachments_globs:
+    - GlobFileFilter: [emchecks.log]
+  success:
+    subject: ENV - EMCHECKS - Success Email
+    message: >
+      DATE TIME - The 'EMCHECKS' job stream has completed successfully, please find the attached log.'
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    - BATCH_HOME/logs
+    attachments_globs:
+    - GlobFileFilter: [emchecks.log]

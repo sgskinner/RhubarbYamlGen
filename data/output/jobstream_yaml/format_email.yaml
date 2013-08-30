@@ -1,0 +1,34 @@
+---
+name: FORMAT
+outputs:
+  start:
+    subject: ENV - FORMAT - Job Stream Start Notice
+    message: >
+      DATE TIME - The 'FORMAT' job stream has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  log:
+    subject: ENV - FORMAT - Logs Email
+    message: >
+      DATE TIME - Please find the attached log(s) for the  'FORMAT' job stream.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    - BATCH_HOME/logs
+    attachments_globs:
+    - GlobFileFilter: [format.log]
+  success:
+    subject: ENV - FORMAT - Success Email
+    message: >
+      DATE TIME - The 'FORMAT' job stream has completed successfully, please find the attached log.'
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    - BATCH_HOME/logs
+    attachments_globs:
+    - GlobFileFilter: [format.log]

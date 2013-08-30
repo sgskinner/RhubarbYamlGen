@@ -1,0 +1,34 @@
+---
+name: INDCOST
+outputs:
+  start:
+    subject: ENV - INDCOST - Job Stream Start Notice
+    message: >
+      DATE TIME - The 'INDCOST' job stream has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    attachments_globs:
+  log:
+    subject: ENV - INDCOST - Logs Email
+    message: >
+      DATE TIME - Please find the attached log(s) for the  'INDCOST' job stream.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    - BATCH_HOME/logs
+    attachments_globs:
+    - GlobFileFilter: [indcost.log]
+  success:
+    subject: ENV - INDCOST - Success Email
+    message: >
+      DATE TIME - The 'INDCOST' job stream has completed successfully, please find the attached log.'
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachments_dir:
+    - BATCH_HOME/logs
+    attachments_globs:
+    - GlobFileFilter: [indcost.log]
