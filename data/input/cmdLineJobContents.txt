@@ -88,7 +88,7 @@
 [KFS-EMC-BANKA => NONE]:
  touch /home/tomcat/app/work/kfs/staging/pdp/achPayeeBankAccounts/*.data /home/tomcat/app/work/kfs/staging/pdp/achBanks/*.data; mv /home/tomcat/app/work/kfs/staging/pdp/achBanks/*.data /home/tomcat/app/work/kfs/staging/pdp/achPayeeBankAccounts/*.data    /home/tomcat/app/work/kfs/archive/pdp/; exit 0;
 
-[KFS-FMT-ASUFE => NONE]:
+[KFS-FMT-ASUFE => UAF-ECUSTOMS-DLV-VENRPT]:
  echo "Attached is the data file that was produced from the 'Format Checks/ACH process.  This file was sent to ASU and is attached for your review." | mutt -s "PRD -  KFS-FMT-ASUFE - eCustoms File sent to ASU - AP Team Review" -a /home/tomcat/app/work/kfs/staging/pdp/ecustoms/UA_ECUSTOMS.data UAecustoms@fso.arizona.edu; sleep 5; exit 0;
 
 [KFS-FMT-CKRECNE => UAF-FORMAT-DLV-RECONRPT]:
