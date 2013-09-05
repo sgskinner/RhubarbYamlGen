@@ -1,0 +1,32 @@
+---
+name: UAF-TAXFORM-DLV-EMAIL
+outputs:
+  start:
+    subject: ENV - UAF-TAXFORM-DLV-EMAIL - Job Stream Start Notice
+    message: >
+      DATE TIME - The 'UAF-TAXFORM-DLV-EMAIL' job stream has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:
+  log:
+    subject: ENV - UAF-TAXFORM-DLV-EMAIL - Logs Email
+    message: >
+      DATE TIME - Please find the attached log(s) for the  'UAF-TAXFORM-DLV-EMAIL' job stream.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-taxform-dlv-email.log]
+  success:
+    subject: ENV - UAF-TAXFORM-DLV-EMAIL - Success Email
+    message: >
+      The 'UAF-TAXFORM-DLV-EMAIL' job completed successfully on DATE TIME. This corresponds to the 1099 tax processing.
+    to:
+    - FSO_1099_TEAM_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:

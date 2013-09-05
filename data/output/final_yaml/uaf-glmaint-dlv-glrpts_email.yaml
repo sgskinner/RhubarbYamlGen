@@ -1,0 +1,46 @@
+---
+name: UAF-GLMAINT-DLV-GLRPTS
+outputs:
+  start:
+    subject: ENV - UAF-GLMAINT-DLV-GLRPTS - Start Notice
+    message: >
+      The 'UAF-GLMAINT-DLV-GLRPTS' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:
+  log:
+    subject: ENV - UAF-GLMAINT-DLV-GLRPTS - Log Email
+    message: >
+      Please find the attached log(s) for the  'UAF-GLMAINT-DLV-GLRPTS' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-glmaint-dlv-glrpts.log]
+  report:
+    subject: ENV - UAF-GLMAINT-DLV-GLRPTS - General Ledger Processing Report(s), FP Team Review
+    message: >
+      DATE TIME - Attached are the reports that provide the results associated
+      with the batch processing for the general ledger. These reports will provide
+      information with regard to statistics and errors found, if any, from any of the
+      external files or internal documents processed associated with general ledger
+      transactions, along with providing information on the condition of the general
+      ledger balances.
+    to:
+    - FSO_KFS_REPORTS_FIN_MGMT
+    cc:
+    - KFS_BSA_ADDRESS
+    - DBLEV_ADDRESS
+    attachment_dirs:
+    - BATCH_HOME/reports/gl
+    attachments:
+    - GlobFileFilterTracker: [glpe_ledger_*.txt,
+                              glpe_list_*.txt,
+                              sufficient_funds_*.txt,
+                              scrubberJob_*.txt,
+                              posterJob_*.txt,
+                              balancing_*.txt]

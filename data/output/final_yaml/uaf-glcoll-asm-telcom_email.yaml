@@ -1,0 +1,36 @@
+---
+name: UAF-GLCOLL-ASM-TELCOM
+outputs:
+  start:
+    subject: ENV - UAF-GLCOLL-ASM-TELCOM - Start Notice
+    message: >
+      DATE TIME - The 'UAF-GLCOLL-ASM-TELCOM' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:
+  log:
+    subject: ENV - UAF-GLCOLL-ASM-TELCOM - Logs Email
+    message: >
+      Please find the attached log(s) for the  'UAF-GLCOLL-ASM-TELCOM' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-glcoll-asm-telcom.log]
+  success:
+    subject: ENV - UAF-GLCOLL-ASM-TELCOM - SUCCESS, Telecommunications GL collector file sent to KFS
+    message: >
+      Job name: UAF-GLCOLL-ASM-TELCOM
+      Run date: DATE TIME
+    to:
+    - FSO_KFS_REPORTS_FIN_MGMT
+    - CYNTHIA_CAMP_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-glcoll-asm-telcom.log]

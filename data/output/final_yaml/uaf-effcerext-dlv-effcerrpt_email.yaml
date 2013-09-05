@@ -1,0 +1,37 @@
+---
+name: UAF-EFFCEREXT-DLV-EFFCERRPT
+outputs:
+  start:
+    subject: ENV - UAF-EFFCEREXT-DLV-EFFCERRPT - Start Notice
+    message: >
+      The 'UAF-EFFCEREXT-DLV-EFFCERRPT' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:
+  log:
+    subject: ENV - UAF-EFFCEREXT-DLV-EFFCERRPT - Log Email
+    message: >
+      Please find the attached log(s) for the  'UAF-EFFCEREXT-DLV-EFFCERRPT' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-effcerext-dlv-effcerrpt.log]
+  report:
+    subject: ENV - UAF-EFFCEREXT-DLV-EFFCERRPT - Effort Cert Reports
+    message: >
+      DATE TIME - Please see the attached reports. When ready, place notify operations that
+      UAF-EFFCEREXT-DLV-EFFCERRPT can ber confirmed, so that the Effort Cert Create
+      job can be run.
+    to:
+    - KFS_BSA_ADDRESS
+    cc:
+    - SPONSER_ADDRESS
+    attachment_dirs:
+    - BATCH_HOME/reports/ec
+    attachments:
+    - GlobFileFilterTracker: [effort_extract_summary_*.pdf]

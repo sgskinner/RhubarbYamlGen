@@ -1,0 +1,38 @@
+---
+name: UAF-ARCHV-EXE-PCARDT
+outputs:
+  start:
+    subject: ENV - UAF-ARCHV-EXE-PCARDT - Start Notice
+    message: >
+      DATE TIME - The 'UAF-ARCHV-EXE-PCARDT' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:
+  log:
+    subject: ENV - UAF-ARCHV-EXE-PCARDT - Logs Email
+    message: >
+      Please find the attached log(s) for the  'UAF-ARCHV-EXE-PCARDT' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [kfs-pcd-carda.log]
+  success:
+    subject: ENV - UAF-ARCHV-EXE-PCARDT - SUCCESS, PCard processing segment has finished
+    message: >
+      DATE.TIME - The PCard processing segment, also known as
+      the "after midnight jobs," has completed.
+      
+      Next up is the processing of Bank files, typically scheduled to occur at 5am
+      (in producition and production-like environments).
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [kfs-pcd-carda.log]

@@ -1,0 +1,35 @@
+---
+name: UAF-BANK-TRF-WF-PULL
+outputs:
+  start:
+    subject: ENV - UAF-BANK-TRF-WF-PULL - Start Notice
+    message: >
+      DATE TIME - The 'UAF-BANK-TRF-WF-PULL' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:
+  log:
+    subject: ENV - UAF-BANK-TRF-WF-PULL - Logs Email
+    message: >
+      Please find the attached log(s) for the  'UAF-BANK-TRF-WF-PULL' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-bank-trf-wf-pull.log]
+  success:
+    subject: ENV - UAF-BANK-TRF-WF-PULL - SUCCESS, BAI transaction file sent to KFS
+    message: >
+      Job name: UAF-BANK-TRF-WF-PULL 
+      Run date: DATE TIME
+    to:
+    - FM_NON_OPERATING_FUNDS_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-bank-trf-wf-pull.log]

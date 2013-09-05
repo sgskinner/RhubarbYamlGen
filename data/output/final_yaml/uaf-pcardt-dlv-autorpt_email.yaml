@@ -1,0 +1,37 @@
+---
+name: UAF-PCARDT-DLV-AUTORPT
+outputs:
+  start:
+    subject: ENV - UAF-PCARDT-DLV-AUTORPT - Start Notice
+    message: >
+      The 'UAF-PCARDT-DLV-AUTORPT' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:
+  log:
+    subject: ENV - UAF-PCARDT-DLV-AUTORPT - Log Email
+    message: >
+      Please find the attached log(s) for the  'UAF-PCARDT-DLV-AUTORPT' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-pcardt-dlv-autorpt.log]
+  report:
+    subject: ENV - UAF-PCARDT-DLV-AUTORPT - PCard Validation Errors, PACS/AP Team Review
+    message: >
+      DATE TIME - Attached is/are the report(s) that show the results and/or
+      provide information on any error conditions found, if any, as a result of PCDO
+      validation errors thrown during the PCDO auto approve process.
+    to:
+    - KFS_BSA_ADDRESS
+    cc:
+    - KFS_PCARD_ERROR_ADDRESS
+    attachment_dirs:
+    - BATCH_HOME/reports/fp
+    attachments:
+    - GlobFileFilterTracker: [pcdo_reroute_errors_*.txt]

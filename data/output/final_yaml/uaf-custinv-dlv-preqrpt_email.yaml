@@ -1,0 +1,38 @@
+---
+name: UAF-CUSTINV-DLV-PREQRPT
+outputs:
+  start:
+    subject: ENV - UAF-CUSTINV-DLV-PREQRPT - Start Notice
+    message: >
+      The 'UAF-CUSTINV-DLV-PREQRPT' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:
+  log:
+    subject: ENV - UAF-CUSTINV-DLV-PREQRPT - Log Email
+    message: >
+      Please find the attached log(s) for the  'UAF-CUSTINV-DLV-PREQRPT' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-custinv-dlv-preqrpt.log]
+  report:
+    subject: ENV - UAF-CUSTINV-DLV-PREQRPT - preq auto approves errors - PACS/AP Team Review
+    message: >
+      DATE TIME - Attached is/are the report(s) that show the results and/or
+      provide information on any error conditions found, if any, as a result of any
+      preq auto approves that were processed for the day.
+    to:
+    - FSO_PDP_ADDRESS
+    cc:
+    - CHECK_CONTROL_ADDRESS
+    - KFS_BSA_ADDRESS
+    attachment_dirs:
+    - BATCH_HOME/reports/purap
+    attachments:
+    - GlobFileFilterTracker: [preq_autoapprove_errors_*.txt]

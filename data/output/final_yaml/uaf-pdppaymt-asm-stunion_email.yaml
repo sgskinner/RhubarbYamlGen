@@ -1,0 +1,37 @@
+---
+name: UAF-PDPPAYMT-ASM-STUNION
+outputs:
+  start:
+    subject: ENV - UAF-PDPPAYMT-ASM-STUNION - Start Notice
+    message: >
+      DATE TIME - The 'UAF-PDPPAYMT-ASM-STUNION' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:
+  log:
+    subject: ENV - UAF-PDPPAYMT-ASM-STUNION - Logs Email
+    message: >
+      Please find the attached log(s) for the  'UAF-PDPPAYMT-ASM-STUNION' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-pdppaymt-asm-stunion.log]
+  success:
+    subject: ENV - UAF-PDPPAYMT-ASM-STUNION - SUCCESS, Student Union PDP file sent to KFS
+    message: >
+      Job name: UAF-PDPPAYMT-ASM-STUNION
+      Run date: DATE TIME
+    to:
+    - FSO_PDP_ADDRESS
+    - KFS_BSA_ADDRESS
+    - DIANE_COLLINS_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-pdppaymt-asm-stunion.log]

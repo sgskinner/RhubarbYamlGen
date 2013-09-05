@@ -1,0 +1,36 @@
+---
+name: UAF-GLCOLL-ASM-PARKTRN
+outputs:
+  start:
+    subject: ENV - UAF-GLCOLL-ASM-PARKTRN - Start Notice
+    message: >
+      DATE TIME - The 'UAF-GLCOLL-ASM-PARKTRN' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:
+  log:
+    subject: ENV - UAF-GLCOLL-ASM-PARKTRN - Logs Email
+    message: >
+      Please find the attached log(s) for the  'UAF-GLCOLL-ASM-PARKTRN' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-glcoll-asm-parktrn.log]
+  success:
+    subject: ENV - UAF-GLCOLL-ASM-PARKTRN - SUCCESS, Parking and Transportation GL collector file sent to KFS
+    message: >
+      Job name: UAF-GLCOLL-ASM-PARKTRN
+      Run date: DATE TIME
+    to:
+    - FSO_KFS_REPORTS_FIN_MGMT
+    - MARIA_GALOS_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-glcoll-asm-parktrn.log]

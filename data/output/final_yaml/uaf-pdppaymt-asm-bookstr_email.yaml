@@ -1,0 +1,37 @@
+---
+name: UAF-PDPPAYMT-ASM-BOOKSTR
+outputs:
+  start:
+    subject: ENV - UAF-PDPPAYMT-ASM-BOOKSTR - Start Notice
+    message: >
+      DATE TIME - The 'UAF-PDPPAYMT-ASM-BOOKSTR' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:
+  log:
+    subject: ENV - UAF-PDPPAYMT-ASM-BOOKSTR - Logs Email
+    message: >
+      Please find the attached log(s) for the  'UAF-PDPPAYMT-ASM-BOOKSTR' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-pdppaymt-asm-bookstr.log]
+  success:
+    subject: ENV - UAF-PDPPAYMT-ASM-BOOKSTR - SUCCESS, Bookstore PDP file sent to KFS
+    message: >
+      Job name: UAF-PDPPAYMT-ASM-BOOKSTR
+      Run date: DATE TIME
+    to:
+    - FSO_PDP_ADDRESS
+    - KFS_BSA_ADDRESS
+    - BOOKSTORE_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-pdppaymt-asm-bookstr.log]

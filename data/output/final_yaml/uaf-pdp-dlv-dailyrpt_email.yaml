@@ -1,0 +1,44 @@
+---
+name: UAF-PDP-DLV-DAILYRPT
+outputs:
+  start:
+    subject: ENV - UAF-PDP-DLV-DAILYRPT - Start Notice
+    message: >
+      The 'UAF-PDP-DLV-DAILYRPT' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:
+  log:
+    subject: ENV - UAF-PDP-DLV-DAILYRPT - Log Email
+    message: >
+      Please find the attached log(s) for the  'UAF-PDP-DLV-DAILYRPT' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-pdp-dlv-dailyrpt.log]
+  report:
+    subject: ENV - UAF-PDP-DLV-DAILYRPT - PDP Daily Report(s), AP/PDP Team Review
+    message: >
+      DATE TIME - Attached is/are the report(s) that reflect the summary
+      breakdown by type and source of payments that are ELIGIBLE to be formatted via
+      the online process based on the date(s) shown on the corresponding report(s).
+      This will not necessarily reflect all of the payment data that is sitting
+      within the PDP area of the system awaiting a payment date to be achieved.
+      
+      The report(s) may also not reflect or tie to an actual check file that is
+      ultimately produced for a particular day due to changes that can occur within
+      the PDP area of the system, such as moving a payment to 'immediate' or placing
+      a payment on hold, prior to performing the actual format process that would
+      affect the payments that actually are made.
+    to:
+    - CHECK_CONTROL_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/reports/pdp
+    attachments:
+    - GlobFileFilterTracker: [pdp_daily_*.pdf]

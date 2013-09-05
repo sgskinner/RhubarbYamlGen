@@ -1,0 +1,37 @@
+---
+name: UAF-EINV-DLV-EINVEXTR
+outputs:
+  start:
+    subject: ENV - UAF-EINV-DLV-EINVEXTR - Start Notice
+    message: >
+      The 'UAF-EINV-DLV-EINVEXTR' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:
+  log:
+    subject: ENV - UAF-EINV-DLV-EINVEXTR - Log Email
+    message: >
+      Please find the attached log(s) for the  'UAF-EINV-DLV-EINVEXTR' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-einv-dlv-einvextr.log]
+  report:
+    subject: ENV - UAF-EINV-DLV-EINVEXTR - eInvoice Processing Information - PACS/AP Team Review
+    message: >
+      DATE TIME - Attached is/are the report(s) that show the results and/or
+      provide information on any error conditions found, if any, as a result of any
+      eInvoice files that were processed for the day.
+    to:
+    - KFS_BSA_ADDRESS
+    cc:
+    - FSO_EIRT_ADDRESS
+    attachment_dirs:
+    - BATCH_HOME/reports/purap
+    attachments:
+    - GlobFileFilterTracker: [electronicInvoiceExtractJob-*.txt]

@@ -1,0 +1,32 @@
+---
+name: UAF-FYENCFOR-DLV-PARME
+outputs:
+  start:
+    subject: ENV - UAF-FYENCFOR-DLV-PARME - Start Notice
+    message: >
+      The 'UAF-FYENCFOR-DLV-PARME' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:
+  log:
+    subject: ENV - UAF-FYENCFOR-DLV-PARME - Log Email
+    message: >
+      Please find the attached log(s) for the  'UAF-FYENCFOR-DLV-PARME' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-fyencfor-dlv-parme.log]
+  report:
+    subject: ENV - UAF-FYENCFOR-DLV-PARME - Review parms for Encumbrance Forward Jobs
+    message: >
+      DATE TIME -  Check the parms for Encumbrance Forward Job.
+    to:
+    - FSO_KFS_REPORTS_FIN_MGMT
+    cc:
+    attachment_dirs:
+    attachments:

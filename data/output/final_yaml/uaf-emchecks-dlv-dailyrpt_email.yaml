@@ -1,0 +1,36 @@
+---
+name: UAF-EMCHECKS-DLV-DAILYRPT
+outputs:
+  start:
+    subject: ENV - UAF-EMCHECKS-DLV-DAILYRPT - Start Notice
+    message: >
+      The 'UAF-EMCHECKS-DLV-DAILYRPT' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:
+  log:
+    subject: ENV - UAF-EMCHECKS-DLV-DAILYRPT - Log Email
+    message: >
+      Please find the attached log(s) for the  'UAF-EMCHECKS-DLV-DAILYRPT' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-emchecks-dlv-dailyrpt.log]
+  report:
+    subject: ENV - UAF-EMCHECKS-DLV-DAILYRPT - PDP Daily Report as result of Emergency Checks processing - PDP/AP Team Review
+    message: >
+      DATE TIME - Attached is/are the report(s) that show the results and/or
+      provide information on any error conditions found, if any, as a result of any
+      eInvoice files that were processed for the day.
+    to:
+    - CHECK_CONTROL_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/reports/pdp
+    attachments:
+    - GlobFileFilterTracker: [pdp_daily_*.pdf]

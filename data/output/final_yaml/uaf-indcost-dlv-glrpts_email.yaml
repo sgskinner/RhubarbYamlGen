@@ -1,0 +1,42 @@
+---
+name: UAF-INDCOST-DLV-GLRPTS
+outputs:
+  start:
+    subject: ENV - UAF-INDCOST-DLV-GLRPTS - Start Notice
+    message: >
+      The 'UAF-INDCOST-DLV-GLRPTS' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:
+  log:
+    subject: ENV - UAF-INDCOST-DLV-GLRPTS - Log Email
+    message: >
+      Please find the attached log(s) for the  'UAF-INDCOST-DLV-GLRPTS' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-indcost-dlv-glrpts.log]
+  report:
+    subject: ENV - UAF-INDCOST-DLV-GLRPTS - Indirect Cost Recovery Processing Report(s), FP Team Review
+    message: >
+      DATE TIME - Attached are the reports that provide the results associated
+      with the batch processing for the Indirect Cost Recovery Encumbrances. These
+      reports will provide information with regard to statistics and errors found, if
+      any, associated with the ICR general ledger transactions, along with providing
+      information on the condition of the ICR general ledger balances.
+    to:
+    - FSO_KFS_REPORTS_FIN_MGMT
+    cc:
+    - SPONSER_ADDRESS
+    - KFS_BSA_ADDRESS
+    attachment_dirs:
+    - BATCH_HOME/reports/gl
+    attachments:
+    - GlobFileFilterTracker: [scrubberJob_*.txt,
+                              posterJob_*.txt,
+                              balancing_*.txt]

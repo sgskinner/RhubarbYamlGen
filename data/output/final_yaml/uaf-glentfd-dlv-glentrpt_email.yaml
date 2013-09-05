@@ -1,0 +1,41 @@
+---
+name: UAF-GLENTFD-DLV-GLENTRPT
+outputs:
+  start:
+    subject: ENV - UAF-GLENTFD-DLV-GLENTRPT - Start Notice
+    message: >
+      The 'UAF-GLENTFD-DLV-GLENTRPT' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:
+  log:
+    subject: ENV - UAF-GLENTFD-DLV-GLENTRPT - Log Email
+    message: >
+      Please find the attached log(s) for the  'UAF-GLENTFD-DLV-GLENTRPT' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-glentfd-dlv-glentrpt.log]
+  report:
+    subject: ENV - UAF-GLENTFD-DLV-GLENTRPT - Enterprise Feed Reporting - FP Team Review
+    message: >
+      DATE TIME - Attached are the report(s) that provide the results associated
+      with the external system interface file(s) processed for the general ledger.
+      These reports will provide information with regard to statistics and errors
+      found, if any, from the data files received as a result of the execution of the
+      enterprise feed process.
+    to:
+    - FSO_KFS_REPORTS_FIN_MGMT
+    cc:
+    - KFS_BSA_ADDRESS
+    - DBLEV_ADDRESS
+    attachment_dirs:
+    - BATCH_HOME/reports/gl
+    attachments:
+    - GlobFileFilterTracker: [enterprise_feed_*.txt]
+    

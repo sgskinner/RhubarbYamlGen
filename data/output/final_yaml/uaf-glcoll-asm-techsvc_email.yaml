@@ -1,0 +1,36 @@
+---
+name: UAF-GLCOLL-ASM-TECHSVC
+outputs:
+  start:
+    subject: ENV - UAF-GLCOLL-ASM-TECHSVC - Start Notice
+    message: >
+      DATE TIME - The 'UAF-GLCOLL-ASM-TECHSVC' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:
+  log:
+    subject: ENV - UAF-GLCOLL-ASM-TECHSVC - Logs Email
+    message: >
+      Please find the attached log(s) for the  'UAF-GLCOLL-ASM-TECHSVC' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-glcoll-asm-techsvc.log]
+  success:
+    subject: ENV - UAF-GLCOLL-ASM-TECHSVC - SUCCESS, CTS GL collector file sent to KFS
+    message: >
+      Job name: UAF-GLCOLL-ASM-TECHSVC
+      Run date: DATE TIME
+    to:
+    - FSO_KFS_REPORTS_FIN_MGMT
+    - WINKLE_P_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-glcoll-asm-techsvc.log]

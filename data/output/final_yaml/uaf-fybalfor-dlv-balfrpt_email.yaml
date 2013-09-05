@@ -1,0 +1,36 @@
+---
+name: UAF-FYBALFOR-DLV-BALFRPT
+outputs:
+  start:
+    subject: ENV - UAF-FYBALFOR-DLV-BALFRPT - Start Notice
+    message: >
+      The 'UAF-FYBALFOR-DLV-BALFRPT' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:
+  log:
+    subject: ENV - UAF-FYBALFOR-DLV-BALFRPT - Log Email
+    message: >
+      Please find the attached log(s) for the  'UAF-FYBALFOR-DLV-BALFRPT' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-fybalfor-dlv-balfrpt.log]
+  report:
+    subject: ENV - UAF-FYBALFOR-DLV-BALFRPT - Report Email
+    message: >
+      DATE TIME - Notifying that the notify to process files created from prior
+      processes with GLCP and that jobs are on hold pending processing of file and
+      tech team needs notified when ready to release.
+    to:
+    - FSO_RATE_STUDIES_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/reports/gl
+    attachments:
+    - GlobFileFilterTracker: [year_end_balance_forward_*.txt]

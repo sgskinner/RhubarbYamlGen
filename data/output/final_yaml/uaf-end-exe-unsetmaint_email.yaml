@@ -1,0 +1,36 @@
+---
+name: UAF-END-EXE-UNSETMAINT
+outputs:
+  start:
+    subject: ENV - UAF-END-EXE-UNSETMAINT - Start Notice
+    message: >
+      DATE TIME - The 'UAF-END-EXE-UNSETMAINT' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:
+  log:
+    subject: ENV - UAF-END-EXE-UNSETMAINT - Logs Email
+    message: >
+      Please find the attached log(s) for the  'UAF-END-EXE-UNSETMAINT' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-end-exe-unsetmaint.log]
+  success:
+    subject: ENV - UAF-END-EXE-UNSETMAINT - SUCCESS, KFS user access has been re-enabled
+    message: >
+      DATE at TIME - User access to the ENV system has been requested to be
+      restored. It may take up to ten minutes for the ACE to actually let people back
+      in.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-end-exe-unsetmaint.log]

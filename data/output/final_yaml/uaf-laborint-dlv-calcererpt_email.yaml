@@ -1,0 +1,41 @@
+---
+name: UAF-LABORINT-DLV-CALCERERPT
+outputs:
+  start:
+    subject: ENV - UAF-LABORINT-DLV-CALCERERPT - Start Notice
+    message: >
+      The 'UAF-LABORINT-DLV-CALCERERPT' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:
+  log:
+    subject: ENV - UAF-LABORINT-DLV-CALCERERPT - Log Email
+    message: >
+      Please find the attached log(s) for the  'UAF-LABORINT-DLV-CALCERERPT' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-laborint-dlv-calcererpt.log]
+  report:
+    subject: ENV - UAF-LABORINT-DLV-CALCERERPT - Report Email
+    message: >
+      DATE TIME - Attached is the report that shows the results and/or error
+      conditions that have resulted from performing the ERE fringe calculations on the
+      UAccess Employee interface files. The calculations would have occurred on
+      any salary encumbrance, position budget, or payroll actuals files received.
+      
+      This data will be further processed with any KFS generated transactions for the
+      labor ledger and ultimately will be found within the entries and balances that
+      make up the labor ledger, encumbrances, and the general ledger.
+    to:
+    - FSO_KFS_REPORTS_FIN_MGMT
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/reports/ld
+    attachments:
+    - GlobFileFilterTracker: [laborEreJob_*.txt]

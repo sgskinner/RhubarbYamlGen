@@ -1,0 +1,37 @@
+---
+name: UAF-GLENTFD-ASM-HCMBUD
+outputs:
+  start:
+    subject: ENV - UAF-GLENTFD-ASM-HCMBUD - Start Notice
+    message: >
+      DATE TIME - The 'UAF-GLENTFD-ASM-HCMBUD' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:
+  log:
+    subject: ENV - UAF-GLENTFD-ASM-HCMBUD - Logs Email
+    message: >
+      Please find the attached log(s) for the  'UAF-GLENTFD-ASM-HCMBUD' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-glentfd-asm-hcmbud.log]
+  success:
+    subject: ENV - UAF-GLENTFD-ASM-HCMBUD - SUCCESS, HCM operational budget file sent to KFS
+    message: >
+      Job name: UAF-GLENTFD-ASM-HCMBUD
+      Run date: DATE TIME
+    to:
+    - FSO_KFS_REPORTS_FIN_MGMT
+    cc:
+    - BUDGET_OFFICE_EMAIL
+    - DBLEV_ADDRESS
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-glentfd-asm-hcmbud.log]

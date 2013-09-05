@@ -1,0 +1,39 @@
+---
+name: UAF-BANK-ASM-BAI-LOCAL
+outputs:
+  start:
+    subject: ENV - UAF-BANK-ASM-BAI-LOCAL - Start Notice
+    message: >
+      DATE TIME - The 'UAF-BANK-ASM-BAI-LOCAL' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:
+  log:
+    subject: ENV - UAF-BANK-ASM-BAI-LOCAL - Logs Email
+    message: >
+      Please find the attached log(s) for the  'UAF-BANK-ASM-BAI-LOCAL' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-bank-asm-bai-local.log]
+  success:
+    subject: ENV - UAF-BANK-ASM-BAI-LOCAL - Bank Transaction processing segment has begun
+    message: >
+      DATE TIME - The Bank Transaction processing has begun.
+      The transfer of wells fargo data has completed and processing of the data is
+      starting.
+      
+      This segment of the Nightly Batch goes from sequence 136.00 to 141.00 in the
+      Control-M Batch Schedule on Sharepoint.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-bank-asm-bai-local.log]

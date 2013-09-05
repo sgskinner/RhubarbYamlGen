@@ -1,0 +1,43 @@
+---
+name: UAF-FYNOMACT-DLV-PARME
+outputs:
+  start:
+    subject: ENV - UAF-FYNOMACT-DLV-PARME - Start Notice
+    message: >
+      The 'UAF-FYNOMACT-DLV-PARME' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:
+  log:
+    subject: ENV - UAF-FYNOMACT-DLV-PARME - Log Email
+    message: >
+      Please find the attached log(s) for the  'UAF-FYNOMACT-DLV-PARME' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-fynomact-dlv-parme.log]
+  report:
+    subject: ENV - UAF-FYNOMACT-DLV-PARME - Review parms for nominal Activity Closing Job
+    message: >
+      DATE TIME -  The Nominal Activity Closing process is being prepared to run
+      soon, but has been placed on hold. Please review the following KFS parameters
+      to ensure they are set appropriately for the job to run as desired: 
+
+      KFS-GL Batch ANNUAL_CLOSING_TRANSACTION_DATE 
+      KFS-GL Batch ANNUAL_CLOSING_FISCAL_YEAR 
+      KFS-GL Batch ANNUAL_CLOSING_FUND_BALANCE_OBJECT_CODE 
+      KFS-GL Batch ANNUAL_CLOSING_FUND_BALANCE_OBJECT_TYPE 
+      KFS-GL Batch ANNUAL_CLOSING_DOCUMENT_TYPE 
+      KFS-GL Batch MANUAL_FEED_ORIGINATION 
+      KFS-GL NominalActivityClosingStep NET_EXPENSE_OBJECT_CODE
+      KFS-GL NominalActivityClosingStep NET_REVENUE_OBJECT_CODE
+    to:
+    - FSO_KFS_REPORTS_FIN_MGMT
+    cc:
+    attachment_dirs:
+    attachments:

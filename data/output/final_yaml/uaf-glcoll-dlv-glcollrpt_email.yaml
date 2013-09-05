@@ -1,0 +1,39 @@
+---
+name: UAF-GLCOLL-DLV-GLCOLLRPT
+outputs:
+  start:
+    subject: ENV - UAF-GLCOLL-DLV-GLCOLLRPT - Start Notice
+    message: >
+      The 'UAF-GLCOLL-DLV-GLCOLLRPT' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:
+  log:
+    subject: ENV - UAF-GLCOLL-DLV-GLCOLLRPT - Log Email
+    message: >
+      Please find the attached log(s) for the  'UAF-GLCOLL-DLV-GLCOLLRPT' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-glcoll-dlv-glcollrpt.log]
+  report:
+    subject: ENV - UAF-GLCOLL-DLV-GLCOLLRPT - GL Collector Reporting, CRT Team Review
+    message: >
+      DATE TIME - Attached are the report(s) that provide the results associated
+      with the external file(s) processed for the general ledger through the collector
+      process. These reports will provide information with regard to statistics and
+      errors found, if any, from the external interface data files received as a
+      result of the execution of the collector process.
+    to:
+    - FSO_KFS_REPORTS_FIN_MGMT
+    cc:
+    - KFS_BSA_ADDRESS
+    attachment_dirs:
+    - BATCH_HOME/reports/gl
+    attachments:
+    - GlobFileFilterTracker: [collector_*.txt]

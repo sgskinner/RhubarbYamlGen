@@ -1,0 +1,35 @@
+---
+name: UAF-WORKFLOW-ASM-WKFLOW
+outputs:
+  start:
+    subject: ENV - UAF-WORKFLOW-ASM-WKFLOW - Start Notice
+    message: >
+      DATE TIME - The 'UAF-WORKFLOW-ASM-WKFLOW' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:
+  log:
+    subject: ENV - UAF-WORKFLOW-ASM-WKFLOW - Logs Email
+    message: >
+      Please find the attached log(s) for the  'UAF-WORKFLOW-ASM-WKFLOW' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-workflow-asm-wkflow.log]
+  success:
+    subject: ENV - UAF-WORKFLOW-ASM-WKFLOW - SUCCESS
+    message: >
+      Job name: UAF-WORKFLOW-ASM-WKFLOW
+      Run date: DATE TIME
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-workflow-asm-wkflow.log]

@@ -1,0 +1,38 @@
+---
+name: UAF-GLPRJE-DLV-PRJERPTS
+outputs:
+  start:
+    subject: ENV - UAF-GLPRJE-DLV-PRJERPTS - Start Notice
+    message: >
+      The 'UAF-GLPRJE-DLV-PRJERPTS' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:
+  log:
+    subject: ENV - UAF-GLPRJE-DLV-PRJERPTS - Log Email
+    message: >
+      Please find the attached log(s) for the  'UAF-GLPRJE-DLV-PRJERPTS' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-glprje-dlv-prjerpts.log]
+  report:
+    subject: ENV - UAF-GLPRJE-DLV-PRJERPTS - PRJE Processing Report(s), FP Team Review
+    message: >
+      DATE TIME - Attached are the reports that provide the results associated
+      with the batch processing after execution of the monthly PRJE process. This
+      data will be further handled through the general ledger processing.
+    to:
+    - FSO_KFS_REPORTS_FIN_MGMT
+    cc:
+    - KFS_BSA_ADDRESS
+    attachment_dirs:
+    - BATCH_HOME/reports/prje
+    attachments:
+    - GlobFileFilterTracker: [prje_main_ledger_*.txt,
+                              prje_audit_*.txt]

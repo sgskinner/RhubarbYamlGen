@@ -1,0 +1,35 @@
+---
+name: UAF-SHIP-TRF-FEDEX-PULL
+outputs:
+  start:
+    subject: ENV - UAF-SHIP-TRF-FEDEX-PULL - Start Notice
+    message: >
+      DATE TIME - The 'UAF-SHIP-TRF-FEDEX-PULL' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:
+  log:
+    subject: ENV - UAF-SHIP-TRF-FEDEX-PULL - Logs Email
+    message: >
+      Please find the attached log(s) for the  'UAF-SHIP-TRF-FEDEX-PULL' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-ship-trf-fedex-pull.log]
+  success:
+    subject: ENV - UAF-SHIP-TRF-FEDEX-PULL - SUCCESS, Shipping file sent
+    message: >
+      Job name: UAF-SHIP-TRF-FEDEX-PULL
+      Run date: DATE TIME
+    to:
+    - FEDEX_ADMIN_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-ship-trf-fedex-pull.log]

@@ -1,0 +1,36 @@
+---
+name: UAF-PREPAID-ASM-HCMOFF
+outputs:
+  start:
+    subject: ENV - UAF-PREPAID-ASM-HCMOFF - Start Notice
+    message: >
+      DATE TIME - The 'UAF-PREPAID-ASM-HCMOFF' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:
+  log:
+    subject: ENV - UAF-PREPAID-ASM-HCMOFF - Logs Email
+    message: >
+      Please find the attached log(s) for the  'UAF-PREPAID-ASM-HCMOFF' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-prepaid-asm-hcmoff.log]
+  success:
+    subject: ENV - UAF-PREPAID-ASM-HCMOFF - SUCCESS, HCM off-cycle checks file sent to KFS
+    message: >
+      Job name: UAF-PREPAID-ASM-HCMOFF 
+      Run date: DATE TIME
+    to:
+    - FSO_PDP_ADDRESS
+    - KFS_BSA_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-prepaid-asm-hcmoff.log]

@@ -1,0 +1,36 @@
+---
+name: UAF-PCARDT-TRF-JPMC-PULL
+outputs:
+  start:
+    subject: ENV - UAF-PCARDT-TRF-JPMC-PULL - Start Notice
+    message: >
+      DATE TIME - The 'UAF-PCARDT-TRF-JPMC-PULL' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:
+  log:
+    subject: ENV - UAF-PCARDT-TRF-JPMC-PULL - Logs Email
+    message: >
+      Please find the attached log(s) for the  'UAF-PCARDT-TRF-JPMC-PULL' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-pcardt-trf-jpmc-pull.log]
+  success:
+    subject: ENV - UAF-PCARDT-TRF-JPMC-PULL - SUCCESS, PCard transaction file sent to KFS
+    message: >
+      Job name: UAF-PCARDT-TRF-JPMC-PULL
+      Run date: DATE TIME
+    to:
+    - KFS_PCARD_ERROR_ADDRESS
+    - KFS_BSA_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-pcardt-trf-jpmc-pull.log]

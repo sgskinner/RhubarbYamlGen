@@ -1,0 +1,35 @@
+---
+name: UAF-LABORINT-ASM-HCMENC
+outputs:
+  start:
+    subject: ENV - UAF-LABORINT-ASM-HCMENC - Start Notice
+    message: >
+      DATE TIME - The 'UAF-LABORINT-ASM-HCMENC' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:
+  log:
+    subject: ENV - UAF-LABORINT-ASM-HCMENC - Logs Email
+    message: >
+      Please find the attached log(s) for the  'UAF-LABORINT-ASM-HCMENC' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-laborint-asm-hcmenc.log]
+  success:
+    subject: ENV - UAF-LABORINT-ASM-HCMENC - SUCCESS, HCM salary encumbrance file sent to KFS
+    message: >
+      Job name: UAF-LABORINT-ASM-HCMENC
+      Run date: DATE TIME
+    to:
+    - FSO_PAYROLL_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-laborint-asm-hcmenc.log]

@@ -1,0 +1,36 @@
+---
+name: UAF-PDPPAYMT-ASM-SADISB
+outputs:
+  start:
+    subject: ENV - UAF-PDPPAYMT-ASM-SADISB - Start Notice
+    message: >
+      DATE TIME - The 'UAF-PDPPAYMT-ASM-SADISB' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:
+  log:
+    subject: ENV - UAF-PDPPAYMT-ASM-SADISB - Logs Email
+    message: >
+      Please find the attached log(s) for the  'UAF-PDPPAYMT-ASM-SADISB' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-pdppaymt-asm-sadisb.log]
+  success:
+    subject: ENV - UAF-PDPPAYMT-ASM-SADISB - SUCCESS, Student AP Disbursement file sent to KFS
+    message: >
+      Job name: UAF-PDPPAYMT-ASM-SADISB
+      Run date: DATE TIME
+    to:
+    - FSO_PDP_ADDRESS
+    - KFS_BSA_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-pdppaymt-asm-sadisb.log]

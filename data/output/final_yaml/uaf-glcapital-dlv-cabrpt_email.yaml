@@ -1,0 +1,36 @@
+---
+name: UAF-GLCAPITAL-DLV-CABRPT
+outputs:
+  start:
+    subject: ENV - UAF-GLCAPITAL-DLV-CABRPT - Start Notice
+    message: >
+      The 'UAF-GLCAPITAL-DLV-CABRPT' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:
+  log:
+    subject: ENV - UAF-GLCAPITAL-DLV-CABRPT - Log Email
+    message: >
+      Please find the attached log(s) for the  'UAF-GLCAPITAL-DLV-CABRPT' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+     - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-glcapital-dlv-cabrpt.log]
+  report:
+    subject: ENV - UAF-GLCAPITAL-DLV-CABRPT - CAB Status Report, CAM Team Review
+    message: >
+      DATE TIME - Attached is the summary report reflective of the general ledger
+      processing that occurred during the nightly batch schedule for any asset
+      related data.
+    to:
+    - KFS_CAPITAL_ASSETS_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/reports/cab
+    attachments:
+    - GlobFileFilterTracker: [cab_batch_status_report_*.pdf]

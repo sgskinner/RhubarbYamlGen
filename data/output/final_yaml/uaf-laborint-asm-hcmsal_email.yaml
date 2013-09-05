@@ -1,0 +1,35 @@
+---
+name: UAF-LABORINT-ASM-HCMSAL
+outputs:
+  start:
+    subject: ENV - UAF-LABORINT-ASM-HCMSAL - Start Notice
+    message: >
+      DATE TIME - The 'UAF-LABORINT-ASM-HCMSAL' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:
+  log:
+    subject: ENV - UAF-LABORINT-ASM-HCMSAL - Logs Email
+    message: >
+      Please find the attached log(s) for the  'UAF-LABORINT-ASM-HCMSAL' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-laborint-asm-hcmsal.log]
+  success:
+    subject: ENV - UAF-LABORINT-ASM-HCMSAL - SUCCESS, HCM salary and wage file sent to KFS
+    message: >
+      Job name: UAF-LABORINT-ASM-HCMSAL
+      Run date: DATE TIME
+    to:
+    - FSO_PAYROLL_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-laborint-asm-hcmsal.log]

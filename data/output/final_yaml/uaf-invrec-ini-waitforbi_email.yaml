@@ -1,0 +1,30 @@
+---
+name: UAF-INVREC-INI-WAITFORBI
+outputs:
+  start:
+    subject: ENV - UAF-INVREC-INI-WAITFORBI - Start Notice
+    message: >
+      The 'UAF-INVREC-INI-WAITFORBI' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:
+  log:
+    subject: ENV - UAF-INVREC-INI-WAITFORBI - Log Email
+    message: >
+      Please find the attached log(s) for the  'UAF-INVREC-INI-WAITFORBI' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:
+  report:
+    subject: ENV - UAF-INVREC-INI-WAITFORBI - Report Email
+    message: >
+      Please find the attached report(s) for the  'UAF-INVREC-INI-WAITFORBI' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:

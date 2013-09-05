@@ -1,0 +1,43 @@
+---
+name: UAF-LABORMNT-DLV-ERESWRPTS
+outputs:
+  start:
+    subject: ENV - UAF-LABORMNT-DLV-ERESWRPTS - Start Notice
+    message: >
+      The 'UAF-LABORMNT-DLV-ERESWRPTS' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:
+  log:
+    subject: ENV - UAF-LABORMNT-DLV-ERESWRPTS - Log Email
+    message: >
+      Please find the attached log(s) for the  'UAF-LABORMNT-DLV-ERESWRPTS' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-labormnt-dlv-ereswrpts.log]
+  report:
+    subject: ENV - UAF-LABORMNT-DLV-ERESWRPTS - Labor Processing Report(s) AFTER Fringe Budget Sweep, FP Team Review
+    message: >
+      DATE TIME - Attached are the additional reports that provide the results
+      associated with the batch processing for the labor ledger after the execution
+      of the ERE Budget sweep job. These reports will provide information on the
+      condition of the labor ledger balances, along with a report that provides the
+      summary data that will feed to the GL.
+      
+      This data will be further processed with the remainder of the generated ledger
+      transactions from other internal and external areas and ultimately be found
+      within the entries and balances that make up the general ledger.
+    to:
+    - FSO_PAYROLL_ADDRESS
+    cc:
+    - FSO_KFS_REPORTS_FIN_MGMT
+    attachment_dirs:
+    - BATCH_HOME/reports/ld
+    attachments:
+    - GlobFileFilterTracker: [laborBalancing_*.txt, labor_gl_summary_ledger_*.txt]

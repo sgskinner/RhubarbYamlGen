@@ -1,0 +1,35 @@
+---
+name: UAF-BANK-TRF-WF-PUSH
+outputs:
+  start:
+    subject: ENV - UAF-BANK-TRF-WF-PUSH - Start Notice
+    message: >
+      DATE TIME - The 'UAF-BANK-TRF-WF-PUSH' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:
+  log:
+    subject: ENV - UAF-BANK-TRF-WF-PUSH - Logs Email
+    message: >
+      Please find the attached log(s) for the  'UAF-BANK-TRF-WF-PUSH' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-bank-trf-wf-push.log]
+  success:
+    subject: ENV - UAF-BANK-TRF-WF-PUSH - SUCCESS, Wells Fargo BAI file received
+    message: >
+      Job name: UAF-BANK-TRF-WF-PUSH
+      Run date: DATE TIME
+    to:
+    - FM_NON_OPERATING_FUNDS_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-bank-trf-wf-push.log]

@@ -1,0 +1,36 @@
+---
+name: UAF-LABORINT-ASM-BUDGET
+outputs:
+  start:
+    subject: ENV - UAF-LABORINT-ASM-BUDGET - Start Notice
+    message: >
+      DATE TIME - The 'UAF-LABORINT-ASM-BUDGET' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:
+  log:
+    subject: ENV - UAF-LABORINT-ASM-BUDGET - Logs Email
+    message: >
+      Please find the attached log(s) for the  'UAF-LABORINT-ASM-BUDGET' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-laborint-asm-budget.log]
+  success:
+    subject: ENV - UAF-LABORINT-ASM-BUDGET - SUCCESS, HCM position budget file sent to KFS
+    message: >
+      Job name: UAF-LABORINT-ASM-BUDGET
+      Run date: DATE TIME
+    to:
+    - BUDGET_OFFICE_EMAIL
+    cc:
+    - FSO_RATE_STUDIES_ADDRESS
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-laborint-asm-budget.log]

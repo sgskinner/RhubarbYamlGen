@@ -1,0 +1,37 @@
+---
+name: UAF-GLCOLL-ASM-PLANDC
+outputs:
+  start:
+    subject: ENV - UAF-GLCOLL-ASM-PLANDC - Start Notice
+    message: >
+      DATE TIME - The 'UAF-GLCOLL-ASM-PLANDC' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:
+  log:
+    subject: ENV - UAF-GLCOLL-ASM-PLANDC - Logs Email
+    message: >
+      Please find the attached log(s) for the  'UAF-GLCOLL-ASM-PLANDC' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-glcoll-asm-plandc.log]
+  success:
+    subject: ENV - UAF-GLCOLL-ASM-PLANDC - SUCCESS, Planning Design and Construction GL collector file sent to KFS
+    message: >
+      Job name: UAF-GLCOLL-ASM-PLANDC
+      Run date: DATE TIME
+    to:
+    - FSO_KFS_REPORTS_FIN_MGMT
+    - RANDY_MATTHEWS_ADDRESS
+    - DRENNON_BROWN_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-glcoll-asm-plandc.log]

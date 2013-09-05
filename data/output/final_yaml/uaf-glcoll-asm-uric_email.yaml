@@ -1,0 +1,36 @@
+---
+name: UAF-GLCOLL-ASM-URIC
+outputs:
+  start:
+    subject: ENV - UAF-GLCOLL-ASM-URIC - Start Notice
+    message: >
+      DATE TIME - The 'UAF-GLCOLL-ASM-URIC' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:
+  log:
+    subject: ENV - UAF-GLCOLL-ASM-URIC - Logs Email
+    message: >
+      Please find the attached log(s) for the  'UAF-GLCOLL-ASM-URIC' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-glcoll-asm-uric.log]
+  success:
+    subject: ENV - UAF-GLCOLL-ASM-URIC - SUCCESS, URIC GL collector file sent to KFS
+    message: >
+      Job name: UAF-GLCOLL-ASM-URIC
+      Run date: DATE TIME
+    to:
+    - FSO_KFS_REPORTS_FIN_MGMT
+    - JENNIFER_PIERSON_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-glcoll-asm-uric.log]

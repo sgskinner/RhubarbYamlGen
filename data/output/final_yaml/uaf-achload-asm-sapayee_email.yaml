@@ -1,0 +1,35 @@
+---
+name: UAF-ACHLOAD-ASM-SAPAYEE
+outputs:
+  start:
+    subject: ENV - UAF-ACHLOAD-ASM-SAPAYEE - Start Notice
+    message: >
+      DATE TIME - The 'UAF-ACHLOAD-ASM-SAPAYEE' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:
+  log:
+    subject: ENV - UAF-ACHLOAD-ASM-SAPAYEE - Logs Email
+    message: >
+      Please find the attached log(s) for the  'UAF-ACHLOAD-ASM-SAPAYEE' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [kfs-ach-spaykf.log]
+  success:
+    subject: ENV - UAF-ACHLOAD-ASM-SAPAYEE - SUCCESS, SA ACH Pay file sent
+    message: >
+      Job name: KFS-ACH-SPAYKF0017
+      Run date: DATE TIME
+    to:
+    - CHECK_CONTROL_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [kfs-ach-spaykf.log]

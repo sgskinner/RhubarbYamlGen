@@ -1,0 +1,32 @@
+---
+name: UAF-FYLABFOR-DLV-PARME
+outputs:
+  start:
+    subject: ENV - UAF-FYLABFOR-DLV-PARME - Start Notice
+    message: >
+      The 'UAF-FYLABFOR-DLV-PARME' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:
+  log:
+    subject: ENV - UAF-FYLABFOR-DLV-PARME - Log Email
+    message: >
+      Please find the attached log(s) for the  'UAF-FYLABFOR-DLV-PARME' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-fylabfor-dlv-parme.log]
+  report:
+    subject: ENV - UAF-FYLABFOR-DLV-PARME - Labor Balance Forward Processing Information
+    message: >
+      DATE TIME - Review parameters for your organization revision for the current year
+    to:
+    - FSO_KFS_REPORTS_FIN_MGMT
+    cc:
+    attachment_dirs:
+    attachments:

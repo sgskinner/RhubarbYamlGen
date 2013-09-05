@@ -1,0 +1,41 @@
+---
+name: UAF-GLNITEOUT-DLV-GLCPRPT
+outputs:
+  start:
+    subject: ENV - UAF-GLNITEOUT-DLV-GLCPRPT - Start Notice
+    message: >
+      The 'UAF-GLNITEOUT-DLV-GLCPRPT' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:
+  log:
+    subject: ENV - UAF-GLNITEOUT-DLV-GLCPRPT - Log Email
+    message: >
+      Please find the attached log(s) for the  'UAF-GLNITEOUT-DLV-GLCPRPT' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-glniteout-dlv-glcprpt.log]
+  report:
+    subject: ENV - UAF-GLNITEOUT-DLV-GLCPRPT - GLCP Results Report(s)
+    message: >
+      DATE TIME - Attached is/are the report(s) that show the results and/or
+      provide information on any error conditions found, if any, as a result of the
+      general ledger correction document files processed for the day.
+      
+      This data will be further processed with any additional internal or external
+      generated transactions for the general ledger and ultimately will be found
+      within the entries and balances that make up the general ledger.
+    to:
+    - FSO_KFS_REPORTS_FIN_MGMT
+    cc:
+    - KFS_BSA_ADDRESS
+    attachment_dirs:
+    - BATCH_HOME/reports/gl
+    attachments:
+    - GlobFileFilterTracker: [glcp_*_*.txt]

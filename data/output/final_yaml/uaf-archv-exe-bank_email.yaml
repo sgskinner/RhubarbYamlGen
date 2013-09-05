@@ -1,0 +1,30 @@
+---
+name: UAF-ARCHV-EXE-BANK
+outputs:
+  start:
+    subject: ENV - UAF-ARCHV-EXE-BANK - Start Notice
+    message: >
+      The 'UAF-ARCHV-EXE-BANK' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:
+  log:
+    subject: ENV - UAF-ARCHV-EXE-BANK - Log Email
+    message: >
+      Please find the attached log(s) for the  'UAF-ARCHV-EXE-BANK' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:
+  report:
+    subject: ENV - UAF-ARCHV-EXE-BANK - Report Email
+    message: >
+      Please find the attached report(s) for the  'UAF-ARCHV-EXE-BANK' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:

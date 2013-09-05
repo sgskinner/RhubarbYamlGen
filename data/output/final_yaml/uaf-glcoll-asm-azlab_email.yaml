@@ -1,0 +1,36 @@
+---
+name: UAF-GLCOLL-ASM-AZLAB
+outputs:
+  start:
+    subject: ENV - UAF-GLCOLL-ASM-AZLAB - Start Notice
+    message: >
+      DATE TIME - The 'UAF-GLCOLL-ASM-AZLAB' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:
+  log:
+    subject: ENV - UAF-GLCOLL-ASM-AZLAB - Logs Email
+    message: >
+      Please find the attached log(s) for the  'UAF-GLCOLL-ASM-AZLAB' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [kfs-glu-arkf.log]
+  success:
+    subject: ENV - UAF-GLCOLL-ASM-AZLAB - SUCCESS, ARL GL collector file sent to KFS
+    message: >
+      Job name: UAF-GLCOLL-ASM-AZLAB
+      Run date: DATE TIME
+    to:
+    - FSO_KFS_REPORTS_FIN_MGMT
+    - GARTH_PERRY_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [kfs-glu-arkf.log]

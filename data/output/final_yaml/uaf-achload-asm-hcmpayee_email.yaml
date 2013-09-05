@@ -1,0 +1,35 @@
+---
+name: UAF-ACHLOAD-ASM-HCMPAYEE
+outputs:
+  start:
+    subject: ENV - UAF-ACHLOAD-ASM-HCMPAYEE - Start Notice
+    message: >
+      DATE TIME - The 'UAF-ACHLOAD-ASM-HCMPAYEE' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:
+  log:
+    subject: ENV - UAF-ACHLOAD-ASM-HCMPAYEE - Logs Email
+    message: >
+      Please find the attached log(s) for the  'UAF-ACHLOAD-ASM-HCMPAYEE' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [kfs-ach-hpaykf.log]
+  success:
+    subject: ENV - UAF-ACHLOAD-ASM-HCMPAYEE - SUCCESS, HCM ACH Pay file sent
+    message: >
+      Job name: UAF-ACHLOAD-ASM-HCMPAYEE
+      Run date: DATE TIME
+    to:
+    - CHECK_CONTROL_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [kfs-ach-hpaykf.log]

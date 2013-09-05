@@ -1,0 +1,34 @@
+---
+name: UAF-FYNOMACT-DLV-NOMARPT
+outputs:
+  start:
+    subject: ENV - UAF-FYNOMACT-DLV-NOMARPT - Start Notice
+    message: >
+      The 'UAF-FYNOMACT-DLV-NOMARPT' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:
+  log:
+    subject: ENV - UAF-FYNOMACT-DLV-NOMARPT - Log Email
+    message: >
+      Please find the attached log(s) for the  'UAF-FYNOMACT-DLV-NOMARPT' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-fynomact-dlv-nomarpt.log]
+  report:
+    subject: ENV - UAF-FYNOMACT-DLV-NOMARPT - General Ledger Correction Process
+    message: >
+      DATE TIME - Notifying that the notify to process files created from prior
+      processes with GLCP and that jobs are on hold pending processing of file and
+      tech team needs notified when ready to release.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:

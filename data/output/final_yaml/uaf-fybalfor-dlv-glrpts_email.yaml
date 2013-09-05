@@ -1,0 +1,36 @@
+---
+name: UAF-FYBALFOR-DLV-GLRPTS
+outputs:
+  start:
+    subject: ENV - UAF-FYBALFOR-DLV-GLRPTS - Start Notice
+    message: >
+      The 'UAF-FYBALFOR-DLV-GLRPTS' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:
+  log:
+    subject: ENV - UAF-FYBALFOR-DLV-GLRPTS - Log Email
+    message: >
+      Please find the attached log(s) for the  'UAF-FYBALFOR-DLV-GLRPTS' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-fybalfor-dlv-glrpts.log]
+  report:
+    subject: ENV - UAF-FYBALFOR-DLV-GLRPTS - General Ledger reports
+    message: >
+      Please see the attached reports.
+    to:
+    - FSO_KFS_REPORTS_FIN_MGMT
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/reports/gl
+    attachments:
+    - GlobFileFilterTracker: [scrubberJob_*.txt,
+                              posterJob_*.txt,
+                              balancing_*.txt]

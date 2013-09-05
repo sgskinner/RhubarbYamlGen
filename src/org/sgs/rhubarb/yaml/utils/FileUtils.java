@@ -1,18 +1,39 @@
 package org.sgs.rhubarb.yaml.utils;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.Writer;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
+
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.io.LineIterator;
 
 
 
 public class FileUtils{
+	
+	
+	public static InputStream getFileInputStream(String filePath){
+		File file = new File(filePath);
+		return getFileInputStream(file);
+	}
+	
+	
+	public static InputStream getFileInputStream(File file){
+		InputStream inputStream = null;
+		try {
+			inputStream = new FileInputStream(file);
+		} catch (FileNotFoundException e) {
+			throw new RuntimeException(e);
+		}
+		return inputStream;
+	}
 	
 	
 	public static String[] getLinesAsArray(String filename) {

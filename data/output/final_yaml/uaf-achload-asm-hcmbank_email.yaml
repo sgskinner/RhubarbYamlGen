@@ -1,0 +1,35 @@
+---
+name: UAF-ACHLOAD-ASM-HCMBANK
+outputs:
+  start:
+    subject: ENV - UAF-ACHLOAD-ASM-HCMBANK - Start Notice
+    message: >
+      DATE TIME - The 'UAF-ACHLOAD-ASM-HCMBANK' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:
+  log:
+    subject: ENV - UAF-ACHLOAD-ASM-HCMBANK - Logs Email
+    message: >
+      Please find the attached log(s) for the  'UAF-ACHLOAD-ASM-HCMBANK' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [kfs-ach-hbankkf.log]
+  success:
+    subject: ENV - UAF-ACHLOAD-ASM-HCMBANK - SUCCESS, HCM ACH Bank file sent
+    message: >
+      Job name: UAF-ACHLOAD-ASM-HCMBANK
+      Run date: DATE TIME
+    to:
+    - CHECK_CONTROL_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [kfs-ach-hbankkf.log]

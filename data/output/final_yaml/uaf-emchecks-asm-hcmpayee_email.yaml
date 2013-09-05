@@ -1,0 +1,35 @@
+---
+name: UAF-EMCHECKS-ASM-HCMPAYEE
+outputs:
+  start:
+    subject: ENV - UAF-EMCHECKS-ASM-HCMPAYEE - Start Notice
+    message: >
+      DATE TIME - The 'UAF-EMCHECKS-ASM-HCMPAYEE' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:
+  log:
+    subject: ENV - UAF-EMCHECKS-ASM-HCMPAYEE - Logs Email
+    message: >
+      Please find the attached log(s) for the  'UAF-EMCHECKS-ASM-HCMPAYEE' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-emchecks-asm-hcmpayee.log]
+  success:
+    subject: ENV - UAF-EMCHECKS-ASM-HCMPAYEE - SUCCESS, HCM ACH Pay file sent
+    message: >
+      Job name: UAF-EMCHECKS-ASM-HCMPAYEE
+      Run date: DATE TIME
+    to:
+    - CHECK_CONTROL_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-emchecks-asm-hcmpayee.log]

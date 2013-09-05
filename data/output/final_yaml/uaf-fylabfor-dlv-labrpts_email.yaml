@@ -1,0 +1,32 @@
+---
+name: UAF-FYLABFOR-DLV-LABRPTS
+outputs:
+  start:
+    subject: ENV - UAF-FYLABFOR-DLV-LABRPTS - Start Notice
+    message: >
+      The 'UAF-FYLABFOR-DLV-LABRPTS' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:
+  log:
+    subject: ENV - UAF-FYLABFOR-DLV-LABRPTS - Log Email
+    message: >
+      Please find the attached log(s) for the  'UAF-FYLABFOR-DLV-LABRPTS' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-fylabfor-dlv-labrpt.log]
+  report:
+    subject: ENV - UAF-FYLABFOR-DLV-LABRPTS - Review parms for Encumbrance Forward Job
+    message: >
+      DATE TIME -  Please check the parms for Encumbrance Forward Job.
+    to:
+    - FSO_KFS_REPORTS_FIN_MGMT
+    cc:
+    attachment_dirs:
+    attachments:

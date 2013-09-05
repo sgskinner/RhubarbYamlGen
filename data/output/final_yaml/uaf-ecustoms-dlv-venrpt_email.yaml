@@ -1,0 +1,35 @@
+---
+name: UAF-ECUSTOMS-DLV-VENRPT
+outputs:
+  start:
+    subject: ENV - UAF-ECUSTOMS-DLV-VENRPT - Start Notice
+    message: >
+      The 'UAF-ECUSTOMS-DLV-VENRPT' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:
+  log:
+    subject: ENV - UAF-ECUSTOMS-DLV-VENRPT - Log Email
+    message: >
+      Please find the attached log(s) for the  'UAF-ECUSTOMS-DLV-VENRPT' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-ecustoms-dlv-venrpt.log]
+  report:
+    subject: ENV - UAF-ECUSTOMS-DLV-VENRPT - eCustoms File sent to ASU - AP Team Review
+    message: >
+      Attached is the data file that was produced from the 'Format Checks/ACH'
+      process.  This file was sent to ASU and is attached for your review.
+    to:
+    - UA_CUSTOMS_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/staging/pdp/ecustoms
+    attachments:
+    - GlobFileFilter: [UA_ECUSTOMS.data]

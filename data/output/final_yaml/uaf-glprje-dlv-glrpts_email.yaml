@@ -1,0 +1,62 @@
+---
+name: UAF-GLPRJE-DLV-GLRPTS
+outputs:
+  start:
+    subject: ENV - UAF-GLPRJE-DLV-GLRPTS - Start Notice
+    message: >
+      The 'UAF-GLPRJE-DLV-GLRPTS' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:
+  log:
+    subject: ENV - UAF-GLPRJE-DLV-GLRPTS - Logs Email
+    message: >
+      Please find the attached log(s) for the  'UAF-GLPRJE-DLV-GLRPTS' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-glprje-dlv-glrpts.log]
+  report:
+    subject: ENV - UAF-GLPRJE-DLV-GLRPTS - General Ledger PRJE Processing Report(s), FP Team Review
+    message: >
+      DATE TIME
+      Attached are reports results associated with monthly PRJE batch process.
+      
+      As a reminder, this should be the final processing item for the prior accounting
+      period. Once confirmed, please inactivate the prior accounting period, which
+      would prevent prior period accounting entries from posting. If any entry for
+      prior period occurs after the inactivation, errors would be reported on the
+      scrubber error report.
+      
+      Reminder:
+      Accounting Periods may be found in the following location in KFS:
+      Maintenance Tab --> Chart Of Accounts Section --> Accounting Period Hyperlink
+    to:
+    - FSO_KFS_REPORTS_FIN_MGMT
+    cc:
+    - KFS_BSA_ADDRESS
+    attachment_dirs:
+    - BATCH_HOME/reports/gl
+    attachments:
+    - GlobFileFilterTracker: [scrubberJob_*.txt,
+                              posterJob_*.txt,
+                              balancing_*.txt]
+  success:
+    subject: "ENV - UAF-GLPRJE-DLV-GLRPTS - BATCH STATUS: Month End processing segment has finished"
+    message: >
+      DATE TIME - Month End processing has completed. The receipt of
+      this email does mean that the Month PRJE reports were mailed out (assuming attachments
+      were found). However, it does not mean that all previous jobs in the chain succeeded
+      (owing to the presence of jobs that were requested to continue on failure).
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-glprje-dlv-glrpts.log]

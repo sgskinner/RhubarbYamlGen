@@ -1,0 +1,44 @@
+---
+name: UAF-TAXEXTR-DLV-PARME
+outputs:
+  start:
+    subject: ENV - UAF-TAXEXTR-DLV-PARME - Start Notice
+    message: >
+      The 'UAF-TAXEXTR-DLV-PARME' process has started.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:
+  log:
+    subject: ENV - UAF-TAXEXTR-DLV-PARME - Log Email
+    message: >
+      Please find the attached log(s) for the  'UAF-TAXEXTR-DLV-PARME' process.
+    to:
+    - KATT_AUTOMATION_ADDRESS
+    cc:
+    attachment_dirs:
+    - BATCH_HOME/logs
+    attachments:
+    - GlobFileFilter: [uaf-taxextr-dlv-parme.log]
+  report:
+    subject: ENV - UAF-TAXEXTR-DLV-PARME - Review and Confirm Annual 1099 Extract Parameters, AP Team Review
+    message: >
+      DATE TIME - The first execution of the 1099 payee extract process for the
+      new year is ready to be ran, but has been placed on hold. Please review the KFS
+      parameters to ensure they are set appropriately.
+      
+      After the parameters have been reviewed and adjustments completely approved, as
+      necessary, please contact the KFS technical support team for the payee extract
+      schedule (1099 Tax) to be released for execution. If the tech team does not
+      receive notification today to release the jobs for processing, the nightly
+      batch processing will be held up until that event occurs.
+      
+      Reminder, parameters can be found in KFS:
+      Administration Tab --> Parameter Hyperlink
+      Select KUALI-TAX in the Namespace Code field before performing the 'Search'.
+    to:
+    - FSO_1099_TEAM_ADDRESS
+    cc:
+    attachment_dirs:
+    attachments:
